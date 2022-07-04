@@ -17,5 +17,5 @@ app.listen(port, () => {
 // //////USER////////////
 app.get('/show', async (req, res) => {
 
-       res.json({ "done": "hola algo mas" })
+       res.json({ "done": "soy nav "})
 })
