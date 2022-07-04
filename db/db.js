@@ -1,5 +1,4 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
-
 const sequelize = new Sequelize({
     database: "d1olon79irc05k",
     username: "xhnhxkqzilphew",
