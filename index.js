@@ -4,7 +4,7 @@ const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-const User = require('./models/Users')
+
 
 
 const { getProducts, createProduct, getProductById, deleteProduct } = require('./functions/functionsProduct')
@@ -27,39 +27,27 @@ app.get('/getAllUsers', async (req, res) => {
 
 
     try {
-         res.json(await findAllUsers())
+        res.json(await findAllUsers())
     } catch (error) {
         res.status(401).json(error.message)
-    }   
+    }
 })
-
-app.post('/createUser', async(req, res) => {
+app.post('/createUser', async (req, res) => {
     try {
-        let {name, lastName, username, password, email, phone} = req.body
+        let { name, lastName, username, password, email, phone } = req.body
         res.json(await createUser(name, lastName, username, password, email, phone))
     } catch (error) {
         res.status(401).json(error.message)
     }
-
 })
 
-
-
-
-
-
-
-
-
 /// PRODUCTS ////
-
-
 
 app.get('/products', async (req, res) => {
     let { name } = req.query
     try {
 
-        res.json(await getProducts(name)) 
+        res.json(await getProducts(name))
 
     } catch (error) {
         res.status(401).json(error.message)
@@ -77,7 +65,7 @@ app.post('/products', async (req, res) => {
 
 app.get('/products/:id', async (req, res) => {
     try {
-        let {id} = req.params
+        let { id } = req.params
         res.json(await getProductById(id))
     } catch (error) {
         res.status(401).json(error.message)
@@ -86,7 +74,7 @@ app.get('/products/:id', async (req, res) => {
 
 app.delete('/products/:id', async (req, res) => {
     try {
-        let {id} = req.params
+        let { id } = req.params
         res.json(await deleteProduct(id))
     } catch (error) {
         res.status(401).json(error.message)

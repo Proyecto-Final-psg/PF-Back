@@ -1,6 +1,8 @@
-const User = require("../models/user")
+const User = require("../models/Users")
 const { sequelize } = require('../db/db')
 const { QueryTypes } = require('sequelize');
+
+
 module.exports = {
     createUser: async (name, lastName, username, password, email, phone) => {
         const user = await User.create({
