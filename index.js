@@ -1,4 +1,5 @@
 const express = require('express');
+const {Category} = require('../models/Category');
 const app = express()
 const cors = require("cors")
 app.use(express.json());
@@ -23,6 +24,16 @@ app.get('/category', async (req, res) => {
     try {
         const categories = await Category.findAll()
         res.status(200).json(categories)
+    } catch (error) {
+        console.log(error)
+    }
+})
+
+app.post('/category', async (req, res) => {
+    let { category } = req.body
+    try {
+        const createdCategory = await Category.create(category)
+        res.status(201).json(createdCategory)
     } catch (error) {
         console.log(error)
     }
