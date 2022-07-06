@@ -5,6 +5,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 const User = require('./models/Users')
+const { getAllProducts, createProduct } = require('./functions/products')
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 
@@ -35,3 +36,24 @@ app.post('/createUser', async(req, res) => {
     res.json({created: user})
 })
 
+
+
+
+/// PRODUCTS /////
+
+app.get('/products', async (req, res) => {
+    try {
+        res.json(await getAllProducts()) 
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
+app.post('/products', async (req, res) => {
+    try {
+        let {name, stock, price, img, type, description, thc, cbd, cannabis, hashOil} = req.body
+        res.json(await createProduct(name, stock, price, img, type, description, thc, cbd, cannabis, hashOil)) 
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
