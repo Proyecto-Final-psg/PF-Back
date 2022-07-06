@@ -5,7 +5,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 const User = require('./models/Users')
-const { getAllProducts, createProduct } = require('./functions/products')
+const { getProducts, createProduct, getProductById, deleteProduct } = require('./functions/products')
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 
@@ -42,8 +42,9 @@ app.post('/createUser', async(req, res) => {
 /// PRODUCTS /////
 
 app.get('/products', async (req, res) => {
+    let { name } = req.query
     try {
-        res.json(await getAllProducts()) 
+        res.json(await getProducts(name)) 
     } catch (error) {
         res.status(401).json(error.message)
     }
@@ -53,6 +54,24 @@ app.post('/products', async (req, res) => {
     try {
         let {name, stock, price, img, type, description, thc, cbd, cannabis, hashOil} = req.body
         res.json(await createProduct(name, stock, price, img, type, description, thc, cbd, cannabis, hashOil)) 
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
+app.get('/products/:id', async (req, res) => {
+    try {
+        let {id} = req.params
+        res.json(await getProductById(id))
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
+app.delete('/products/:id', async (req, res) => {
+    try {
+        let {id} = req.params
+        res.json(await deleteProduct(id))
     } catch (error) {
         res.status(401).json(error.message)
     }
