@@ -11,7 +11,7 @@ const { createUser, findAllUsers } = require('./functions/functionsUser')
 const { sequelize } = require('./db/db')
 
 ////////SERVIDOR////////
-let port = process.env.PORT || 8180
+let port = process.env.PORT || 8081
 app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
