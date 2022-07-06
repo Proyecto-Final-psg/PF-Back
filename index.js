@@ -17,7 +17,11 @@ app.listen(port, () => {
     sequelize.sync({ alter: true })
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+app.get('/prueba', async (req, res) => {
 
+    res.json("main")
+
+})
 // //////USER////////////
 app.get('/getAllUsers', async (req, res) => {
     try {
@@ -26,11 +30,7 @@ app.get('/getAllUsers', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-app.get('/prueba', async (req, res) => {
 
-    res.json("probando")
-
-})
 app.post('/createUser', async (req, res) => {
     try {
         let { name, lastName, username, password, email, phone } = req.body

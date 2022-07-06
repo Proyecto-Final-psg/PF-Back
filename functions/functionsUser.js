@@ -2,7 +2,6 @@ const User = require("../models/Users")
 const { sequelize } = require('../db/db')
 const { QueryTypes } = require('sequelize');
 
-
 module.exports = {
     createUser: async (name, lastName, username, password, email, phone) => {
         const user = await User.create({
@@ -27,7 +26,6 @@ module.exports = {
                 password: password
             }
         });
-
     },
     deleteUser: async (name) => {
         return await User.destroy({
@@ -54,7 +52,7 @@ module.exports = {
         return await User.findByPk(id);
 
     },
-    
+
     membersGroup: async (array) => {
         if (array.length > 0) {
             return await sequelize.query(
