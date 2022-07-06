@@ -1,0 +1,13 @@
+const Product = require("../models/Product")
+
+module.exports = {
+    getAllProducts: async () => {
+        let products = await Product.findAll();
+        console.log(products)
+        return products
+    },
+    createProduct: async (name, stock, price, img, type, description, thc, cbd, cannabis, hashOil) => {
+        await Product.create({name, stock, price, img, type, description, thc, cbd, cannabis, hashOil})
+        return 'Product created successfully'
+    }
+}
