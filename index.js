@@ -4,9 +4,9 @@ const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-const User = require('./models/Users.js')
+const User = require('./models/Users')
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const { sequelize } = require('./db/db.js')
+const { sequelize } = require('./db/db')
 
 ////////SERVIDOR////////
 let port = process.env.PORT || 8280
