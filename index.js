@@ -30,10 +30,7 @@ app.get('/getAllUsers', async (req, res) => {
     }
 })
 
-
-
 // categories routes
-
 //get categories routes
 app.get('/category', async (req, res) => {
     try {
@@ -50,12 +47,8 @@ app.post('/category', async (req, res) => {
         res.status(200).json(await createCategory(category))
     } catch (error) {
         console.log(error)
+    }})
 
-app.get('/prueba', async (req, res) => {
-  
-        res.json("probando")
-   
-})
 app.post('/createUser', async (req, res) => {
     try {
         let { name, lastName, username, password, email, phone } = req.body
