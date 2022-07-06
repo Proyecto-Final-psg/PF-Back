@@ -17,6 +17,7 @@ const sequelize = new Sequelize({
     },
   },);
 /////////////////////////////////////// si ponemos el logging en false no me muestra todo el sql de sequelize
+
 module.exports = { sequelize, DataTypes, Op }
 sequelize.authenticate()
     .then(() => console.log('conectados, postgress DB ok'))
