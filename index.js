@@ -20,7 +20,11 @@ app.listen(port, () => {
     sequelize.sync({ alter: true })
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
+app.get('/prueba', async (req, res) => {
+    
+   res.json("doyDevelop")
+   
+})
 // //////USER////////////
 app.get('/getAllUsers', async (req, res) => {
     try {
@@ -89,6 +93,5 @@ app.delete('/products/:id', async (req, res) => {
         res.json(await deleteProduct(id))
     } catch (error) {
         res.status(401).json(error.message)
-
     }
 })
