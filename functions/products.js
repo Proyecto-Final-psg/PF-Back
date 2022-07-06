@@ -6,7 +6,7 @@ module.exports = {
         return products
     },
     createProduct: async (name, stock, price, img, type, description, thc, cbd, cannabis, hashOil) => {
-        await Product.create({name, stock, price, img, type, description, thc, cbd, cannabis, hashOil})
-        return 'Product created successfully'
+        const newProduct = await Product.create({name, stock, price, img, type, description, thc, cbd, cannabis, hashOil})
+        return newProduct
     }
 }
