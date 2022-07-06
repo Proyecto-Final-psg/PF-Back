@@ -4,9 +4,9 @@ const Category = sequelize.define('categories', {
     // Model attributes are defined here
     category: {
         type: DataTypes.STRING,
-        set(value) {
-            this.setDataValue(value.toUpperCase())
-        },
+        // set(value) {
+        //     this.setDataValue(value.toUpperCase())
+        // },
         allowNull : false
     },
   

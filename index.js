@@ -1,5 +1,7 @@
 const express = require('express');
-const {Category} = require('../models/Category');
+// const Category = require('../models/Category');
+const Category = require('./models/Category')
+const {getCategories, createCategory} = require('./functions/functionCategory')
 const app = express()
 const cors = require("cors")
 app.use(express.json());
@@ -20,20 +22,24 @@ app.get('/show', async (req, res) => {
        res.json({ "done": "este cambio lo hizo Ramiro "})
 })
 
+
+
+// categories routes
+
+//get categories routes
 app.get('/category', async (req, res) => {
     try {
-        const categories = await Category.findAll()
-        res.status(200).json(categories)
+        res.status(200).json(await getCategories())
     } catch (error) {
         console.log(error)
     }
 })
 
+//post create category routes
 app.post('/category', async (req, res) => {
     let { category } = req.body
     try {
-        const createdCategory = await Category.create(category)
-        res.status(201).json(createdCategory)
+        res.status(200).json(await createCategory(category))
     } catch (error) {
         console.log(error)
     }
