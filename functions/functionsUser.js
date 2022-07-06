@@ -2,10 +2,21 @@ const User = require("../models/user")
 const { sequelize } = require('../db/db')
 const { QueryTypes } = require('sequelize');
 module.exports = {
-    createUser: async (user_name, last_name, password, email) => {
-        let jane = await User.create({ user_name: user_name, last_name: last_name, password: password, email: email });
-        return jane
+    createUser: async (name, lastName, username, password, email, phone) => {
+        const user = await User.create({
+            user_name: name,
+            user_lastname: lastName,
+            user_username: username,
+            user_password: password,
+            user_email: email,
+            user_phone: phone,
+        })
+        return user
     },
+    findAllUsers: async () => {
+        return await User.findAll()
+    },
+    ///
     findOrCreate: async (name, password) => {
         return await User.findOrCreate({
             where: { name },
@@ -41,10 +52,7 @@ module.exports = {
         return await User.findByPk(id);
 
     },
-    findAll: async () => {
-
-        return await User.findAll()
-    },
+    
     membersGroup: async (array) => {
         if (array.length > 0) {
             return await sequelize.query(
