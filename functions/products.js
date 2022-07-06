@@ -18,7 +18,7 @@ module.exports = {
         return productId
     },
     deleteProduct: async (id) => {
-        const productDeleted = await Product.destroy({
+        await Product.destroy({
             where: {id: id}
         })
         return `the product was successfully deleted`
