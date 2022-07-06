@@ -6,6 +6,7 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 const User = require('./models/Users')
 const { getProducts, createProduct, getProductById, deleteProduct } = require('./functions/functionsProduct')
+const { createUser, findAllUsers } = require('./functions/functionsUser')
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 
@@ -19,21 +20,21 @@ app.listen(port, () => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // //////USER////////////
 app.get('/getAllUsers', async (req, res) => {
-        const user = await User.findAll()
-       res.json({ "no muestro nada ": user})
+    try {
+         res.json(await findAllUsers())
+    } catch (error) {
+        res.status(401).json(error.message)
+    }   
 })
 
 app.post('/createUser', async(req, res) => {
-    const user = await User.create({
-        user_name:"test",
-        user_lastname:"test",
-        user_username:"test",
-        user_password:"test",
-        user_email:"test@jaja.com",
-        user_phone:"test",
-    })
-
-    res.json({created: user})
+    try {
+        let {name, lastName, username, password, email, phone} = req.body
+        res.json(await createUser(name, lastName, username, password, email, phone))
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+   
 })
 
 
