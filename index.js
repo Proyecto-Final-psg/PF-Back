@@ -25,8 +25,6 @@ app.get('/getAllUsers', async (req, res) => {
        res.json({ "no muestro nada ": user})
 })
 
-<<<<<<< HEAD
-
 
 // categories routes
 
@@ -48,18 +46,3 @@ app.post('/category', async (req, res) => {
         console.log(error)
     }
 })
-=======
-app.post('/createUser', async(req, res) => {
-    const user = await User.create({
-        user_name:"test",
-        user_lastname:"test",
-        user_username:"test",
-        user_password:"test",
-        user_email:"test@jaja.com",
-        user_phone:"test",
-    })
-
-    res.json({created: user})
-})
-
->>>>>>> origin
