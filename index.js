@@ -39,7 +39,7 @@ app.post('/createUser', async(req, res) => {
 
 
 
-/// PRODUCTS /////
+/// PRODUCTS ////
 
 app.get('/products', async (req, res) => {
     let { name } = req.query
