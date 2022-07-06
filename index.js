@@ -5,8 +5,10 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 const User = require('./models/Users')
+
 const { getProducts, createProduct, getProductById, deleteProduct } = require('./functions/functionsProduct')
 const { createUser, findAllUsers } = require('./functions/functionsUser')
+
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 
@@ -20,6 +22,7 @@ app.listen(port, () => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // //////USER////////////
 app.get('/getAllUsers', async (req, res) => {
+
     try {
          res.json(await findAllUsers())
     } catch (error) {
@@ -34,18 +37,22 @@ app.post('/createUser', async(req, res) => {
     } catch (error) {
         res.status(401).json(error.message)
     }
-   
 })
+
+
 
 
 
 
 /// PRODUCTS ////
 
+
 app.get('/products', async (req, res) => {
     let { name } = req.query
     try {
+
         res.json(await getProducts(name)) 
+
     } catch (error) {
         res.status(401).json(error.message)
     }
@@ -53,8 +60,8 @@ app.get('/products', async (req, res) => {
 
 app.post('/products', async (req, res) => {
     try {
-        let {name, stock, price, img, type, description, thc, cbd, cannabis, hashOil} = req.body
-        res.json(await createProduct(name, stock, price, img, type, description, thc, cbd, cannabis, hashOil)) 
+        let { name, stock, price, img, type, description, thc, cbd, cannabis, hashOil } = req.body
+        res.json(await createProduct(name, stock, price, img, type, description, thc, cbd, cannabis, hashOil))
     } catch (error) {
         res.status(401).json(error.message)
     }
