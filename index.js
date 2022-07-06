@@ -27,9 +27,9 @@ app.get('/getAllUsers', async (req, res) => {
     }
 })
 app.get('/prueba', async (req, res) => {
-  
-        res.json("probando")
-   
+
+    res.json("probando")
+
 })
 app.post('/createUser', async (req, res) => {
     try {
