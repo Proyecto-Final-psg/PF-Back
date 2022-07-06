@@ -18,3 +18,12 @@ app.listen(port, () => {
 app.get('/show', async (req, res) => {
        res.json({ "done": "este cambio lo hizo Ramiro "})
 })
+
+app.get('/category', async (req, res) => {
+    try {
+        const categories = await Category.findAll()
+        res.status(200).json(categories)
+    } catch (error) {
+        console.log(error)
+    }
+})
