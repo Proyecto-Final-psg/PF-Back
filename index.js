@@ -9,7 +9,8 @@ const User = require('./models/Users')
 const { sequelize } = require('./db/db')
 
 ////////SERVIDOR////////
-let port = process.env.PORT || 8280
+
+let port = process.env.PORT || 8180
 app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
