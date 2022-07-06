@@ -35,39 +35,8 @@ module.exports = {
                 name: name
             }
         })
-    },
-    updateUser: async (name, newPassword) => {
-        return await User.update({ password: newPassword }, {
-            where: {
-                name: name
-            }
-        })
-    },
-    findOne: async (email) => {
-        return await User.findOne({ where: { email: email } });
-
-    },
-    findLog: async (email, password) => {
-        return await User.findOne({ where: { email: email, password: password } });
-    },
-    findByPrimariKey: async (id) => {
-        return await User.findByPk(id);
-
-    },
-    
-    membersGroup: async (array) => {
-        if (array.length > 0) {
-            return await sequelize.query(
-                'SELECT * FROM users WHERE id IN(:id)',
-                {
-                    replacements: { id: array },
-                    type: QueryTypes.SELECT
-                }
-            );
-        } else {
-            return { "msg": "no members" }
-        }
-    },
+    }
+   
 }
 
 // User.bulkCreate(req.body)  =====> se usa bulkCreate cuando queremos mandar un elemento
