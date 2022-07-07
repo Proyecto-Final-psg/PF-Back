@@ -9,4 +9,8 @@ module.exports = {
     getCategories: async () => {
         return await Category.findAll()
     },
+    deleteCategory : async (id)=>{
+        let categoryDeleted = await Category.destroy({where : {id : id}})
+        return categoryDeleted
+    }
 }
