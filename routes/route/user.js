@@ -21,11 +21,13 @@ router.get('/users', async (req, res) => {
 })
 
 router.post('/users', async (req, res) => {
-    let { name, lastName, username, email, phone } = req.body
+    let { name, lastname, username, email, phone } = req.body
     try {
-        console.log("hola")
-        res.status(201).json(await createUser(name, lastName, username, email, phone))
+        console.log(req.body)
+        res.status(201).json(await createUser(name, lastname, username, email, phone))
     } catch (error) {
         res.status(401).json(error.message)
     }
 })
+
+module.exports = router

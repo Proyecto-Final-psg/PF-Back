@@ -2,6 +2,7 @@ const express = require('express');
 const category = require('./routes/route/category');
 const product = require('./routes/route/product');
 const users = require('./routes/route/user')
+// const {createUser} = require('./routes/controller/functionsUser')
 // const Category = require('../models/Category');
 //const Category = require('./models/Category')
 // const {getCategories, createCategory, deleteCategory} = require('./routes/controller/functionCategory')
@@ -10,8 +11,10 @@ const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
+
+
 // const { getProducts, createProduct, getProductById, deleteProduct } = require('./routes/controller/functionsProduct')
-const { createUser, findAllUsers } = require('./routes/controller/functionsUser')
+//const { createUser, findAllUsers } = require('./routes/controller/functionsUser')
 
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
@@ -28,6 +31,10 @@ app.get('/prueba', async (req, res) => {
    res.json("doyDevelop")
    
 })
+
+app.use('/', users)
+app.use('/', category)
+app.use('/', product)
 // //////USER////////////
 /* app.get('/getAllUsers', async (req, res) => {
     try {
@@ -56,9 +63,17 @@ app.post('/createUser', async (req, res) => {
 //     }
 // })
 
-app.use('/', users)
-app.use('/', category)
-app.use('/', product)
+/* app.post('/users', async (req, res) => {
+    let { name, lastname, username, email, phone } = req.body
+    try {
+        console.log("hola")
+        res.status(201).json(await createUser(name, lastname, username, email, phone))
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+}) */
+
+
 
 //post create category routes
 // app.post('/category', async (req, res) => {

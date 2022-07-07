@@ -2,29 +2,29 @@ const { sequelize, DataTypes, Op } = require("../db/db") //siempre importo el mi
 
 const User = sequelize.define('user', {
     // id no necesario, sequielize la genera automaticamente - comment by rami
-     user_id:{
+   /*   user_id:{
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
-    }, 
-    user_name: {
+    }, */ 
+    name: {
         type: DataTypes.STRING,        
         allowNull: false
     },
-    user_lastname:{
+    lastname:{
         type: DataTypes.STRING,
         allowNull:false
     },
-    user_username:{
+    username:{
         type: DataTypes.STRING,
         allowNull:false
     },
     // Atributo no necesario - comment by Rami
-     user_password: {
+  /*   password: {
         type: DataTypes.STRING,
-        allowNull: true
-    },
-    user_email: {
+        allowNull: false
+    }, */
+    email: {
         type: DataTypes.STRING,
         // set(value) {
         //     this.setDataValue('email', value.toLowerCase())
@@ -33,9 +33,9 @@ const User = sequelize.define('user', {
         unique: true,
         isEmail: true,
     },
-    user_phone: {
+    phone: {
         type: DataTypes.STRING,
-        allowNull: true
+        allowNull: false
     }
 }, {
     timestamps: true

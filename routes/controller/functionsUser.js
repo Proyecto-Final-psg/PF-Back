@@ -2,13 +2,13 @@ const User = require("../../models/Users")
 const { sequelize } = require('../../db/db')
 const { QueryTypes } = require('sequelize');
 module.exports = {
-    createUser: async (name, lastName, username, email, phone) => {
+    createUser: async (name, lastname, username, email, phone) => {
         const user = await User.create({
-            user_name: name,
-            user_lastname: lastName,
-            user_username: username,
-            user_email: email,
-            user_phone: phone,
+            name: name,
+            lastname: lastname,
+            username: username,
+            email: email,
+            phone: phone,
         })
         return user
     },
@@ -16,7 +16,7 @@ module.exports = {
         return await User.findAll()
     },
     findOneUser : async(name) =>{
-        const user = User.findOne({where : {user_name : name}})
+        const user = User.findOne({where : {name : name}})
         return user
     }
    
