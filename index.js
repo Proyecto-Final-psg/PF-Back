@@ -132,6 +132,10 @@ app.use('/', product)
 app.get('/oils', async (req, res) => {
     res.json(oilsApi)
 })
+<<<<<<< HEAD
+=======
+
+>>>>>>> develop
 app.get('/productos', async (req, res) => {
 
     res.json(oilsApi)
