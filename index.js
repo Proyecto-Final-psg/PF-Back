@@ -1,8 +1,9 @@
 const express = require('express');
 const category = require('./routes/route/category');
 const product = require('./routes/route/product');
+const users = require('./routes/route/user')
 // const Category = require('../models/Category');
-const Category = require('./models/Category')
+//const Category = require('./models/Category')
 // const {getCategories, createCategory, deleteCategory} = require('./routes/controller/functionCategory')
 const app = express()
 const cors = require("cors")
@@ -28,7 +29,7 @@ app.get('/prueba', async (req, res) => {
    
 })
 // //////USER////////////
-app.get('/getAllUsers', async (req, res) => {
+/* app.get('/getAllUsers', async (req, res) => {
     try {
         res.json(await findAllUsers())
     } catch (error) {
@@ -43,7 +44,7 @@ app.post('/createUser', async (req, res) => {
     } catch (error) {
         res.status(401).json(error.message)
     }
-})
+}) */
 
 // CATEGORY
 //get categories routes
@@ -55,6 +56,7 @@ app.post('/createUser', async (req, res) => {
 //     }
 // })
 
+app.use('/', users)
 app.use('/', category)
 app.use('/', product)
 
