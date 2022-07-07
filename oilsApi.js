@@ -27,7 +27,7 @@ var oils = [
         "price": 45,
         "thc": 7,
         "cbd": 25,
-        "description": "blabla"
+        "description": "Este aceite de The CBD Side está especialmente destinado a deportistas para antes y después de su rutina deportiva, ya que no contiene THC (0%) ni otros cannabinoides."
     },
     {
         "name": "Tantrum",
@@ -47,7 +47,7 @@ var oils = [
         "price": 62.5,
         "thc": 15,
         "cbd": 5,
-        "description": "blabla"
+        "description": "El aceite de espectro completo para perros al 5% de CBD de Cannabiterapia, también contiene CBDV, CBDA, CBG, CBC y terpenos, ha sido desarrollado por el laboratorio de Cannabiterapia conjuntamente con la ayuda de veterinarios, quienes distinguen entre los aceites para perros y caballos y los de los gatos, ya que el sistema de endocannabinoide de los gatos no puede procesar ciertos fitocannabinoides o terpenos."
     },
     {
         "name": "Oil Broad Spectrum",
@@ -87,7 +87,7 @@ var oils = [
         "price": 38,
         "thc": 15,
         "cbd": 3,
-        "description": "blabla"
+        "description": "Es una dulce mezcla de bayas mixtas y un cruce híbrido entre Ghost OG y fenotipo Strawberry Bubblegum. Es un aceite de cannabidiol de la mss alta calidad con 3.000 mg de CBD. Además de ser un aceite de espectro completo contiene otros cannabinoides como el CBDA, CBG, CBC y CBN entre otros y también varios terpenos. Esta característica hace que se produzca lo que conocemos como efecto séquito, es decir que la mezcla de todas estas sustancias naturales hace que los efectos del CBD en el organismo sean más potentes y efectivos."
     },
     {
         "name": "Medi Leaf",
@@ -137,7 +137,7 @@ var oils = [
         "price": 23.5,
         "thc": 6,
         "cbd": 6,
-        "description": "blabla"
+        "description": "El frasco del aceite de CBD de HEMP to BEE es con vidrio oscuro, porque la temperatura y la luz son algunos de los factores que pueden degradar los cannabinoides, como el CBD, haciendo que se reduzca su efecto. Por ello, en HEMP to BEE utilizamos frascos de vidrio violeta (violetglass) que preservan el aceite de los efectos nocivos de la luz para aumentar la vida útil de los productos."
     },
     {
         "name": "Mediterra",
@@ -248,7 +248,7 @@ var oils = [
         "price": 34,
         "thc": 9,
         "cbd": 3,
-        "description": "El Balance OIl (1650 mg CBD+ /30 ml) de Bove está formulado con un extracto natural de Cáñamo Orgánico de amplio espectro certificado por la UE. Este aceite CBD está producido bajo control farmacéutico (calidad GMP e ISO), con una formulación específica de distintos Cannabinoides guiados por los últimos estudios científicos, sin OGM y sin gluten ni azúcar, su único objetivo es mejorar tu bienestar, tu belleza y tu sueño.El aceite de Bove tiene todos los beneficios que se le atribuyen al CBD. Podría ayudar a aliviar las molestias musculares, articulares, los dolores menstruales y enfermedades dermales como la psoriasis o la rosácea. También, podría ayudar a lograr un estado de equilibrio y bienestar para ayudarte a mejorar la calidad del descanso."
+        "description": "El Balance OIl (1650 mg CBD+ /30 ml) de Bove está formulado con un extracto natural de Cáñamo Orgánico de amplio espectro certificado por la UE. Este aceite CBD está producido bajo control farmacéutico (calidad GMP e ISO), con una formulación específica de distintos Cannabinoides guiados por los últimos estudios científicos, sin OGM y sin gluten ni azúcar, su único objetivo es mejorar tu bienestar, tu belleza y tu sueño.El aceite de Bove tiene todos los beneficios que se le atribuyen al CBD. Podría ayudar a aliviar las molestias musculares, articulares, los dolores menstruales y enfermedades dermales como la psoriasis o la rosácea. También, podría ayudar a lograr un estado de equilibrio y bienestar para ayudarte a mejorar la calidad del descanso."
     },
     {
         "name": "Sereniti",
