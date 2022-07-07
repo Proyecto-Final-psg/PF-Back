@@ -1,14 +1,15 @@
 const express = require('express');
+const category = require('./routes/route/category');
 // const Category = require('../models/Category');
 const Category = require('./models/Category')
-const {getCategories, createCategory, deleteCategory} = require('./functions/functionCategory')
+const {getCategories, createCategory, deleteCategory} = require('./routes/controller/functionCategory')
 const app = express()
 const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-const { getProducts, createProduct, getProductById, deleteProduct } = require('./functions/functionsProduct')
-const { createUser, findAllUsers } = require('./functions/functionsUser')
+const { getProducts, createProduct, getProductById, deleteProduct } = require('./routes/controller/functionsProduct')
+const { createUser, findAllUsers } = require('./routes/controller/functionsUser')
 
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
@@ -36,42 +37,44 @@ app.get('/getAllUsers', async (req, res) => {
 
 // CATEGORY
 //get categories routes
-app.get('/category', async (req, res) => {
-    try {
-        res.status(200).json(await getCategories())
-    } catch (error) {
-        console.log(error)
-    }
-})
+// app.get('/category', async (req, res) => {
+//     try {
+//         res.status(200).json(await getCategories())
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
+
+app.use('/', category)
 
 //post create category routes
-app.post('/category', async (req, res) => {
-    let { category } = req.body
-    try {
-        res.status(200).json(await createCategory(category))
-    } catch (error) {
-        console.log(error)
-    }})
+// app.post('/category', async (req, res) => {
+//     let { category } = req.body
+//     try {
+//         res.status(200).json(await createCategory(category))
+//     } catch (error) {
+//         console.log(error)
+//     }})
 
 // delete category routes
-app.delete('/category/:id', async (req, res) =>{
-    let { id } = req.params
-    try {
-        res.status(201).json(await deleteCategory(id))
-    } catch (error) {
-        console.log(error)
-    }
-})
+// app.delete('/category/:id', async (req, res) =>{
+//     let { id } = req.params
+//     try {
+//         res.status(201).json(await deleteCategory(id))
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
-// update category routes
-app.put('/category/:id', async (req, res) =>{
-    let { id } = req.params
-    try {
-        res.status(201).json(await deleteCategory(id))
-    } catch (error) {
-        console.log(error)
-    }
-})
+// // update category routes
+// app.put('/category/:id', async (req, res) =>{
+//     let { id } = req.params
+//     try {
+//         res.status(201).json(await deleteCategory(id))
+//     } catch (error) {
+//         console.log(error)
+//     }
+// })
 
 app.post('/createUser', async (req, res) => {
     try {

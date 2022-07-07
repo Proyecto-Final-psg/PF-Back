@@ -1,5 +1,5 @@
-const Category = require("../models/Category")
-const { sequelize } = require('../db/db')
+const Category = require("../../models/Category")
+const { sequelize } = require('../../db/db')
 const { QueryTypes } = require('sequelize');
 module.exports = {
     createCategory: async (category) => {
