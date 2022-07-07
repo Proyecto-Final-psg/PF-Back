@@ -1,26 +1,26 @@
 const { sequelize, DataTypes, Op } = require("../db/db") //siempre importo el mismo sequelize ya creado en db .
 
 const User = sequelize.define('user', {
-    user_id:{
+    user_id: {
         type: DataTypes.INTEGER,
         autoIncrement: true,
         primaryKey: true
     },
     user_name: {
-        type: DataTypes.STRING,        
-        allowNull: false
-    },
-    user_lastname:{
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: true
     },
-    user_username:{
+    user_lastname: {
         type: DataTypes.STRING,
-        allowNull:false
+        allowNull: true
+    },
+    user_username: {
+        type: DataTypes.STRING,
+        allowNull: true
     },
     user_password: {
         type: DataTypes.STRING,
-        allowNull: false
+        // allowNull: true
     },
     user_email: {
         type: DataTypes.STRING,
@@ -36,7 +36,7 @@ const User = sequelize.define('user', {
         allowNull: true
     }
 }, {
-    timestamps: true
+    // timestamps: true
 });
 
 

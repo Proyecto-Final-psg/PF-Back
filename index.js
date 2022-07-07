@@ -11,13 +11,13 @@ app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 const oilsApi = require('./oilsApi')
 // const { getProducts, createProduct, getProductById, deleteProduct } = require('./routes/controller/functionsProduct')
-const { createUser, findAllUsers } = require('./routes/controller/functionsUser')
+const { createUser, findAllUsers, findOrCreate } = require('./routes/controller/functionsUser')
 
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 
 ////////SERVIDOR////////
-let port = process.env.PORT || 8180
+let port = process.env.PORT || 8081
 app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
@@ -25,7 +25,7 @@ app.listen(port, () => {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
 
-    res.json("doyDevelop")
+    res.json("main")
 
 })
 // //////USER////////////
@@ -124,17 +124,25 @@ app.use('/', product)
 //     }
 // })
 
-
-
-
-
 ////////////Api-Oils//////////////////
 app.get('/oils', async (req, res) => {
     res.json(oilsApi)
 })
-
 app.get('/productos', async (req, res) => {
 
     res.json(oilsApi)
 })
 
+//////Crear User/////////
+app.post('/ath0log', async (req, res) => {
+    let { email, name } = req.body
+    let user_email = email
+    let user_name = name
+
+    let creado = await findOrCreate(user_email, user_name)
+    console.log()
+    res.json(creado[1])
+
+
+
+})
