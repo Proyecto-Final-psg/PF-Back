@@ -9,6 +9,7 @@ const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
+const oilsApi = require('./oilsApi')
 // const { getProducts, createProduct, getProductById, deleteProduct } = require('./routes/controller/functionsProduct')
 const { createUser, findAllUsers } = require('./routes/controller/functionsUser')
 
@@ -23,9 +24,9 @@ app.listen(port, () => {
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
-    
-   res.json("doyDevelop")
-   
+
+    res.json("doyDevelop")
+
 })
 // //////USER////////////
 app.get('/getAllUsers', async (req, res) => {
@@ -122,3 +123,12 @@ app.use('/', product)
 //         res.status(401).json(error.message)
 //     }
 // })
+
+
+
+
+
+////////////Api-Oils//////////////////
+app.get('/oils', async (req, res) => {
+    res.json(oilsApi)
+})
