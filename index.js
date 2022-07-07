@@ -36,7 +36,6 @@ app.get('/getAllUsers', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 app.post('/createUser', async (req, res) => {
     try {
         let { name, lastName, username, password, email, phone } = req.body
@@ -45,7 +44,6 @@ app.post('/createUser', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 // CATEGORY
 //get categories routes
 // app.get('/category', async (req, res) => {
@@ -77,7 +75,6 @@ app.use('/', product)
 //         console.log(error)
 //     }
 // })
-
 // // update category routes
 // app.put('/category/:id', async (req, res) =>{
 //     let { id } = req.params
@@ -87,8 +84,6 @@ app.use('/', product)
 //         console.log(error)
 //     }
 // })
-
-
 
 /// PRODUCTS ////
 // app.get('/products', async (req, res) => {
@@ -124,25 +119,22 @@ app.use('/', product)
 //     }
 // })
 
+
+
+
+
 ////////////Api-Oils//////////////////
 app.get('/oils', async (req, res) => {
     res.json(oilsApi)
 })
 app.get('/productos', async (req, res) => {
-
     res.json(oilsApi)
 })
-
 //////Crear User/////////
 app.post('/ath0log', async (req, res) => {
     let { email, name } = req.body
     let user_email = email
     let user_name = name
-
     let creado = await findOrCreate(user_email, user_name)
-    console.log()
-    res.json(creado[1])
-
-
-
+    res.json(creado)
 })
