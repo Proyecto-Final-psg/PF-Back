@@ -1,6 +1,7 @@
 const {Router} = require('express')
 const { getProducts, createProduct, getProductById, deleteProduct, getProductByName, uploadProducts, uploadCategories } = require('../controller/functionsProduct')
 const { getCategories } = require('../controller/functionCategory')
+const { filterByCategory } = require('../filters/filterProducts')
 const router = Router();
 
 ////  --   RUTA PARA CARGAR CATEGORIAS Y PRODUCTOS A LA BD ----
@@ -61,5 +62,17 @@ router.delete('/products/:id', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
+
+////  ----------- FILTERS --------------------------------
+
+router.get('/products/filter/:category', async (req, res) => {
+    try {
+        const {category} = req.params
+        res.json(await filterByCategory(category))
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
 
 module.exports = router
