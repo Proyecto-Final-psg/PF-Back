@@ -3,7 +3,6 @@ const { sequelize, DataTypes, Op } = require("../db/db") //siempre importo el mi
 const Product = sequelize.define('product', {
       name: {
         type: DataTypes.STRING,
-      
       },
       stock: {
         type: DataTypes.INTEGER,
@@ -26,15 +25,7 @@ const Product = sequelize.define('product', {
       },
       cbd: {
           type: DataTypes.FLOAT
-      },
-      cannabis: {
-          type: DataTypes.FLOAT
-      },
-      hashOil: {
-          type: DataTypes.FLOAT
-      },
-    },{
-        timestamps: true
+      }
     }   
 );
 
