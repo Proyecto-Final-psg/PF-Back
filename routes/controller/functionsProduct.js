@@ -3,7 +3,7 @@ const Category = require("../../models/Category");
 const { get } = require("lodash");
 const {oils} = require('../../db.json')
 const {createCategory, getCategories} = require('../controller/functionCategory');
-const { parse } = require("ipaddr.js");
+
 
 const uploadProducts = async () => {
     oils.forEach(p => createProduct(p.name, p.stock, p.price, p.img, p.type, p.description, p.thc, p.cbd, p.categories) )
