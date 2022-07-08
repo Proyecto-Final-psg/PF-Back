@@ -10,7 +10,7 @@ router.get('/products', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-router.get('/products/name', async (req, res) => {
+router.get('/products/search/:name', async (req, res) => {
     let { name } = req.query
     try {
         res.json(await getProductByName(name))
