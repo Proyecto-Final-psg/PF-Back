@@ -15,14 +15,12 @@ const { findAllUsers, findOrCreate } = require('./routes/controller/functionsUse
 
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
-
 ////////SERVIDOR////////
 let port = process.env.PORT || 8081
 app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
 })
-
 ///////////////////Jason Token///////////////////////////////
 var jwt = require('express-jwt');
 var jwks = require('jwks-rsa');
@@ -38,15 +36,10 @@ const jwtCheck = jwt.expressjwt({
     issuer: 'https://dev-sdz9neh5.us.auth0.com/',
     algorithms: ['RS256']
 })
-
 // app.use(jwtCheck);
-
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
- 
-        res.json("develop")
-   
+    res.json("develop")
 })
 
 // //////USER////////////
