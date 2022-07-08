@@ -24,10 +24,9 @@ app.listen(port, () => {
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
-
-    res.json("main")
-
+    res.json("develop")
 })
+
 // //////USER////////////
 app.get('/getAllUsers', async (req, res) => {
     try {
@@ -36,27 +35,6 @@ app.get('/getAllUsers', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-app.post('/createUser', async (req, res) => {
-    try {
-        let { name, lastName, username, password, email, phone } = req.body
-        res.json(await createUser(name, lastName, username, password, email, phone))
-    } catch (error) {
-        res.status(401).json(error.message)
-    }
-})
-
-app.use('/', category)
-app.use('/', product)
-
-////////////Api-Oils//////////////////
-app.get('/oils', async (req, res) => {
-    res.json(oilsApi)
-})
-
-app.get('/productos', async (req, res) => {
-    res.json(oilsApi)
-})
-//////Crear User/////////
 
 app.post('/ath0log', async (req, res) => {
     try {
@@ -73,3 +51,7 @@ app.post('/ath0log', async (req, res) => {
         })
     }
 })
+
+app.use('/', category)
+app.use('/', product)
+

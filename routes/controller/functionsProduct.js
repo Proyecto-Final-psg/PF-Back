@@ -1,15 +1,30 @@
 const Product = require("../../models/Product")
 const Category = require("../../models/Category");
 const { get } = require("lodash");
+const {oils} = require('../../db.json')
+const {createCategory, getCategories} = require('../controller/functionCategory')
 
+const uploadProducts = async () => {
+    oils.forEach(p => createProduct(p.name, p.stock, p.price, p.img, p.type, p.description, p.thc, p.cbd, p.categories) )
+}
+
+const uploadCategories = async () => {
+    const categ = ['thc', 'cbd', 'bho']
+    let array = []
+    categ.forEach((c)=>{
+       array.push( createCategory(c)) 
+    } )   // se cargan las categorias en la base de dato
+    const retur = await Promise.all(array)
+    return retur.length  
+}
 
  const getProducts = async () => {
         let products = await Product.findAll({
-            include:{
+            include:[{
                 model: Category,
                 through: {attributes: [] },
                 attributes: ["category"],
-              }
+              }]
         });
        
         const productsData = products.map(d => d.dataValues)
@@ -20,7 +35,7 @@ const { get } = require("lodash");
         })
 
         return allProducts
-    }
+}
  
     // MUEVO ESTA FN A FILTERS
     const getProductByName = async(name) => {
@@ -68,5 +83,11 @@ const getProductById = async (id) => {
     }
 
     module.exports = {
-        getProducts, createProduct, getProductById, deleteProduct, getProductByName
+        getProducts, 
+        createProduct, 
+        getProductById, 
+        deleteProduct, 
+        getProductByName, 
+        uploadProducts,
+        uploadCategories
     }

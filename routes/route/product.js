@@ -1,7 +1,26 @@
 const {Router} = require('express')
-const { getProducts, createProduct, getProductById, deleteProduct, getProductByName } = require('../controller/functionsProduct')
-
+const { getProducts, createProduct, getProductById, deleteProduct, getProductByName, uploadProducts, uploadCategories } = require('../controller/functionsProduct')
+const { getCategories } = require('../controller/functionCategory')
 const router = Router();
+
+////  --   RUTA PARA CARGAR CATEGORIAS Y PRODUCTOS A LA BD ----
+router.get('/uploadDb', async (req, res) => {   
+    try {
+       let categoriesUpload = await uploadCategories()
+      
+        if(categoriesUpload > 0){
+            uploadProducts()
+            res.json('se cargaron')
+        }else{
+           res.json('No se cargaron') 
+        }
+        
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+ 
+///////////////////////////////////////////////////////////////
 
 router.get('/products', async (req, res) => {
     try {
