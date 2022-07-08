@@ -9,7 +9,7 @@ const Product = sequelize.define('product', {
         defaultValue: 100
       },
       price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
       },
       img: {
         type: DataTypes.STRING,
@@ -34,7 +34,7 @@ const Product = sequelize.define('product', {
 
 const { product, categories } = sequelize.models;
 
-product.belongsToMany(categories, { through: 'product-category'})
-categories.belongsToMany(product, { through: 'product-category'})
+product.belongsToMany(categories, { through: 'product_category'})
+categories.belongsToMany(product, { through: 'product_category'})
 
 module.exports = Product

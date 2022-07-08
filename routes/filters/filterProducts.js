@@ -1,21 +1,11 @@
-import { Op } from "sequelize";
-import Product from "../../models/Product";
+const { getProducts } = require('../controller/functionsProduct')
 
-
-
-const getProductByName = async(name) => {
-    let allProducts = await Product.findAll({
-        where: {
-            name: {
-                [Op.like]: `%${name}%`
-            }
-        }
-    })
-    
-    if(allProducts) return allProducts
-    return 'No se encontro el producto buscado'
+const filterByCategory = async (category) => {
+    const allProducts = await getProducts()
+    const filteredProducts = allProducts.filter(prod => prod.categories.includes(category))
+    return filteredProducts
 }
 
-module.exports= {
-    getProductByName
+module.exports = {
+    filterByCategory
 }
