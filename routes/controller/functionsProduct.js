@@ -54,8 +54,11 @@ const createProduct = async (name, stock, price, img, type, description, thc, cb
         return dataProd
     }
 const getProductById = async (id) => {
-        const productId = await Product.findByPk(id)
-        return productId
+        let allProducts = await getProducts()
+        const productId = allProducts.find(p => p.id === parseInt(id))
+       
+        if(productId) return productId
+        return 'No se encontro el producto buscado'
     }
  const deleteProduct = async (id) => {
         await Product.destroy({
