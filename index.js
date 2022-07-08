@@ -15,10 +15,14 @@ const { createUser, findAllUsers, findOrCreate } = require('./routes/controller/
 
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
-
+/* function data (){
+    const data = oilsApi.map(e => e)
+    Product.bulkCreate(data)
+    } */
 ////////SERVIDOR////////
 let port = process.env.PORT || 8081
 app.listen(port, () => {
+  /*   data() */
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
 })
