@@ -2,7 +2,8 @@ const Product = require("../../models/Product")
 const Category = require("../../models/Category");
 const { get } = require("lodash");
 const {oils} = require('../../db.json')
-const {createCategory, getCategories} = require('../controller/functionCategory')
+const {createCategory, getCategories} = require('../controller/functionCategory');
+const { parse } = require("ipaddr.js");
 
 const uploadProducts = async () => {
     oils.forEach(p => createProduct(p.name, p.stock, p.price, p.img, p.type, p.description, p.thc, p.cbd, p.categories) )
@@ -40,7 +41,7 @@ const uploadCategories = async () => {
     // MUEVO ESTA FN A FILTERS
     const getProductByName = async(name) => {
             let allProducts = await getProducts()
-            const productFound = allProducts.find(p => p.name === name)
+            const productFound = allProducts.filter(p => p.name.toLowerCase().includes(name))
             if(productFound) return productFound
             return 'No se encontro el producto buscado'
     }
@@ -72,7 +73,9 @@ const createProduct = async (name, stock, price, img, type, description, thc, cb
         return dataProd
     }
 const getProductById = async (id) => {
-        const productId = await Product.findByPk(id)
+         id = parseInt(id)
+         let allProducts = await getProducts()
+        const productId = allProducts.find(p => p.id === id)
         return productId
     }
  const deleteProduct = async (id) => {
