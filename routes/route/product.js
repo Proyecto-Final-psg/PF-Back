@@ -1,12 +1,19 @@
 const {Router} = require('express')
-const { getProducts, createProduct, getProductById, deleteProduct } = require('../controller/functionsProduct')
+const { getProducts, createProduct, getProductById, deleteProduct, getProductByName } = require('../controller/functionsProduct')
 
 const router = Router();
 
 router.get('/products', async (req, res) => {
+    try {
+        res.json(await getProducts())
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+router.get('/products/name', async (req, res) => {
     let { name } = req.query
     try {
-        res.json(await getProducts(name))
+        res.json(await getProductByName(name))
     } catch (error) {
         res.status(401).json(error.message)
     }

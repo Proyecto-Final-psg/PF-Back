@@ -1,12 +1,9 @@
 const Product = require("../../models/Product")
-const Category = require("../../models/Category")
+const Category = require("../../models/Category");
+const { get } = require("lodash");
 
-module.exports = {
-    getProducts: async (name) => {
-        if(name){
-            let nameProduct = await Product.findOne({where: {name: name}})
-            return nameProduct
-        }
+
+ const getProducts = async () => {
         let products = await Product.findAll({
             include:{
                 model: Category,
@@ -14,7 +11,7 @@ module.exports = {
                 attributes: ["category"],
               }
         });
-
+       
         const productsData = products.map(d => d.dataValues)
       
         const allProducts = productsData.map(d =>{
@@ -23,8 +20,14 @@ module.exports = {
         })
 
         return allProducts
-    },
-    createProduct: async (name, stock, price, img, type, description, thc, cbd, categories) => {
+    }
+ const getProductByName = async(name) => {
+            let allProducts = await getProducts()
+            const productFound = allProducts.find(p => p.name === name)
+            if(productFound) return productFound
+            return 'No se encontro el producto buscado'
+    }
+const createProduct = async (name, stock, price, img, type, description, thc, cbd, categories) => {
         const newProduct = await Product.create({name, stock, price, img, type, description, thc, cbd})
       
 
@@ -49,15 +52,18 @@ module.exports = {
         dataProd.categories = dataProd.categories.map(t => t.dataValues.category)  
       
         return dataProd
-    },
-    getProductById: async (id) => {
+    }
+const getProductById = async (id) => {
         const productId = await Product.findByPk(id)
         return productId
-    },
-    deleteProduct: async (id) => {
+    }
+ const deleteProduct = async (id) => {
         await Product.destroy({
             where: {id: id}
         })
         return `the product was successfully deleted`
     }
-}
+
+    module.exports = {
+        getProducts, createProduct, getProductById, deleteProduct, getProductByName
+    }
