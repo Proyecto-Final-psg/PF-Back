@@ -20,7 +20,7 @@ const { sequelize } = require('./db/db')
 let port = process.env.PORT || 8081
 app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
-    sequelize.sync({ force: true })
+    sequelize.sync({ alter: true })
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
