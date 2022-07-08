@@ -1,6 +1,7 @@
 const express = require('express');
 const category = require('./routes/route/category');
 const product = require('./routes/route/product');
+const user = require('./routes/route/user')
 // const Category = require('../models/Category');
 const Category = require('./models/Category')
 // const {getCategories, createCategory, deleteCategory} = require('./routes/controller/functionCategory')
@@ -15,32 +16,29 @@ const { createUser, findAllUsers, findOrCreate } = require('./routes/controller/
 
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
-/* function data (){
-    const data = oilsApi.map(e => e)
-    Product.bulkCreate(data)
-    } */
+
 ////////SERVIDOR////////
 let port = process.env.PORT || 8081
 app.listen(port, () => {
-  /*   data() */
+ 
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
 })
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-app.get('/prueba', async (req, res) => {
+/* app.get('/prueba', async (req, res) => {
     res.json("develop")
-})
+}) */
 
 // //////USER////////////
-app.get('/getAllUsers', async (req, res) => {
+/* app.get('/getAllUsers', async (req, res) => {
     try {
         res.json(await findAllUsers())
     } catch (error) {
         res.status(401).json(error.message)
     }
-})
+}) */
 
-app.post('/ath0log', async (req, res) => {
+/* app.post('/ath0log', async (req, res) => {
     try {
         let { email, name } = req.body
         let user_email = email
@@ -54,8 +52,9 @@ app.post('/ath0log', async (req, res) => {
             msg: error.message
         })
     }
-})
+}) */
 
+app.use('/', user)
 app.use('/', category)
 app.use('/', product)
 
