@@ -1,8 +1,11 @@
 const {Router} = require('express')
 const { getProducts, createProduct, getProductById, deleteProduct, getProductByName, uploadProducts, uploadCategories } = require('../controller/functionsProduct')
+const {orderCbd} = require('../orderController/categoryOrder')
 const { getCategories } = require('../controller/functionCategory')
 const { filterByCategory } = require('../filters/filterProducts')
 const router = Router();
+
+
 
 ////  --   RUTA PARA CARGAR CATEGORIAS Y PRODUCTOS A LA BD ----
 router.get('/uploadDb', async (req, res) => {   
@@ -69,6 +72,17 @@ router.get('/products/filter/:category', async (req, res) => {
     try {
         const {category} = req.params
         res.json(await filterByCategory(category))
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
+ //// ----------ORDERS -----------------------------------
+ //this arrange must receive a a setOrder to arrange AZ or ZA by cbd property, if setOrder === true, it will arrage AZ if false ZA
+ router.get('/cbdOrder', async (req, res) =>{
+    const {setOrder} = req.body
+    try {
+        res.json(await orderCbd(await getProducts(), setOrder || true))
     } catch (error) {
         res.status(401).json(error.message)
     }
