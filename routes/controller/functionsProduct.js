@@ -23,12 +23,12 @@ const { get } = require("lodash");
     }
  
     // MUEVO ESTA FN A FILTERS
-    // const getProductByName = async(name) => {
-    //         let allProducts = await getProducts()
-    //         const productFound = allProducts.find(p => p.name === name)
-    //         if(productFound) return productFound
-    //         return 'No se encontro el producto buscado'
-    // }
+    const getProductByName = async(name) => {
+            let allProducts = await getProducts()
+            const productFound = allProducts.find(p => p.name === name)
+            if(productFound) return productFound
+            return 'No se encontro el producto buscado'
+    }
 
 const createProduct = async (name, stock, price, img, type, description, thc, cbd, categories) => {
         const newProduct = await Product.create({name, stock, price, img, type, description, thc, cbd})

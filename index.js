@@ -45,14 +45,8 @@ app.post('/createUser', async (req, res) => {
     }
 })
 
-
 app.use('/', category)
 app.use('/', product)
-
-
-
-
-
 
 ////////////Api-Oils//////////////////
 app.get('/oils', async (req, res) => {
@@ -63,6 +57,7 @@ app.get('/productos', async (req, res) => {
     res.json(oilsApi)
 })
 //////Crear User/////////
+
 app.post('/ath0log', async (req, res) => {
     try {
         let { email, name } = req.body
@@ -77,5 +72,4 @@ app.post('/ath0log', async (req, res) => {
             msg: error.message
         })
     }
-
 })
