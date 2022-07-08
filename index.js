@@ -36,7 +36,6 @@ app.get('/getAllUsers', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 app.post('/createUser', async (req, res) => {
     try {
         let { name, lastName, username, password, email, phone } = req.body
@@ -47,9 +46,11 @@ app.post('/createUser', async (req, res) => {
 })
 
 
-
 app.use('/', category)
 app.use('/', product)
+
+
+
 
 
 
@@ -59,20 +60,22 @@ app.get('/oils', async (req, res) => {
 })
 
 app.get('/productos', async (req, res) => {
-
     res.json(oilsApi)
 })
-
 //////Crear User/////////
 app.post('/ath0log', async (req, res) => {
-    let { email, name } = req.body
-    let user_email = email
-    let user_name = name
-
-    let creado = await findOrCreate(user_email, user_name)
-    console.log()
-    res.json(creado[1])
-
-
+    try {
+        let { email, name } = req.body
+        let user_email = email
+        let user_name = name
+        let creado = await findOrCreate(user_email, user_name)
+        res.json(creado)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
 
 })
