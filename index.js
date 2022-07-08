@@ -3,6 +3,7 @@ const category = require('./routes/route/category');
 const product = require('./routes/route/product');
 // const Category = require('../models/Category');
 const Category = require('./models/Category')
+const Product = require('./models/Product')
 // const {getCategories, createCategory, deleteCategory} = require('./routes/controller/functionCategory')
 const app = express()
 const cors = require("cors")
@@ -16,9 +17,15 @@ const { createUser, findAllUsers, findOrCreate } = require('./routes/controller/
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 
+function data (){
+const data = oilsApi.map(e => e)
+Product.bulkCreate(data)
+}
+
 ////////SERVIDOR////////
 let port = process.env.PORT || 8081
 app.listen(port, () => {
+    // data() // ojo esto, para reinicio BD, FORCE : TRUE, descomentar esta funcion y guardar, despues colocar en ALTER : TRUE, y volver a comentar
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
 })
