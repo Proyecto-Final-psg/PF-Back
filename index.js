@@ -57,6 +57,7 @@ app.use('/', product)
 app.get('/oils', async (req, res) => {
     res.json(oilsApi)
 })
+
 app.get('/productos', async (req, res) => {
 
     res.json(oilsApi)
