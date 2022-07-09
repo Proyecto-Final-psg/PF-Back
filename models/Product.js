@@ -3,6 +3,7 @@ const { sequelize, DataTypes, Op } = require("../db/db") //siempre importo el mi
 const Product = sequelize.define('product', {
       name: {
         type: DataTypes.STRING,
+        allowNull: false
       },
       stock: {
         type: DataTypes.INTEGER,
@@ -10,6 +11,7 @@ const Product = sequelize.define('product', {
       },
       price: {
         type: DataTypes.FLOAT,
+        allowNull: false
       },
       img: {
         type: DataTypes.STRING,
@@ -21,10 +23,12 @@ const Product = sequelize.define('product', {
         type: DataTypes.TEXT
       },
       thc: {
-          type: DataTypes.FLOAT
+          type: DataTypes.FLOAT,
+          allowNull: false
       },
       cbd: {
-          type: DataTypes.FLOAT
+          type: DataTypes.FLOAT,
+          allowNull: false
       }
     }   
 );
