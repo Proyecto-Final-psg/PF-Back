@@ -1,7 +1,9 @@
 const {Router} = require('express')
-const { getProducts, createProduct, getProductById, deleteProduct, getProductByName, uploadProducts, uploadCategories } = require('../controller/functionsProduct')
-const { getCategories } = require('../controller/functionCategory')
-const { filterByCategory } = require('../filters/filterProducts')
+const { getProducts, createProduct, getProductById, deleteProduct, getProductByName, uploadProducts, uploadCategories } = require('../controllers/products/functionsProduct')
+const { getCategories } = require('../controllers/categories/functionCategory')
+const {orderCbd, orderThc, orderPrice} = require('../controllers/products/orders')
+const { filterByCategory } = require('../controllers/products/orders')
+const { set } = require('lodash')
 const router = Router();
 
 ////  --   RUTA PARA CARGAR CATEGORIAS Y PRODUCTOS A LA BD ----
@@ -23,14 +25,14 @@ router.get('/uploadDb', async (req, res) => {
  
 ///////////////////////////////////////////////////////////////
 
-router.get('/products', async (req, res) => {
+router.get('/', async (req, res) => {
     try {
         res.json(await getProducts())
     } catch (error) {
         res.status(401).json(error.message)
     }
 })
-router.get('/products/search/', async (req, res) => {
+router.get('/search', async (req, res) => {
     let { name } = req.query
     try {
         res.json(await getProductByName(name))
@@ -38,7 +40,7 @@ router.get('/products/search/', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-router.post('/products', async (req, res) => {
+router.post('/', async (req, res) => {
     try {
         let { name, stock, price, img, type, description, thc, cbd, categories } = req.body
         res.json(await createProduct(name, stock, price, img, type, description, thc, cbd, categories))
@@ -46,7 +48,37 @@ router.post('/products', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-router.get('/products/:id', async (req, res) => {
+router.get('/orderCbd', async (req, res) => {
+    let { setOrder} = req.body
+    try {
+        res.json(await orderCbd(await getProducts(), setOrder))
+        
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
+router.get('/orderThc', async (req, res) => {
+    let { setOrder} = req.body
+    console.log(setOrder)
+    try {
+        res.json(await orderThc(await getProducts(), setOrder))
+        
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
+router.get('/orderPrice', async (req, res) => {
+    let { setOrder} = req.body
+    try {
+        res.json(await orderPrice(await getProducts(), setOrder))
+        
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+router.get('/:id', async (req, res) => {
     try {
         let { id } = req.params
         res.json(await getProductById(id))
@@ -54,7 +86,7 @@ router.get('/products/:id', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-router.delete('/products/:id', async (req, res) => {
+router.delete('/:id', async (req, res) => {
     try {
         let { id } = req.params
         res.json(await deleteProduct(id))
@@ -63,12 +95,10 @@ router.delete('/products/:id', async (req, res) => {
     }
 })
 
-////  ----------- FILTERS --------------------------------
-
-router.get('/products/filter/:category', async (req, res) => {
+router.get('/filter/:category', async (req, res) => {
     try {
         const {category} = req.params
-        res.json(await filterByCategory(category))
+        res.json(await filterByCategory(await getProducts() ,category))
     } catch (error) {
         res.status(401).json(error.message)
     }

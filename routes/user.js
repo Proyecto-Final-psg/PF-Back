@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const {findAllUsers, findOrCreate} = require('../controller/functionsUser')
+const {findAllUsers, findOrCreate} = require('../controllers/users/functionsUser')
 const router = Router();
 
 router.get('/getAllUsers', async (req, res) => {

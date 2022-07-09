@@ -1,18 +1,13 @@
 const express = require('express');
-const category = require('./routes/route/category');
-const product = require('./routes/route/product');
-const user = require('./routes/route/user')
-// const Category = require('../models/Category');
+const category = require('./routes/category');
+const product = require('./routes/product');
+const user = require('./routes/user')
 const Category = require('./models/Category')
-// const {getCategories, createCategory, deleteCategory} = require('./routes/controller/functionCategory')
 const app = express()
 const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-
-// const { getProducts, createProduct, getProductById, deleteProduct } = require('./routes/controller/functionsProduct')
-const { findAllUsers, findOrCreate } = require('./routes/controller/functionsUser')
 
 //////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
@@ -43,10 +38,7 @@ app.get('/prueba', async (req, res) => {
     res.json("develop")
 })
 
-// //////USER////////////
-
 
 app.use('/', user)
 app.use('/', category)
-app.use('/', product)
-
+app.use('/products', product)

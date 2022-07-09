@@ -2,7 +2,7 @@ const Product = require("../../models/Product")
 const Category = require("../../models/Category");
 const { get } = require("lodash");
 const {oils} = require('../../db.json')
-const {createCategory, getCategories} = require('../controller/functionCategory');
+const {createCategory, getCategories} = require('../categories/functionCategory');
 
 
 const uploadProducts = async () => {
