@@ -31,10 +31,11 @@ const jwtCheck = jwt.expressjwt({
     audience: 'this is a unique identifier',
     issuer: 'https://dev-sdz9neh5.us.auth0.com/',
     algorithms: ['RS256']
-})
-// app.use(jwtCheck);
+}).unless({ path: ['./prueba', './products'] })
+app.use(jwtCheck);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
+
     res.json("develop")
 })
 
