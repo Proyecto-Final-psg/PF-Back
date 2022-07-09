@@ -39,12 +39,32 @@ const uploadCategories = async () => {
 }
  
     // MUEVO ESTA FN A FILTERS
-    const getProductByName = async(name) => {
-            let allProducts = await getProducts()
-            const productFound = allProducts.filter(p => p.name.toLowerCase().includes(name))
-            if(productFound) return productFound
-            return 'No se encontro el producto buscado'
+const getProductByName = async(name) => {
+        let allProducts = await getProducts()
+        const productFound = allProducts.filter(p => p.name.toLowerCase().includes(name))
+        if(productFound) return productFound
+        return 'No se encontro el producto buscado'
+}
+
+const updateProduct = async (id, name, stock, price, img, type, description, thc, cbd, categories) => {
+    const productos = await Product.findAll()
+    const idFound = productos.find(e => parseInt(e.id) === parseInt(id))
+    if(idFound){
+            await Product.update({name, stock, price, img, type, description, thc, cbd},
+        {
+            where : {
+                id : id
+            }
+        })
+        for (let i = 0; i < categories.length; i++){  // creo la relacion en productCategory
+            let idCategory = await Category.findAll({where : {category : categories[i]}, attributes : ['id']})
+            await idFound.addCategory(idCategory)
+        }
+        return 'El producto fue modificado correctamente'
     }
+    return 'No se encuentra ese producto'
+}
+
 
 const createProduct = async (name, stock, price, img, type, description, thc, cbd, categories) => {
         const newProduct = await Product.create({name, stock, price, img, type, description, thc, cbd})
@@ -92,5 +112,6 @@ const getProductById = async (id) => {
         deleteProduct, 
         getProductByName, 
         uploadProducts,
-        uploadCategories
+        uploadCategories,
+        updateProduct
     }

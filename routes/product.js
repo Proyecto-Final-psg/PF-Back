@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const { getProducts, createProduct, getProductById, deleteProduct, getProductByName, uploadProducts, uploadCategories } = require('../controllers/products/functionsProduct')
+const { getProducts, createProduct, getProductById, deleteProduct, getProductByName, uploadProducts, uploadCategories, updateProduct } = require('../controllers/products/functionsProduct')
 const { getCategories } = require('../controllers/categories/functionCategory')
 const {orderCbd, orderThc, orderPrice} = require('../controllers/products/orders')
 const { filterByCategory } = require('../controllers/products/orders')
@@ -48,6 +48,17 @@ router.post('/', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
+
+router.put('/:id', async (req, res) => {
+    let { id } = req.params
+    let { name, stock, price, img, type, description, thc, cbd, categories } = req.body
+    try {
+        res.json(await updateProduct(id, name, stock, price, img, type, description, thc, cbd, categories))
+    } catch (error) {
+        res.status(401).json(error.message)
+    }
+})
+
 router.get('/orderCbd/:setOrder', async (req, res) => {
     let { setOrder} = req.params
     try {
