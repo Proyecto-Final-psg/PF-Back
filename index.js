@@ -1,6 +1,7 @@
 const express = require('express');
 const category = require('./routes/route/category');
 const product = require('./routes/route/product');
+const user = require('./routes/route/user')
 // const Category = require('../models/Category');
 const Category = require('./models/Category')
 const Product = require('./models/Product')
@@ -71,6 +72,7 @@ app.get('/prueba', async (req, res) => {
 //     }
 // })
 
+app.use('/', user)
 app.use('/', category)
 app.use('/', product)
 
