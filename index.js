@@ -1,6 +1,7 @@
 const express = require('express');
 const category = require('./routes/route/category');
 const product = require('./routes/route/product');
+const user = require('./routes/route/user')
 // const Category = require('../models/Category');
 const Category = require('./models/Category')
 // const {getCategories, createCategory, deleteCategory} = require('./routes/controller/functionCategory')
@@ -43,31 +44,9 @@ app.get('/prueba', async (req, res) => {
 })
 
 // //////USER////////////
-app.get('/getAllUsers', async (req, res) => {
-    try {
-        res.json(await findAllUsers())
-    } catch (error) {
-        res.status(401).json(error.message)
-    }
-})
 
-app.post('/ath0log', async (req, res) => {
-    try {
-        let { email, name, token } = req.body
-        console.log(token)
-        let user_email = email
-        let user_name = name
-        let creado = await findOrCreate(user_email, user_name)
-        res.json(creado)
-    } catch (error) {
-        console.log(error)
-        return res.status(400).send({
-            name: error.name,
-            msg: error.message
-        })
-    }
-})
 
+app.use('/', user)
 app.use('/', category)
 app.use('/', product)
 
