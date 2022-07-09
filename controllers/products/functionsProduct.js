@@ -38,7 +38,6 @@ const uploadCategories = async () => {
         return allProducts
 }
  
-    // MUEVO ESTA FN A FILTERS
 const getProductByName = async(name) => {
         let allProducts = await getProducts()
         const productFound = allProducts.filter(p => p.name.toLowerCase().includes(name))
