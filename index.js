@@ -2,7 +2,6 @@ const express = require('express');
 const category = require('./routes/category');
 const product = require('./routes/product');
 const user = require('./routes/user')
-const Category = require('./models/Category')
 const app = express()
 const cors = require("cors")
 app.use(express.json());
@@ -31,15 +30,16 @@ const jwtCheck = jwt.expressjwt({
     audience: 'this is a unique identifier',
     issuer: 'https://dev-sdz9neh5.us.auth0.com/',
     algorithms: ['RS256']
-}).unless({ path: ['./prueba', './products'] })
-app.use(jwtCheck);
+}).unless({ path: ['/prueba'] })
+// app.use(jwtCheck);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
-
-    res.json("develop")
+    try {
+        res.json("develop")
+    } catch (error) {
+        res.status(400).send(error.message)
+    }
 })
-
-
 app.use('/', user)
 app.use('/', category)
 app.use('/products', product)
