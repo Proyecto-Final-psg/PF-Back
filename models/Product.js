@@ -12,7 +12,7 @@ const Product = sequelize.define('product', {
         type: DataTypes.FLOAT,
       },
       img: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       type: {
         type: DataTypes.STRING,

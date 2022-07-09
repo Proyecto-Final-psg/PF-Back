@@ -19,7 +19,6 @@ app.listen(port, () => {
 ///////////////////Jason Token///////////////////////////////
 var jwt = require('express-jwt');
 var jwks = require('jwks-rsa');
-
 const jwtCheck = jwt.expressjwt({
     secret: jwks.expressJwtSecret({
         cache: true,
@@ -32,6 +31,7 @@ const jwtCheck = jwt.expressjwt({
     algorithms: ['RS256']
 }).unless({ path: ['/prueba'] })
 // app.use(jwtCheck);
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.get('/prueba', async (req, res) => {
     try {
