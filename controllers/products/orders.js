@@ -3,10 +3,10 @@ const orderCbd = async (array, setOrder) =>{
     return array.sort(function(a,b){
         const numA = parseInt(a.cbd)
         const numB = parseInt(b.cbd)
-        if(setOrder === true){
+        if(setOrder === 'az'){
             if(numA<numB) return -1
         } 
-        if(setOrder === false){
+        if(setOrder === 'za'){
             if(numA>numB) return -1              }  
     })
 }
@@ -15,10 +15,10 @@ const orderThc = async (array, setOrder) =>{
     return array.sort(function(a,b){
         const numA = parseInt(a.thc)
         const numB = parseInt(b.thc)
-        if(setOrder === true){
+        if(setOrder === 'az'){
             if(numA<numB) return -1
         } 
-        if(setOrder === false){
+        if(setOrder === 'za'){
             if(numA>numB) return -1              }  
     })
 }
@@ -27,10 +27,10 @@ const orderPrice = async (array, setOrder) =>{
     return array.sort(function(a,b){
         const numA = parseInt(a.price)
         const numB = parseInt(b.price)
-        if(setOrder === true){
+        if(setOrder === 'az'){
             if(numA<numB) return -1
         } 
-        if(setOrder === false){
+        if(setOrder === 'za'){
             if(numA>numB) return -1              }  
     })
 }

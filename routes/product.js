@@ -48,8 +48,8 @@ router.post('/', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-router.get('/orderCbd', async (req, res) => {
-    let { setOrder} = req.body
+router.get('/orderCbd/:setOrder', async (req, res) => {
+    let { setOrder} = req.params
     try {
         res.json(await orderCbd(await getProducts(), setOrder))
         
@@ -58,9 +58,8 @@ router.get('/orderCbd', async (req, res) => {
     }
 })
 
-router.get('/orderThc', async (req, res) => {
-    let { setOrder} = req.body
-    console.log(setOrder)
+router.get('/orderThc/:setOrder', async (req, res) => {
+    let { setOrder} = req.params
     try {
         res.json(await orderThc(await getProducts(), setOrder))
         
@@ -69,8 +68,8 @@ router.get('/orderThc', async (req, res) => {
     }
 })
 
-router.get('/orderPrice', async (req, res) => {
-    let { setOrder} = req.body
+router.get('/orderPrice/:setOrder', async (req, res) => {
+    let { setOrder} = req.params
     try {
         res.json(await orderPrice(await getProducts(), setOrder))
         
