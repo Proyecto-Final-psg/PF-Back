@@ -18,6 +18,7 @@ const chargeDb = async () => {
             console.log('No se cargaron los productos')
         }
     }
+    console.log("base de datos cargada")
 }
 chargeDb()
 router.get('/uploadDb', async (req, res) => {

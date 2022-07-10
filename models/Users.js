@@ -27,6 +27,10 @@ const User = sequelize.define('user', {
         unique: true,
         isEmail: true,
     },
+    roll: {
+        type: DataTypes.STRING,
+        defaultValue: "guest"
+    },
     user_phone: {
         type: DataTypes.STRING,
         allowNull: true
