@@ -29,7 +29,7 @@ const User = sequelize.define('user', {
     },
     roll: {
         type: DataTypes.STRING,
-        defaultValue: "guest"
+        defaultValue: "user"
     },
     user_phone: {
         type: DataTypes.STRING,
