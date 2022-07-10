@@ -70,8 +70,14 @@ const createProduct = async (name, stock, price, img, type, description, thc, cb
       
 
         for (let i = 0; i < categories.length; i++){  // creo la relacion en productCategory
-            let id = await Category.findAll({where : {category : categories[i]}, attributes : ['id']})
-            await newProduct.addCategory(id)
+            //let id = await Category.findAll({where : {category : categories[i]}, attributes : ['id']})
+            let [newCategory, created] = await Category.findOrCreate({
+                where: {category : categories[i]},
+                attributes : ['id'],
+                defaults :{category : categories[i]}
+            })
+            
+            await newProduct.addCategory(newCategory.id)
         }
 
         let productCreated = await Product.findByPk(newProduct.id,{
