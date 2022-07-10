@@ -1,3 +1,4 @@
+const { getProducts } = require("./functionsProduct")
 
 const orderCbd = async (array, setOrder) =>{
     return array.sort(function(a,b){
@@ -22,9 +23,10 @@ const orderThc = async (array, setOrder) =>{
             if(numA>numB) return -1              }  
     })
 }
-
-const orderPrice = async (array, setOrder) =>{
-    return array.sort(function(a,b){
+   // thc, az
+const orderPrice = async (category, setOrder) =>{
+   const arrayFilter =  filterByCategory(getProducts(), category)
+    return arrayFilter.sort(function(a,b){
         const numA = parseInt(a.price)
         const numB = parseInt(b.price)
         if(setOrder === 'az'){

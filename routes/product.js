@@ -94,9 +94,9 @@ router.post('/orderThc/:setOrder', async (req, res) => {
 
 router.post('/orderPrice/:setOrder', async (req, res) => {
     let { setOrder } = req.params
-    let arrayProducts = req.body
+    let category = req.body
     try {
-        res.json(await orderPrice(arrayProducts, setOrder))
+        res.json(await orderPrice(category, setOrder))
 
     } catch (error) {
         res.status(401).json(error.message)
