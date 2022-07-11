@@ -71,33 +71,30 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-router.post('/orderCbd/:setOrder', async (req, res) => {
-    let { setOrder } = req.params
-    let arrayProducts = req.body
+router.post('/orderCbd/', async (req, res) => {
+    let {category, setOrder} = req.body
     try {
-        res.json(await orderCbd(arrayProducts, setOrder))
+        res.json(await orderCbd(category, setOrder))
 
     } catch (error) {
         res.status(401).json(error.message)
     }
 })
 
-router.post('/orderThc/:setOrder', async (req, res) => {
-    let { setOrder } = req.params
-    let arrayProducts = req.body
+router.post('/orderThc/', async (req, res) => {
+    let {category, setOrder} = req.body
     try {
-        res.json(await orderThc(arrayProducts, setOrder))
+        res.json(await orderThc(category, setOrder))
 
     } catch (error) {
         res.status(401).json(error.message)
     }
 })
 
-router.post('/orderPrice/:setOrder', async (req, res) => {
-    let { setOrder } = req.params
-    let arrayProducts = req.body
+router.post('/orderPrice/', async (req, res) => {
+    let {category, setOrder} = req.body
     try {
-        res.json(await orderPrice(arrayProducts, setOrder))
+        res.json(await orderPrice(category, setOrder))
 
     } catch (error) {
         res.status(401).json(error.message)
