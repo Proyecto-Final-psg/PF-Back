@@ -1,7 +1,8 @@
 const { getProducts } = require("./functionsProduct")
 
 const orderCbd = async (category, setOrder) =>{
-    const arrayFilter =  await filterByCategory(await getProducts(), category)
+    const arrayFilter = category === 'none' ? await getProducts() : await filterByCategory(await getProducts(), category)
+    
     return arrayFilter.sort(function(a,b){
         const numA = parseInt(a.cbd)
         const numB = parseInt(b.cbd)
@@ -14,7 +15,7 @@ const orderCbd = async (category, setOrder) =>{
 }
 
 const orderThc = async (category, setOrder) =>{
-    const arrayFilter =  await filterByCategory(await getProducts(), category)
+    const arrayFilter = category === 'none' ? await getProducts() : await filterByCategory(await getProducts(), category)
 
     return arrayFilter.sort(function(a,b){
         const numA = parseInt(a.thc)
@@ -28,17 +29,18 @@ const orderThc = async (category, setOrder) =>{
 }
 
 const orderPrice = async (category, setOrder) =>{
-   const arrayFilter =  await filterByCategory(await getProducts(), category)
-  
-    return  arrayFilter.sort(function(a,b){
-        const numA = parseInt(a.price)
-        const numB = parseInt(b.price)
-        if(setOrder === 'az'){
-            if(numA<numB) return -1
-        } 
-        if(setOrder === 'za'){
-            if(numA>numB) return -1}  
-    })
+   
+    const arrayFilter = category === 'none' ? await getProducts() : await filterByCategory(await getProducts(), category)
+
+    return arrayFilter.sort(function(a,b){
+            const numA = parseInt(a.price)
+            const numB = parseInt(b.price)
+            if(setOrder === 'az'){
+                if(numA<numB) return -1
+            } 
+            if(setOrder === 'za'){
+                if(numA>numB) return -1}  
+             })
 }
 
 const filterByCategory = async (array, category) => {
