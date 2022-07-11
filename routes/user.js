@@ -1,12 +1,16 @@
-const {Router} = require('express')
-const {findAllUsers, findOrCreate} = require('../controllers/users/functionsUser')
+const { Router } = require('express')
+const { findAllUsers, findOrCreate, changeRoll } = require('../controllers/users/functionsUser')
 const router = Router();
 
 router.get('/getAllUsers', async (req, res) => {
     try {
         res.json(await findAllUsers())
     } catch (error) {
-        res.status(401).json(error.message)
+        console.log(error)
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
     }
 })
 
@@ -27,8 +31,18 @@ router.post('/ath0log', async (req, res) => {
     }
 })
 router.post('/rollCahange', async (req, res) => {
+    try {
+        let { user_id, roll } = req.body
+        let change = await changeRoll(user_id, roll)
+        res.json(change)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
 
- res.json("done")
 })
 
 module.exports = router
