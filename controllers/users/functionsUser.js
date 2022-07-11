@@ -13,7 +13,13 @@ module.exports = {
             }
         });
     },
-    
+    changeRoll: async (user_id, roll) => {
+        return await User.update({ roll: roll }, {
+            where: {
+                user_id: user_id
+            }
+        })
+    },
 
 }
 
