@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { findAllUsers, findOrCreate, changeRoll } = require('../controllers/users/functionsUser')
+const { findAllUsers, findOrCreate, changeRole } = require('../controllers/users/functionsUser')
 const router = Router();
 
 router.get('/getAllUsers', async (req, res) => {
@@ -30,10 +30,10 @@ router.post('/ath0log', async (req, res) => {
         })
     }
 })
-router.post('/rollCahange', async (req, res) => {
+router.put('/changeRoles', async (req, res) => {
     try {
         let { user_id, roll } = req.body
-        let change = await changeRoll(user_id, roll)
+        let change = await changeRole(user_id, roll)
         res.json(change)
     } catch (error) {
         console.log(error)
