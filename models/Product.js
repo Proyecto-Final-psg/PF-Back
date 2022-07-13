@@ -3,17 +3,18 @@ const { sequelize, DataTypes, Op } = require("../db/db") //siempre importo el mi
 const Product = sequelize.define('product', {
       name: {
         type: DataTypes.STRING,
-      
+        allowNull: false
       },
       stock: {
         type: DataTypes.INTEGER,
         defaultValue: 100
       },
       price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
+        allowNull: false
       },
       img: {
-        type: DataTypes.STRING,
+        type: DataTypes.TEXT,
       },
       type: {
         type: DataTypes.STRING,
@@ -22,19 +23,13 @@ const Product = sequelize.define('product', {
         type: DataTypes.TEXT
       },
       thc: {
-          type: DataTypes.FLOAT
+          type: DataTypes.FLOAT,
+          allowNull: false
       },
       cbd: {
-          type: DataTypes.FLOAT
-      },
-      cannabis: {
-          type: DataTypes.FLOAT
-      },
-      hashOil: {
-          type: DataTypes.FLOAT
-      },
-    },{
-        timestamps: true
+          type: DataTypes.FLOAT,
+          allowNull: false
+      }
     }   
 );
 
@@ -43,7 +38,7 @@ const Product = sequelize.define('product', {
 
 const { product, categories } = sequelize.models;
 
-product.belongsToMany(categories, { through: 'productCategory'})
-categories.belongsToMany(product, { through: 'productCategory'})
+product.belongsToMany(categories, { through: 'product_category'})
+categories.belongsToMany(product, { through: 'product_category'})
 
 module.exports = Product
