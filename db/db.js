@@ -16,6 +16,9 @@ const sequelize = new Sequelize({
       native: false,
     },
   },);
+
+  // const sequelize = new Sequelize('postgres://postgres:cr1st1n4buf1d1s@localhost:5432/martinPrueba', { logging: false })
+
 /////////////////////////////////////// si ponemos el logging en false no me muestra todo el sql de sequelize
 
 module.exports = { sequelize, DataTypes, Op }
