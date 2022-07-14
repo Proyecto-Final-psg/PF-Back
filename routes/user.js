@@ -30,7 +30,7 @@ router.post('/ath0log', async (req, res) => {
         })
     }
 })
-router.post('/changeRoles', async (req, res) => {
+router.put('/changeRoles', async (req, res) => {
     try {
         let { user_id, roll } = req.body
         console.log(user_id, roll)
