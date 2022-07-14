@@ -111,7 +111,7 @@ app.get('/getOrders/:user_id', async (req, res) => {
                 let product_id = items[j].dataValues.productId
                 let producto = await Product.findOne({ where: { id: product_id } })
 
-                console.log(items[j].dataValues.quantity)
+              
 
                 producto.dataValues.quantity = items[j].dataValues.quantity
 
