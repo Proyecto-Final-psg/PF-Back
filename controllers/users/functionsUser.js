@@ -12,7 +12,6 @@ module.exports = {
         })
     },
     findOrCreate: async (user_email, user_name, user_img) => {
-        console.log(user_email, user_name, user_img, 'function findOrCreate')
         return await User.findOrCreate({
             where: { user_email },
             defaults: {
