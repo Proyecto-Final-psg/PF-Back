@@ -9,7 +9,7 @@ const router = Router();
 ////  --   RUTA PARA CARGAR CATEGORIAS Y PRODUCTOS A LA BD ----
 const chargeDb = async () => {
     let busqueda = await getCategories()
-    if (busqueda == 0) {
+    if (busqueda.length == 0) {
         let categoriesUpload = await uploadCategories()
         if (categoriesUpload > 0) {
             uploadProducts()
