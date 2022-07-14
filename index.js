@@ -85,42 +85,42 @@ app.post('/addOrder', async (req, res) => {
 app.post('/getOrders', async (req, res) => {
     let { user_id } = req.body
 
-    let listaDordenes = []
+    try {
+        let listaDordenes = []
+        let user = await User.findOne({ where: { user_id: user_id } })
+        let ordenes = await user.getOrders({ include: OrderItem })
 
+        for (let i = 0; i < ordenes.length; i++) {
 
-    let user = await User.findOne({ where: { user_id: user_id } })
-    let ordenes = await user.getOrders({ include: OrderItem })
+            let orden = ordenes[i].dataValues
 
+            let ordenUser = {
+                user_id: orden.userUserId,
+                address: orden.address,
+                status: orden.status,
+                arrayItems: []
+            }
 
+            let items = ordenes[i].dataValues.order_items
 
-    for (let i = 0; i < ordenes.length; i++) {
+            for (let j = 0; j < items.length; j++) {
 
-        let listaProduct = []
-        let orden = ordenes[i].dataValues
-
-        let ordenUser = {
-            user_id: orden.userUserId,
-            address: orden.address,
-            status: orden.status,
-            arrayItems: []
+                let product_id = items[j].dataValues.productId
+                let producto = await Product.findOne({ where: { id: product_id } })
+                ordenUser.arrayItems.push(producto.dataValues)
+            }
+            listaDordenes.push(ordenUser)
+            console.log(listaDordenes)
         }
-
-
-
-        let items = ordenes[i].dataValues.order_items
-
-        for (let j = 0; j < items.length; j++) {
-
-            let product_id = items[j].dataValues.productId
-            let producto = await Product.findOne({ where: { id: product_id } })
-            ordenUser.arrayItems.push(producto.dataValues)
-        }
-
-        listaDordenes.push(ordenUser)
-        console.log(listaDordenes)
+        res.json(listaDordenes)
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
     }
 
 
-    res.json(listaDordenes)
 })
 
