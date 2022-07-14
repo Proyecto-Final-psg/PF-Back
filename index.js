@@ -82,8 +82,10 @@ app.post('/addOrder', async (req, res) => {
     }
 })
 
-app.post('/getOrders', async (req, res) => {
-    let { user_id } = req.body
+
+
+app.get('/getOrders/:user_id', async (req, res) => {
+    let { user_id } = req.params
 
     try {
         let listaDordenes = []
@@ -95,6 +97,7 @@ app.post('/getOrders', async (req, res) => {
             let orden = ordenes[i].dataValues
 
             let ordenUser = {
+                order_id: orden.id,
                 user_id: orden.userUserId,
                 address: orden.address,
                 status: orden.status,
@@ -107,10 +110,16 @@ app.post('/getOrders', async (req, res) => {
 
                 let product_id = items[j].dataValues.productId
                 let producto = await Product.findOne({ where: { id: product_id } })
+
+                console.log(items[j].dataValues.quantity)
+
+                producto.dataValues.quantity = items[j].dataValues.quantity
+
+
                 ordenUser.arrayItems.push(producto.dataValues)
             }
             listaDordenes.push(ordenUser)
-            console.log(listaDordenes)
+
         }
         res.json(listaDordenes)
     } catch (error) {
