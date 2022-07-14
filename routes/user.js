@@ -1,11 +1,23 @@
 const { Router } = require('express')
-const { findAllUsers, findOrCreate, changeRole, addToCart, removeFromCart, userById } = require('../controllers/users/functionsUser')
+const { findAllUsers, findOrCreate, changeRole, addToCart, removeFromCart, userById, removeUser } = require('../controllers/users/functionsUser')
 const router = Router();
 
 router.get('/users/:id', async (req, res) => {
     let{id} = req.params
     try {
         res.json(await userById(id))
+    } catch (error) {
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
+})
+
+router.delete('/users/:id', async (req, res) => {
+    let{id} = req.params
+    try {
+        res.json(await removeUser(id))
     } catch (error) {
         return res.status(400).send({
             name: error.name,
@@ -27,12 +39,9 @@ router.get('/getAllUsers', async (req, res) => {
 })
 
 router.post('/ath0log', async (req, res) => {
+    let { email, name, token, img } = req.body
     try {
-        let { email, name, token } = req.body
-        console.log(token)
-        let user_email = email
-        let user_name = name
-        let creado = await findOrCreate(user_email, user_name)
+        let creado = await findOrCreate(email, name, img)
         res.json(creado)
     } catch (error) {
         console.log(error)
@@ -42,6 +51,8 @@ router.post('/ath0log', async (req, res) => {
         })
     }
 })
+
+
 router.put('/changeRoles', async (req, res) => {
     try {
         let { user_id, roll } = req.body

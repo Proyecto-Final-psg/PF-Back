@@ -11,12 +11,14 @@ module.exports = {
             }]
         })
     },
-    findOrCreate: async (user_email, user_name) => {
+    findOrCreate: async (user_email, user_name, user_img) => {
+        console.log(user_email, user_name, user_img, 'function findOrCreate')
         return await User.findOrCreate({
             where: { user_email },
             defaults: {
                 user_email: user_email,
-                user_name: user_name
+                user_name: user_name,
+                user_img: user_img
             }
         });
     },
@@ -45,6 +47,12 @@ module.exports = {
         const user = await User.findByPk(user_id)
         const product = await Product.findByPk(product_id)
         return await user.removeProduct(product)
+    },
+    removeUser: async (id) => {
+        await User.destroy({
+            where: {user_id: id}
+        })
+        return `the user was successfully deleted`
     }
 
 }
