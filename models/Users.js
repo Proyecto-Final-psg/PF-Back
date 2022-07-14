@@ -14,6 +14,9 @@ const User = sequelize.define('user', {
         type: DataTypes.STRING,
         allowNull: true
     },
+    user_img: {
+        type: DataTypes.STRING,
+    },
     user_password: {
         type: DataTypes.STRING,
         // allowNull: true
