@@ -45,6 +45,7 @@ router.post('/ath0log', async (req, res) => {
 router.put('/changeRoles', async (req, res) => {
     try {
         let { user_id, roll } = req.body
+        console.log(user_id, roll)
         let change = await changeRole(user_id, roll)
         res.json(change)
     } catch (error) {
