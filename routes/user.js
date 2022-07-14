@@ -1,6 +1,18 @@
 const { Router } = require('express')
-const { findAllUsers, findOrCreate, changeRole } = require('../controllers/users/functionsUser')
+const { findAllUsers, findOrCreate, changeRole, addToCart, removeFromCart, userById } = require('../controllers/users/functionsUser')
 const router = Router();
+
+router.get('/users/:id', async (req, res) => {
+    let{id} = req.params
+    try {
+        res.json(await userById(id))
+    } catch (error) {
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
+})
 
 router.get('/getAllUsers', async (req, res) => {
     try {
@@ -44,5 +56,37 @@ router.put('/changeRoles', async (req, res) => {
     }
 
 })
+
+
+router.post('/cart', async (req, res) => {
+    let {user_id, product_id} = req.body
+    try {
+        const cart = await addToCart(user_id, product_id)
+        console.log(cart)
+        res.json('ruta cart')
+    } catch (error) {
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
+})
+
+router.delete('/cart', async (req, res) => {
+    let {user_id, product_id} = req.body
+    try {
+        const cart = await removeFromCart(user_id, product_id)
+        console.log(cart)
+        res.json('ruta cart')
+    } catch (error) {
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
+})
+
+
+
 
 module.exports = router
