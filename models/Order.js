@@ -17,7 +17,6 @@ const Order = sequelize.define('order', {
 );
 /// RELACION PRODUCT-CATEGORY
 
-
 const { product } = sequelize.models;
 
 User.hasMany(Order)

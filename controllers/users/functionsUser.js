@@ -1,13 +1,15 @@
 const User = require("../../models/Users")
 const Product = require('../../models/Product')
-
+const Order = require('../../models/Order')
 module.exports = {
     findAllUsers: async () => {
-        return await User.findAll({include: [{
-            model: Product,
-             through: {attributes: [] },
-             attributes: ["id", 'name', 'price', 'stock', 'img'],
-         }]})
+        return await User.findAll({
+            include: [{
+                model: Product,
+                through: { attributes: [] },
+                attributes: ["id", 'name', 'price', 'stock', 'img'],
+            }]
+        })
     },
     findOrCreate: async (user_email, user_name) => {
         return await User.findOrCreate({
@@ -28,21 +30,21 @@ module.exports = {
     userById: async (id) => {
         return await User.findByPk(id, {
             include: {
-               model: Product,
-                through: {attributes: [] },
+                model: Product,
+                through: { attributes: [] },
                 attributes: ["id", 'name', 'price', 'stock', 'img'],
             }
-        })   
+        })
     },
     addToCart: async (user_id, product_id) => {
         const user = await User.findByPk(user_id)
         const product = await Product.findByPk(product_id)
-       return await user.addProduct(product)
+        return await user.addProduct(product)
     },
     removeFromCart: async (user_id, product_id) => {
         const user = await User.findByPk(user_id)
         const product = await Product.findByPk(product_id)
-       return await user.removeProduct(product)
+        return await user.removeProduct(product)
     }
 
 }

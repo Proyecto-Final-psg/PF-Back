@@ -55,10 +55,12 @@ app.post('/addOrder', async (req, res) => {
             "address": address,
             "status": status
         })
+
         nuevaOrder.setUser(user)
-        nuevaOrder.save()
+        // nuevaOrder.save()
 
         for (let i = 0; i < arrayItems.length; i++) {
+
             let orderItem = await OrderItem.create({
                 quantity: arrayItems[i].quantity,
                 price: arrayItems[i].price
@@ -66,7 +68,7 @@ app.post('/addOrder', async (req, res) => {
             let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
 
             orderItem.setProduct(product)
-            orderItem.save()
+
             orderItem.setOrder(nuevaOrder)
         }
         res.json("Order cargada correctamente")
@@ -78,17 +80,47 @@ app.post('/addOrder', async (req, res) => {
             msg: error.message
         })
     }
-
 })
 
 app.post('/getOrders', async (req, res) => {
     let { user_id } = req.body
-    console.log(user_id)
+
+    let listaDordenes = []
+
+
     let user = await User.findOne({ where: { user_id: user_id } })
-
     let ordenes = await user.getOrders({ include: OrderItem })
-    console.log(ordenes)
 
-    res.json(ordenes)
+
+
+    for (let i = 0; i < ordenes.length; i++) {
+
+        let listaProduct = []
+        let orden = ordenes[i].dataValues
+
+        let ordenUser = {
+            user_id: orden.userUserId,
+            address: orden.address,
+            status: orden.status,
+            arrayItems: []
+        }
+
+
+
+        let items = ordenes[i].dataValues.order_items
+
+        for (let j = 0; j < items.length; j++) {
+
+            let product_id = items[j].dataValues.productId
+            let producto = await Product.findOne({ where: { id: product_id } })
+            ordenUser.arrayItems.push(producto.dataValues)
+        }
+
+        listaDordenes.push(ordenUser)
+        console.log(listaDordenes)
+    }
+
+
+    res.json(listaDordenes)
 })
 

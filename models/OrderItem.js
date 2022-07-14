@@ -18,6 +18,7 @@ const OrderItem = sequelize.define('order_item', {
 /// RELACION PRODUCT-CATEGORY
 const { product, order_item } = sequelize.models;
 
+
 OrderItem.belongsTo(Product)
 Product.hasMany(OrderItem)
 
