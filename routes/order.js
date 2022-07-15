@@ -63,7 +63,7 @@ router.get('/stateOrder', function (req, res) {
         MerchantOrder: req.query.merchant_order_id
     });
 });
-router.get('/respuestaMercado', function (req, res) {
+router.post('/respuestaMercado', function (req, res) {
 
 console.log(req)
 
