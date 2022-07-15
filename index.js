@@ -38,5 +38,28 @@ app.use('/', category)
 app.use('/products', product)
 
 
+//////////////---------MERCADO  PAGO-----------///////////////////
+
+app.post("/orderMercadoPago", async (req, res) => {
+    let { title, unit_price, quantity } = req.body
+    let preference = {
+        items: [
+            {
+                title: title,
+                unit_price: Number(unit_price),
+                quantity: Number(quantity),
+            }
+        ] 
+    }
+    const respuesta = await mercadopago.preferences.create(preference)
+    res.json(respuesta)
+});
+app.get('/feedback', function (req, res) {
+    res.json({
+        Payment: req.query.payment_id,
+        Status: req.query.status,
+        MerchantOrder: req.query.merchant_order_id
+    });
+});
 
 
