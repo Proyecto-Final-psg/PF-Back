@@ -3,11 +3,13 @@ const category = require('./routes/category');
 const product = require('./routes/product');
 const user = require('./routes/user')
 const order = require('./routes/order')
+const mercadoPago = require('./routes/mercadoPago')
 const app = express()
 const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
+
 ///////////////////////////-----DB------///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 ////////SERVIDOR////////
@@ -16,7 +18,7 @@ app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
 })
-///////////////////-------Jason Token------///////////////////////////////
+//////////////////////-------Jason Token------//////////////////////////////////////////////////////////////////////////////////
 var jwt = require('express-jwt');
 var jwks = require('jwks-rsa');
 const jwtCheck = jwt.expressjwt({
@@ -35,31 +37,8 @@ const jwtCheck = jwt.expressjwt({
 app.use('/', user)
 app.use('/', order)
 app.use('/', category)
+app.use('/', mercadoPago)
 app.use('/products', product)
-
-
 //////////////---------MERCADO  PAGO-----------///////////////////
-
-app.post("/orderMercadoPago", async (req, res) => {
-    let { title, unit_price, quantity } = req.body
-    let preference = {
-        items: [
-            {
-                title: title,
-                unit_price: Number(unit_price),
-                quantity: Number(quantity),
-            }
-        ] 
-    }
-    const respuesta = await mercadopago.preferences.create(preference)
-    res.json(respuesta)
-});
-app.get('/feedback', function (req, res) {
-    res.json({
-        Payment: req.query.payment_id,
-        Status: req.query.status,
-        MerchantOrder: req.query.merchant_order_id
-    });
-});
 
 

@@ -294,12 +294,12 @@
     {
         "name": "Luna Nueva",
         "type": "oil",
-        "categories": ["thc"],
+        "categories": ["cbd"],
         "img": "https://i.ibb.co/zJTNPJG/30.jpg",
         "price": 55,
-        "thc": 9,
+        "thc": 0,
         "cbd": 2,
-        "description": "blabla"
+        "description": "Los aceites de Luna Nueva no contienen THC. Los aceites de The LYF Labs CBD están elaborados en sus laboratorios bajo estrictos procesos de extracciones y filtrado, lo que garantiza que se mantengan todas las propiedades medicinales atribuidas de la planta. El objetivo de la empresa es conseguir la máxima pureza en sus productos; respetando el medio ambiente y proporcionando la mayor calidad a los clientes.The LYF Labs cultiva sus propias plantas de cáñamo ecológico de manera sostenible y sin ningún tipo de aditivos químicos ni OMG. Los aceites son 100% veganos."
     }
 ]
 }
