@@ -1,15 +1,19 @@
 const Order = require("../../models/Order")
 const OrderItem = require("../../models/OrderItem")
-const Product=require('../../models/Product')
+const Product = require('../../models/Product')
 const User = require('../../models/Users')
-// const { sequelize } = require('../../db/db')
-// const { QueryTypes } = require('sequelize');
+const { payOrder } = require('../mercadoPago/mercadoPago')
+
 module.exports = {
     createOrder: async (user_id, address, status, arrayItems) => {
+
+        let urlPago = await payOrder(arrayItems)
         let user = await User.findOne({ where: { user_id: user_id } })
+        console.log(urlPago)
         var nuevaOrder = await Order.create({
             "address": address,
-            "status": status
+            "status": status,
+            "urlPago": urlPago
         })
         nuevaOrder.setUser(user)
         // nuevaOrder.save()
@@ -22,7 +26,8 @@ module.exports = {
             orderItem.setProduct(product)
             orderItem.setOrder(nuevaOrder)
         }
-        return nuevaOrder
+
+        return urlPago
     },
     getOrders: async (user_id) => {
         let listaDordenes = []
@@ -50,5 +55,5 @@ module.exports = {
     },
     getAllOrders: async () => {
         return await Order.findAll()
-     }
+    }
 }

@@ -6,21 +6,21 @@ mercadopago.configure({
 });
 
 module.exports = {
-    payOrder: async (title, unit_price, quantity) => {
+    payOrder: async (arrayItems) => {
+        let items = arrayItems.map((e) => {
+            return {
+                title: "id" + e.product_id,
+                unit_price: e.price,
+                quantity: e.quantity,
+            }
+        })
         let preference = {
-            items: [
-                {
-                    title: title,
-                    unit_price: Number(unit_price),
-                    quantity: Number(quantity),
-                }
-            ]
+            items
         }
         const respuesta = await mercadopago.preferences.create(preference)
-            .then(data => console.log(data))
-        return respuesta
+        let retornaUrl = respuesta.body.init_point
+        return retornaUrl
     }
-
 }
 
 

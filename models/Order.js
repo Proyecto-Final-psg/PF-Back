@@ -10,6 +10,9 @@ const Order = sequelize.define('order', {
     status: {
         type: DataTypes.TEXT
     },
+    urlPago: {
+        type: DataTypes.STRING
+    },
 }, {
     // timestamps: true
 }
