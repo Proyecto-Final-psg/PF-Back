@@ -8,6 +8,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
 
+const mercadopago = require("mercadopago");
+// Agrega credenciales
+mercadopago.configure({
+    access_token: "TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944",
+});
+
+
 const Product = require('./models/Product')
 const Order = require('./models/Order')
 const OrderItem = require('./models/OrderItem')
@@ -43,7 +50,7 @@ app.use('/', user)
 app.use('/', category)
 app.use('/products', product)
 
-//////////////////////////
+//////////////////////////-------ORDENES---------------//////////////////////////////////////
 
 app.post('/addOrder', async (req, res) => {
     try {
@@ -55,10 +62,8 @@ app.post('/addOrder', async (req, res) => {
             "address": address,
             "status": status
         })
-
         nuevaOrder.setUser(user)
         // nuevaOrder.save()
-
         for (let i = 0; i < arrayItems.length; i++) {
 
             let orderItem = await OrderItem.create({
@@ -81,8 +86,6 @@ app.post('/addOrder', async (req, res) => {
         })
     }
 })
-
-
 
 app.get('/getOrders/:user_id', async (req, res) => {
     let { user_id } = req.params
@@ -111,17 +114,14 @@ app.get('/getOrders/:user_id', async (req, res) => {
                 let product_id = items[j].dataValues.productId
                 let producto = await Product.findOne({ where: { id: product_id } })
 
-              
-
                 producto.dataValues.quantity = items[j].dataValues.quantity
-
 
                 ordenUser.arrayItems.push(producto.dataValues)
             }
             listaDordenes.push(ordenUser)
-
         }
         res.json(listaDordenes)
+
     } catch (error) {
         console.log(error)
         return res.status(400).send({
@@ -129,7 +129,44 @@ app.get('/getOrders/:user_id', async (req, res) => {
             msg: error.message
         })
     }
-
-
 })
 
+
+
+
+//////////////---------MERCADO  PAGO-----------///////////////////
+
+app.post("/orderMercadoPago", async (req, res) => {
+
+    let { title, unit_price, quantity } = req.body
+
+
+
+
+    let preference = {
+
+        items: [
+            {
+                title: title,
+                unit_price: Number(unit_price),
+                quantity: Number(quantity),
+
+            }
+
+        ]
+       
+    }
+
+    const respuesta = await mercadopago.preferences.create(preference)
+    res.json(respuesta)
+
+});
+
+
+app.get('/feedback', function (req, res) {
+    res.json({
+        Payment: req.query.payment_id,
+        Status: req.query.status,
+        MerchantOrder: req.query.merchant_order_id
+    });
+});

@@ -29,8 +29,8 @@ router.get('/getAllUsers', async (req, res) => {
 router.post('/ath0log', async (req, res) => {
     try {
         let { email, name, token } = req.body
-        console.log(token)
-        let user_email = email
+        // console.log(token) 
+       let user_email = email
         let user_name = name
         let creado = await findOrCreate(user_email, user_name)
         res.json(creado)
