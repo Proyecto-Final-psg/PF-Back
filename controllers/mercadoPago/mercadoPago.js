@@ -9,13 +9,18 @@ module.exports = {
     payOrder: async (arrayItems) => {
         let items = arrayItems.map((e) => {
             return {
-                title: "id" + e.product_id,
-                unit_price: e.price,
-                quantity: e.quantity,
+                "id": e.product_id,
+                "title": "Mi producto",
+                "currency_id": "ARS",
+                "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
+                "description": "Descripción del Item",
+                "category_id": "art",
+                "quantity": e.quantity,
+                "unit_price": e.price
             }
         })
         let preference = {
-            items
+            items,
         }
         const respuesta = await mercadopago.preferences.create(preference)
         let retornaUrl = respuesta.body.init_point

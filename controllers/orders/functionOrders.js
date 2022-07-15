@@ -27,13 +27,10 @@ module.exports = {
                 orderItem.setProduct(product)
                 orderItem.setOrder(nuevaOrder)
             }
-
             return urlPago
         } else {
             return { res: "USER DONT EXIST" }
         }
-
-
     },
     getOrders: async (user_id) => {
         let listaDordenes = []
