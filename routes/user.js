@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { findAllUsers, findOrCreate, changeRole, addToCart, removeFromCart, userById, removeUser } = require('../controllers/users/functionsUser')
+const { findAllUsers, findOrCreate, changeRole, addToCart, removeFromCart, userById, removeUser, getUserCart } = require('../controllers/users/functionsUser')
 const router = Router();
 
 router.get('/users/:id', async (req, res) => {
@@ -69,13 +69,26 @@ router.put('/changeRoles', async (req, res) => {
 
 })
 
+router.get('/cart/:id',async (req, res) => {
+    let {id} = req.params
+    try {
+        const cart = await getUserCart(id)
+        console.log(cart)
+        res.json(cart)
+    } catch (error) {
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
+})
+
 
 router.post('/cart', async (req, res) => {
     let {user_id, product_id} = req.body
     try {
         const cart = await addToCart(user_id, product_id)
-        console.log(cart)
-        res.json('ruta cart')
+        res.json(cart)
     } catch (error) {
         return res.status(400).send({
             name: error.name,
@@ -88,8 +101,7 @@ router.delete('/cart', async (req, res) => {
     let {user_id, product_id} = req.body
     try {
         const cart = await removeFromCart(user_id, product_id)
-        console.log(cart)
-        res.json('ruta cart')
+        res.json(cart)
     } catch (error) {
         return res.status(400).send({
             name: error.name,
