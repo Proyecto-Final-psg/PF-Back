@@ -8,13 +8,7 @@ const cors = require("cors")
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }))
 app.use(cors())
-
-const Product = require('./models/Product')
-const Order = require('./models/Order')
-const OrderItem = require('./models/OrderItem')
-const User = require('./models/Users')
-
-//////////DB///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+///////////////////////////-----DB------///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const { sequelize } = require('./db/db')
 ////////SERVIDOR////////
 let port = process.env.PORT || 8081
@@ -22,7 +16,7 @@ app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
     sequelize.sync({ alter: true })
 })
-///////////////////Jason Token///////////////////////////////
+///////////////////-------Jason Token------///////////////////////////////
 var jwt = require('express-jwt');
 var jwks = require('jwks-rsa');
 const jwtCheck = jwt.expressjwt({
@@ -37,9 +31,7 @@ const jwtCheck = jwt.expressjwt({
     algorithms: ['RS256']
 }).unless({ path: ['/prueba'] })
 // app.use(jwtCheck);
-
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
 app.use('/', user)
 app.use('/', order)
 app.use('/', category)

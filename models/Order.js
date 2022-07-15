@@ -3,7 +3,6 @@ const { sequelize, DataTypes, Op } = require("../db/db") //siempre importo el mi
 const OrderItem = require('./OrderItem')
 const User = require('./Users')
 
-
 const Order = sequelize.define('order', {
     address: {
         type: DataTypes.TEXT
@@ -24,7 +23,5 @@ Order.belongsTo(User)
 
 Order.hasMany(OrderItem)
 OrderItem.belongsTo(Order)
-
-
 
 module.exports = Order

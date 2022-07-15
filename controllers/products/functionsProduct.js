@@ -27,14 +27,11 @@ const uploadCategories = async () => {
                 attributes: ["category"],
               }]
         });
-       
         const productsData = products.map(d => d.dataValues)
-      
         const allProducts = productsData.map(d =>{
             d.categories = d.categories.map(t => t.dataValues.category)   /// modifico los types para quitarlos del objeto
             return d
         })
-
         return allProducts
 }
  
@@ -67,8 +64,6 @@ const updateProduct = async (id, name, stock, price, img, type, description, thc
 
 const createProduct = async (name, stock, price, img, type, description, thc, cbd, categories) => {
         const newProduct = await Product.create({name, stock, price, img, type, description, thc, cbd})
-      
-
         for (let i = 0; i < categories.length; i++){  // creo la relacion en productCategory
             //let id = await Category.findAll({where : {category : categories[i]}, attributes : ['id']})
             let [newCategory, created] = await Category.findOrCreate({
@@ -76,10 +71,8 @@ const createProduct = async (name, stock, price, img, type, description, thc, cb
                 attributes : ['id'],
                 defaults :{category : categories[i]}
             })
-            
             await newProduct.addCategory(newCategory.id)
         }
-
         let productCreated = await Product.findByPk(newProduct.id,{
             include : [
                 {
@@ -91,10 +84,9 @@ const createProduct = async (name, stock, price, img, type, description, thc, cb
                 }
             ]
              }) 
-        
         const dataProd = productCreated.dataValues
         dataProd.categories = dataProd.categories.map(t => t.dataValues.category)  
-      
+        
         return dataProd
     }
 const getProductById = async (id) => {

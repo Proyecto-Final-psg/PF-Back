@@ -44,6 +44,4 @@ router.put('/category/:id', async (req, res) =>{
     }
 })
 
-
-
 module.exports = router

@@ -47,5 +47,4 @@ const { product, user } = sequelize.models;
 product.belongsToMany(user, { through: 'user_cart'})
 user.belongsToMany(product, { through: 'user_cart'})
 
-
 module.exports = User

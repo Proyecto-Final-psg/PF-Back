@@ -9,7 +9,6 @@ const Category = sequelize.define('categories', {
         // },
         allowNull : false
     },
-  
 },
 {
     // freezeTableName: true
