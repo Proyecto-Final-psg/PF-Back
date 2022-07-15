@@ -10,13 +10,14 @@ mercadopago.configure({
 ////////////////////////////////////////////////////////////////////////////////////////////
 router.post("/orderMercadoPago", async (req, res) => {
     let preference = {
+
         "items": [
             {
                 "id": "item-ID-1234",
                 "title": "Mi producto",
                 "currency_id": "ARS",
-                "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
-                "description": "Descripción del Item",
+                "picture_url": "https://i.ibb.co/yQPq6bK/7.jpg",
+                "description": "aca es donde ponemos toda la description del item puede ser larga",
                 "category_id": "art",
                 "quantity": 1,
                 "unit_price": 75.76
@@ -41,10 +42,11 @@ router.post("/orderMercadoPago", async (req, res) => {
             }
         },
         "back_urls": {
-            "success": "http://localhost:8081/feedback",
-            "failure": "http://localhost:8081/feedback",
-            "pending": "http://localhost:8081/feedback"
+            "success": "https://weedical.netlify.app/",
+            "failure": "https://weedical.netlify.app/",
+            "pending": "https://weedical.netlify.app/"
         },
+        "statement_descriptor": "MINEGOCIO",
     }
     const respuesta = await mercadopago.preferences.create(preference)
     res.json(respuesta)
@@ -54,7 +56,6 @@ router.get('/feedback', function (req, res) {
     console.log(req.query.payment_id)
     console.log(req.query.status)
     console.log(req.query.merchant_order_id)
-
     res.json({
         Payment: req.query.payment_id,
         Status: req.query.status,

@@ -21,6 +21,11 @@ module.exports = {
         })
         let preference = {
             items,
+            "back_urls": {
+                "success": "http://localhost:8081/feedback",
+                "failure": "http://localhost:8081/feedback",
+                "pending": "http://localhost:8081/feedback"
+            },
         }
         const respuesta = await mercadopago.preferences.create(preference)
         let retornaUrl = respuesta.body.init_point
