@@ -66,5 +66,23 @@ module.exports = {
     },
     getAllOrders: async () => {
         return await Order.findAll()
+    },
+    getOrderItem : async () => {
+        const items = await OrderItem.findAll()
+        const products = []
+
+        for(let i= 0; i < items.length; i++) {
+            let arrayItems = items[i].dataValues
+            let p = await Product.findByPk(arrayItems.productId, {attributes : ['name']})
+            let product = {
+                order_items_id : arrayItems.id,
+                product : p.name,
+                quantity : arrayItems.quantity,
+                price : arrayItems.price,
+                order : arrayItems.orderId
+            }
+            products.push(product)
+        }
+        return products
     }
 }
