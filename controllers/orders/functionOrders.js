@@ -1,40 +1,71 @@
 const Order = require("../../models/Order")
 const OrderItem = require("../../models/OrderItem")
 const Product=require('../../models/Product')
-const { sequelize } = require('../../db/db')
-const { QueryTypes } = require('sequelize');
+const User = require('../../models/Users')
+// const { sequelize } = require('../../db/db')
+// const { QueryTypes } = require('sequelize');
 module.exports = {
-    createOrder: async (user_id, addres, status) => {
+    createOrder: async (user_id, address, status, arrayItems) => {
 
-        const newOrder = await Order.create({ user_id, addres, status })
-        return newOrder
+        let user = await User.findOne({ where: { user_id: user_id } })
+
+        var nuevaOrder = await Order.create({
+            "address": address,
+            "status": status
+        })
+
+        nuevaOrder.setUser(user)
+        // nuevaOrder.save()
+
+        for (let i = 0; i < arrayItems.length; i++) {
+
+            let orderItem = await OrderItem.create({
+                quantity: arrayItems[i].quantity,
+                price: arrayItems[i].price
+            })
+            let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
+
+            orderItem.setProduct(product)
+
+            orderItem.setOrder(nuevaOrder)
+        }
+        return nuevaOrder
     },
-    OrderItem: async (nuevaOrden,quantity) => {
+    getOrders: async (user_id) => {
 
-       return await nuevaOrden.addProduct(2)
-      
-    }
+        let listaDordenes = []
+        let user = await User.findOne({ where: { user_id: user_id } })
+        let ordenes = await user.getOrders({ include: OrderItem })
 
-    // getCategories: async () => {
-    //     return await Category.findAll()
-    // },
-    // deleteCategory : async (id)=>{
-    //     let categoryDeleted = await Category.destroy({where : {id : id}})
-    //     return categoryDeleted
-    // },
-    // modifyCategory : async (newCategory, id)=>{
-    //     const categories = await Category.findAll()
-    //     const idFound = categories.filter(e => parseInt(e.id) === parseInt(id))
-    //     if(idFound.length > 0){
-    //         await Category.update({category : newCategory},
-    //             {
-    //                 where : {
-    //                     id : id
-    //                 }
-    //             })
-    //         return `the category has been modify to ${newCategory} `
-    //     } else {
-    //         return 'category not found'
-    //     }
-    // }
+        for (let i = 0; i < ordenes.length; i++) {
+
+            let orden = ordenes[i].dataValues
+
+            let ordenUser = {
+                order_id: orden.id,
+                user_id: orden.userUserId,
+                address: orden.address,
+                status: orden.status,
+                arrayItems: []
+            }
+
+            let items = ordenes[i].dataValues.order_items
+
+            for (let j = 0; j < items.length; j++) {
+
+                let product_id = items[j].dataValues.productId
+                let producto = await Product.findOne({ where: { id: product_id } })
+
+                producto.dataValues.quantity = items[j].dataValues.quantity
+
+                ordenUser.arrayItems.push(producto.dataValues)
+            }
+            listaDordenes.push(ordenUser)
+
+        }
+        return listaDordenes
+    },
+    getAllOrders: async () => {
+        return await Order.findAll()
+     }
 }
