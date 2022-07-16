@@ -7,10 +7,8 @@ const { payOrder } = require('../mercadoPago/mercadoPago')
 module.exports = {
     createOrder: async (user_id, address, status, arrayItems) => {
         let user = await User.findOne({ where: { user_id: user_id } })
-
         if (user) {
             let urlPago = await payOrder(arrayItems)
-            // console.log(urlPago)
             var nuevaOrder = await Order.create({
                 "address": address,
                 "status": status,

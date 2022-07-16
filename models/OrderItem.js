@@ -13,14 +13,10 @@ const OrderItem = sequelize.define('order_item', {
     // timestamps: true
 }
 );
-
-
 /// RELACION PRODUCT-CATEGORY
 const { product, order_item } = sequelize.models;
 
-
 OrderItem.belongsTo(Product)
 Product.hasMany(OrderItem)
-
 
 module.exports = OrderItem 

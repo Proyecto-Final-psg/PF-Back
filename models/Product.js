@@ -32,15 +32,11 @@ const Product = sequelize.define('product', {
   }
 }
 );
-
-
 /// RELACION PRODUCT-CATEGORY
 
 const { product, categories} = sequelize.models;
 
 product.belongsToMany(categories, { through: 'product_category' })
 categories.belongsToMany(product, { through: 'product_category' })
-
-
 
 module.exports = Product

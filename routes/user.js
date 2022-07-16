@@ -13,7 +13,6 @@ router.get('/users/:id', async (req, res) => {
         })
     }
 })
-
 router.delete('/users/:id', async (req, res) => {
     let{id} = req.params
     try {
@@ -25,7 +24,6 @@ router.delete('/users/:id', async (req, res) => {
         })
     }
 })
-
 router.get('/getAllUsers', async (req, res) => {
     try {
         res.json(await findAllUsers())
@@ -37,7 +35,6 @@ router.get('/getAllUsers', async (req, res) => {
         })
     }
 })
-
 router.post('/ath0log', async (req, res) => {
     let { email, name, token, img } = req.body
     try {
@@ -51,8 +48,6 @@ router.post('/ath0log', async (req, res) => {
         })
     }
 })
-
-
 router.put('/changeRoles', async (req, res) => {
     try {
         let { user_id, roll } = req.body
@@ -67,7 +62,6 @@ router.put('/changeRoles', async (req, res) => {
     }
 
 })
-
 router.get('/cart/:id',async (req, res) => {
     let {id} = req.params
     try {
@@ -81,8 +75,6 @@ router.get('/cart/:id',async (req, res) => {
         })
     }
 })
-
-
 router.post('/cart', async (req, res) => {
     let {user_id, product_id} = req.body
     try {
@@ -95,7 +87,6 @@ router.post('/cart', async (req, res) => {
         })
     }
 })
-
 router.delete('/cart', async (req, res) => {
     let {user_id, product_id} = req.body
     try {

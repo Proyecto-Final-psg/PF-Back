@@ -30,7 +30,6 @@ router.get('/uploadDb', async (req, res) => {
         } else {
             res.json('No se cargaron')
         }
-
     } catch (error) {
         res.status(401).json(error.message)
     }
@@ -60,7 +59,6 @@ router.post('/', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 router.put('/:id', async (req, res) => {
     let { id } = req.params
     let { name, stock, price, img, type, description, thc, cbd, categories } = req.body
@@ -70,7 +68,6 @@ router.put('/:id', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 router.post('/orderCbd/', async (req, res) => {
     let {category, setOrder} = req.body
     try {
@@ -80,7 +77,6 @@ router.post('/orderCbd/', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 router.post('/orderThc/', async (req, res) => {
     let {category, setOrder} = req.body
     try {
@@ -90,7 +86,6 @@ router.post('/orderThc/', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 router.post('/orderPrice/', async (req, res) => {
     let {category, setOrder} = req.body
     try {
@@ -116,7 +111,6 @@ router.delete('/:id', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 router.get('/filter/:category', async (req, res) => {
     try {
         const { category } = req.params

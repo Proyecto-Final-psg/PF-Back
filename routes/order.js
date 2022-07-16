@@ -1,5 +1,5 @@
-const {Router} = require('express')
-const {createOrder, getOrders, getAllOrders, getOrderItem} = require('../controllers/orders/functionOrders')
+const { Router } = require('express')
+const { createOrder, getOrders, getAllOrders, getOrderItem } = require('../controllers/orders/functionOrders')
 const router = Router();
 
 router.post('/addOrder', async (req, res) => {
@@ -27,6 +27,7 @@ router.get('/getAllOrders', async (req, res) => {
         })
     }
 })
+
 router.get('/getOrderItems', async (req, res) => {
     try {
         res.json(await getOrderItem())
@@ -34,7 +35,7 @@ router.get('/getOrderItems', async (req, res) => {
         res.status(400).send({
             name: error.name,
             msg: error.message
-        })  
+        })
     }
 })
 
@@ -50,13 +51,10 @@ router.get('/getOrders/:user_id', async (req, res) => {
         })
     }
 })
-
 router.get('/stateOrder', function (req, res) {
     console.log(req.query.payment_id)
     console.log(req.query.status)
     console.log(req.query.merchant_order_id)
-
-
     res.json({
         Payment: req.query.payment_id,
         Status: req.query.status,
@@ -64,10 +62,8 @@ router.get('/stateOrder', function (req, res) {
     });
 });
 router.post('/respuestaMercado', function (req, res) {
-
-console.log(req)
-
-    res.json("DONE");
+    console.log(req.query)
+    res.json(req.query);
 });
 
 

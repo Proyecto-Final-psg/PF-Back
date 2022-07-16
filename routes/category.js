@@ -11,7 +11,6 @@ router.get('/category', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 router.post('/category', async (req, res) => {
     let { category } = req.body
     try {
@@ -21,7 +20,6 @@ router.post('/category', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
 router.delete('/category/:id', async (req, res) =>{
     let { id } = req.params
     try {
@@ -31,7 +29,6 @@ router.delete('/category/:id', async (req, res) =>{
         res.status(401).json(error.message)
     }
 })
-
 // update category routes
 router.put('/category/:id', async (req, res) =>{
     let { id } = req.params
