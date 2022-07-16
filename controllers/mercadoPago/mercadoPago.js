@@ -22,9 +22,9 @@ module.exports = {
         let preference = {
             items,
             "back_urls": {
-                "success": "http://localhost:8081/feedback",
-                "failure": "http://localhost:8081/feedback",
-                "pending": "http://localhost:8081/feedback"
+                "success": "https://weedical.netlify.app/#/cart",
+                "failure": "https://weedical.netlify.app/#/cart",
+                "pending": "https://weedical.netlify.app/#/cart"
             },
         }
         const respuesta = await mercadopago.preferences.create(preference)
