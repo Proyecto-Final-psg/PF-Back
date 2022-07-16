@@ -6,7 +6,7 @@ const OrderItem = sequelize.define('order_item', {
         type: DataTypes.INTEGER
     },
     price: {
-        type: DataTypes.INTEGER,
+        type: DataTypes.FLOAT,
         
     },
 }, {
