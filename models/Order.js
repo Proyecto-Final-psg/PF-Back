@@ -8,7 +8,8 @@ const Order = sequelize.define('order', {
         type: DataTypes.TEXT
     },
     status: {
-        type: DataTypes.TEXT
+        type: DataTypes.TEXT,
+        defaultValue: "in Progress"
     },
     urlPago: {
         type: DataTypes.STRING
