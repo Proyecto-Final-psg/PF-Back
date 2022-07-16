@@ -7,7 +7,7 @@ const OrderItem = sequelize.define('order_item', {
     },
     price: {
         type: DataTypes.FLOAT,
-        
+
     },
 }, {
     // timestamps: true
