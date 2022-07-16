@@ -10,7 +10,7 @@ module.exports = {
 
         if (user) {
             let urlPago = await payOrder(arrayItems)
-            console.log(urlPago)
+            // console.log(urlPago)
             var nuevaOrder = await Order.create({
                 "address": address,
                 "status": status,
@@ -68,7 +68,6 @@ module.exports = {
     getOrderItem: async () => {
         const items = await OrderItem.findAll()
         const products = []
-
         for (let i = 0; i < items.length; i++) {
             let arrayItems = items[i].dataValues
             let p = await Product.findByPk(arrayItems.productId, { attributes: ['name'] })
