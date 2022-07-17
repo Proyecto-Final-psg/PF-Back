@@ -79,5 +79,11 @@ module.exports = {
             products.push(product)
         }
         return products
+    },
+    //
+    getItemsByOrder : async (id_order) => {
+        const order = await Order.findByPk(id_order, {include : OrderItem})
+        return order
     }
+    //
 }
