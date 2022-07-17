@@ -80,10 +80,8 @@ module.exports = {
         }
         return products
     },
-    //
-    getItemsByOrder : async (id_order) => {
-        const order = await Order.findByPk(id_order, {include : OrderItem})
+    getItemsByOrder : async (order_id) => {
+        const order = await Order.findByPk(order_id, {include : OrderItem})
         return order
     }
-    //
 }

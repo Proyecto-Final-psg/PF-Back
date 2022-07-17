@@ -39,10 +39,10 @@ router.get('/getOrderItems', async (req, res) => {
     }
 })
 //
-router. get('/getItemsByOrder/:orderId', async (req, res) => {
-    let {orderId} = req.params
+router. get('/getItemsByOrder/:orderid', async (req, res) => {
+    let {orderid} = req.params
     try {
-        res.json(await getItemsByOrder(orderId))
+        res.json(await getItemsByOrder(orderid))
     } catch (error) {
         res.status(400).send({
             name: error.name,
