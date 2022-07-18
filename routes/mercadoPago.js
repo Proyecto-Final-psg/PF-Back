@@ -53,6 +53,8 @@ router.post("/orderMercadoPago", async (req, res) => {
 });
 
 router.get('/feedback', function (req, res) {
+
+
     console.log(req.query.payment_id)
     console.log(req.query.status)
     console.log(req.query.merchant_order_id)
@@ -63,6 +65,10 @@ router.get('/feedback', function (req, res) {
     });
 });
 
+router.post('/notification', function (req, res) {
+console.log(req)
+  res.json("done")
+});
 
 
 module.exports = router
