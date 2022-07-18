@@ -14,6 +14,9 @@ const Order = sequelize.define('order', {
     urlPago: {
         type: DataTypes.STRING
     },
+    referencialId:{
+        type: DataTypes.INTEGER
+    }
 }, {
     // timestamps: true
 }

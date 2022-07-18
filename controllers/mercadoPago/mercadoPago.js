@@ -28,9 +28,13 @@ module.exports = {
             },
             "notification_url": "https://desarrollo-back.herokuapp.com/notification",
         }
-        const respuesta = await mercadopago.preferences.create(preference)
-        let retornaUrl = respuesta.body.init_point
-        return retornaUrl
+        const mercadoPado = await mercadopago.preferences.create(preference)
+        let retornaUrl = mercadoPado.body.init_point
+        let retorna = {
+            url: retornaUrl,
+            referencialId: mercadoPado.body.collector_id
+        }
+        return retorna
     }
 }
 
