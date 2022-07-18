@@ -4,6 +4,7 @@ const product = require('./routes/product');
 const user = require('./routes/user')
 const order = require('./routes/order')
 const mercadoPago = require('./routes/mercadoPago')
+const reviews = require('./routes/reviews')
 const app = express()
 const cors = require("cors")
 app.use(express.json());
@@ -39,6 +40,7 @@ app.use('/', order)
 app.use('/', category)
 app.use('/', mercadoPago)
 app.use('/products', product)
+app.use('/', reviews)
 //////////////---------MERCADO  PAGO-----------///////////////////
 
 

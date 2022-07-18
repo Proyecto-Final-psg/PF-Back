@@ -54,6 +54,7 @@ router.get('/search', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         let { name, stock, price, img, type, description, thc, cbd, categories } = req.body
+        
         res.json(await createProduct(name, stock, price, img, type, description, thc, cbd, categories))
     } catch (error) {
         res.status(401).json(error.message)

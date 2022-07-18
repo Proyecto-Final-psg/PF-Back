@@ -2,6 +2,7 @@
     {
         "name": "CBD-Full Spectrum",
         "type": "oil",
+        "stock": 54,
         "categories": ["cbd", "thc", "bho"],
         "img": "https://i.ibb.co/NrXzjVV/1.jpg",
         "price": 23,
@@ -11,6 +12,7 @@
     },
     {
         "name": "Santa Calma",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd"],
         "img": "https://i.ibb.co/MNhwL4G/2.jpg",
@@ -21,6 +23,7 @@
     },
     {
         "name": "CBG Drops",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd"],
         "img": "https://i.ibb.co/s1XNmY3/3.jpg",
@@ -31,6 +34,7 @@
     },
     {
         "name": "Tantrum",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd"],
         "img": "https://i.ibb.co/dp8JZ54/4.jpg",
@@ -41,6 +45,7 @@
     },
     {
         "name": "Cannabiterapia",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc"],
         "img": "https://i.ibb.co/bL498HN/5.jpg",
@@ -51,6 +56,7 @@
     },
     {
         "name": "Oil Broad Spectrum",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc"],
         "img": "https://i.ibb.co/fM6jPPc/6.jpg",
@@ -61,6 +67,7 @@
     },
     {
         "name": "CBD Drops Nordic",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "cbd"],
         "img": "https://i.ibb.co/yQPq6bK/7.jpg",
@@ -71,6 +78,7 @@
     },
     {
         "name": "My Cbd",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc"],
         "img": "https://i.ibb.co/6Fwqxr7/8.jpg",
@@ -81,6 +89,7 @@
     },
     {
         "name": "Full Spectrum Raw",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc"],
         "img": "https://i.ibb.co/1z2xrHJ/9.jpg",
@@ -91,6 +100,7 @@
     },
     {
         "name": "Medi Leaf",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd", "thc"],
         "img": "https://i.ibb.co/0GfVsdN/10.jpg",
@@ -101,6 +111,7 @@
     },
     {
         "name": "MamaSelvac Raw Hemp Pink",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc"],
         "img": "https://i.ibb.co/874WdGd/11.jpg",
@@ -111,6 +122,7 @@
     },
     {
         "name": "MamaSelvac Raw Hemp Green",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd"],
         "img": "https://i.ibb.co/gD9D30G/12.jpg",
@@ -121,6 +133,7 @@
     },
     {
         "name": "MamaSelvac Raw Hemp Blue",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd", "thc"],
         "img": "https://i.ibb.co/jHnZH59/13.jpg",
@@ -131,6 +144,7 @@
     },
     {
         "name": "My CBD Hemp",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd", "thc", "bho"],
         "img": "https://i.ibb.co/5jzNRSJ/14.jpg",
@@ -141,6 +155,7 @@
     },
     {
         "name": "Mediterra",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd", "thc", "bho"],
         "img": "https://i.ibb.co/kBmvB7T/15.jpg",
@@ -151,6 +166,7 @@
     },
     {
         "name": "Mediterra Berry",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc"],
         "img": "https://i.ibb.co/C6ThKxk/16.jpg",
@@ -161,6 +177,7 @@
     },
     {
         "name": "Mediterra Ultra Broad",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "cbd"],
         "img": "https://i.ibb.co/fMMQQqj/17.jpg",
@@ -171,6 +188,7 @@
     },
     {
         "name": "Mana Premium",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "cbd", "bho"],
         "img": "https://i.ibb.co/wLgY8zb/18.jpg",
@@ -181,6 +199,7 @@
     },
     {
         "name": "LyF White",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd"],
         "img": "https://i.ibb.co/qy3fkSR/19.jpg",
@@ -191,6 +210,7 @@
     },
     {
         "name": "LyF Black",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd", "thc"],
         "img": "https://i.ibb.co/xGjfZD4/20.jpg",
@@ -201,6 +221,7 @@
     },
     {
         "name": "Iguana Premium",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd", "thc"],
         "img": "https://i.ibb.co/kJs5PPN/21.jpg",
@@ -211,6 +232,7 @@
     },
     {
         "name": "Peace Bee",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd", "thc"],
         "img": "https://i.ibb.co/mS55cSw/22.jpg",
@@ -221,6 +243,7 @@
     },
     {
         "name": "Elysium",
+        "stock": 54,
         "type": "oil",
         "categories": ["bho"],
         "img": "https://i.ibb.co/B6cK9C1/23.jpg",
@@ -231,6 +254,7 @@
     },
     {
         "name": "Canapa-Co",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "bho"],
         "img": "https://i.ibb.co/prXgkYg/24.jpg",
@@ -242,6 +266,7 @@
 
     {
         "name": "Bove",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "bho", "cbd"],
         "img": "https://i.ibb.co/R6zcVPt/25.jpg",
@@ -252,6 +277,7 @@
     },
     {
         "name": "Sereniti",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "bho", "cbd"],
         "img": "https://i.ibb.co/fGT7md1/26.jpg",
@@ -263,6 +289,7 @@
 
     {
         "name": "Sleep",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "cbd"],
         "img": "https://i.ibb.co/0y8vr1r/27.jpg",
@@ -273,6 +300,7 @@
     },
     {
         "name": "Focus",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc", "cbd"],
         "img": "https://i.ibb.co/f1jqNzg/28.jpg",
@@ -283,6 +311,7 @@
     },
     {
         "name": "Balance",
+        "stock": 54,
         "type": "oil",
         "categories": ["thc"],
         "img": "https://i.ibb.co/7StZxQc/29.jpg",
@@ -293,6 +322,7 @@
     },
     {
         "name": "Luna Nueva",
+        "stock": 54,
         "type": "oil",
         "categories": ["cbd"],
         "img": "https://i.ibb.co/zJTNPJG/30.jpg",
