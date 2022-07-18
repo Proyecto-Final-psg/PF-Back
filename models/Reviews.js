@@ -1,7 +1,8 @@
-const { sequelize, DataTypes, Op } = require("../db/db") //siempre importo el mismo sequelize ya creado en db .
-const Product = require('./Product')
+const { DataTypes } = require('sequelize');
 
-const Reviews = sequelize.define('reviews', {
+module.exports = (sequelize) => {
+    // defino el modelo
+    sequelize.define('reviews', {
     name: {
         type: DataTypes.STRING
     },
@@ -11,14 +12,6 @@ const Reviews = sequelize.define('reviews', {
     review: {
         type: DataTypes.TEXT
     },
+  })
 }
-);
 
-// RELACION PRODUCT-CATEGORY
-
-//const { product } = sequelize.models;
-
-// Product.hasMany(Reviews)
-// Reviews.belongsTo(Product)
-
-module.exports = Reviews
