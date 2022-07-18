@@ -63,7 +63,6 @@ const updateProduct = async (id, name, stock, price, img, type, description, thc
 
 
 const createProduct = async (name, stock, price, img, type, description, thc, cbd, categories) => {
-    console.log(typeof price, typeof stock)
         const newProduct = await Product.create({
             name, 
             stock: parseInt(stock), 
