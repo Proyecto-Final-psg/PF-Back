@@ -37,6 +37,10 @@ const User = sequelize.define('user', {
     user_phone: {
         type: DataTypes.STRING,
         allowNull: true
+    },
+    block: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 }, {
     //timestamps: true

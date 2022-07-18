@@ -4,7 +4,7 @@ const Product = require("../../models/Product")
 const postReview = async (product_id, name, score, review) => {
    const product = await Product.findByPk(product_id) 
     if(product){
-        const reviewCreated = await reviews.create({name, score, review})
+        const reviewCreated = await reviews.create({name, score: parseInt(score), review})
         reviewCreated.setProduct(product)
         return 'review created successfully'
     }else{
