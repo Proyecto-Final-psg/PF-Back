@@ -20,13 +20,13 @@ router.post("/orderMercadoPago", async (req, res) => {
                 "description": "aca es donde ponemos toda la description del item puede ser larga",
                 "category_id": "art",
                 "quantity": 1,
-                "unit_price": 75.76
+                "unit_price": 90.76
             }
         ],
         "payer": {
-            "name": "martin",
-            "surname": "barreiro",
-            "email": "barreiromartinj@email.com",
+            "name": "juan",
+            "surname": "papeli",
+            "email": "barreiromart@email.com",
             "phone": {
                 "area_code": "11",
                 "number": 4444 - 4444
