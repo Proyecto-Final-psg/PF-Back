@@ -34,9 +34,12 @@ const Product = sequelize.define('product', {
 );
 /// RELACION PRODUCT-CATEGORY
 
-const { product, categories} = sequelize.models;
+const { product, categories, reviews} = sequelize.models;
 
 product.belongsToMany(categories, { through: 'product_category' })
 categories.belongsToMany(product, { through: 'product_category' })
+
+product.hasMany(reviews)
+reviews.belongsTo(product)
 
 module.exports = Product

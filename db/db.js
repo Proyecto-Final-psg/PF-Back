@@ -1,4 +1,6 @@
 const { Sequelize, DataTypes, Op } = require('sequelize');
+const reviews = require('../models/Reviews')
+
 const sequelize = new Sequelize({
     database: "d1olon79irc05k",
     username: "xhnhxkqzilphew",
@@ -18,10 +20,11 @@ const sequelize = new Sequelize({
   },);
 
 ///////////desarrollo////////
+reviews(sequelize)
 
-/////////////////////////////////////// si ponemos el logging en false no me muestra todo el sql de sequelize
+////////////////////////////////////// si ponemos el logging en false no me muestra todo el sql de sequelize
 
-module.exports = { sequelize, DataTypes, Op }
+module.exports = { sequelize, DataTypes, Op,  ...sequelize.models  }
 sequelize.authenticate()
     .then(() => console.log('conectados, postgress DB ok'))
     .catch(err => console.log('algo fallo postgress DB' + err))  //para ver si esta conetado sequelize con db
