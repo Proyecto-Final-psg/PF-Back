@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { findAllUsers, findOrCreate, changeRole, addToCart, removeFromCart, userById, removeUser, getUserCart } = require('../controllers/users/functionsUser')
+const { findAllUsers, findOrCreate, changeRole, addToCart, removeFromCart, userById, removeUser, getUserCart, blockUser } = require('../controllers/users/functionsUser')
 const router = Router();
 
 router.get('/users/:id', async (req, res) => {
@@ -24,6 +24,20 @@ router.delete('/users/:id', async (req, res) => {
         })
     }
 })
+
+router.put('/users/:id', async (req, res) => {
+    let{id} = req.params
+    try {
+        res.json(await blockUser(id))
+    } catch (error) {
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
+})
+
+
 router.get('/getAllUsers', async (req, res) => {
     try {
         res.json(await findAllUsers())
