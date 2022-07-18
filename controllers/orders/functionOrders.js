@@ -13,8 +13,7 @@ module.exports = {
             var nuevaOrder = await Order.create({
                 "address": address,
                 "status": status,
-                "urlPago": urlPago.url,
-                "referencialId": urlPago.referencialId
+                "urlPago": urlPago
             })
             nuevaOrder.setUser(user)
             // nuevaOrder.save()
@@ -27,7 +26,7 @@ module.exports = {
                 orderItem.setProduct(product)
                 orderItem.setOrder(nuevaOrder)
             }
-            return urlPago.url
+            return urlPago
         } else {
             return { res: "USER DONT EXIST" }
         }
@@ -82,29 +81,29 @@ module.exports = {
         }
         return products
     },
-    getItemsByOrder: async (order_id) => {
-        const order = await Order.findByPk(order_id, { include: OrderItem })
+    getItemsByOrder : async (order_id) => {
+        const order = await Order.findByPk(order_id, {include : OrderItem})
         return order
     },
     getTotalByUserByOrder: async () => {
-        const order = await Order.findAll({ include: OrderItem })
+        const order = await Order.findAll({include : OrderItem})
         const product = []
-        for (let i = 0; i < order.length; i++) {
+        for(let i =0; i < order.length; i++){
             let p = {
-                order_id: order[i].dataValues.id,
-                username: order[i].dataValues.userUserId,
-                total: 0
+                order_id : order[i].dataValues.id,
+                username : order[i].dataValues.userUserId,
+                total : 0
             }
             let order_items = order[i].dataValues.order_items
             let total = 0
-            for (let j = 0; j < order_items.length; j++) {
+            for(let j=0; j < order_items.length; j++) {
                 let price = order_items[j].dataValues.price
                 let quantity = order_items[j].dataValues.quantity
                 let totalByItem = price * quantity
                 total = totalByItem + total
                 p.total = total
             }
-            product.push(p)
+            product.push(p) 
         }
         return product
     }
