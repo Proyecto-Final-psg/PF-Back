@@ -63,7 +63,16 @@ const updateProduct = async (id, name, stock, price, img, type, description, thc
 
 
 const createProduct = async (name, stock, price, img, type, description, thc, cbd, categories) => {
-        const newProduct = await Product.create({name, stock, price, img, type, description, thc, cbd})
+    console.log(typeof price, typeof stock)
+        const newProduct = await Product.create({
+            name, 
+            stock: parseInt(stock), 
+            price: parseInt(price), 
+            img, 
+            type, 
+            description, 
+            thc: parseFloat(thc), 
+            cbd: parseFloat(cbd)})
         for (let i = 0; i < categories.length; i++){  // creo la relacion en productCategory
             //let id = await Category.findAll({where : {category : categories[i]}, attributes : ['id']})
             let [newCategory, created] = await Category.findOrCreate({
