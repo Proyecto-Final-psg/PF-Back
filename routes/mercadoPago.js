@@ -10,7 +10,6 @@ mercadopago.configure({
 ////////////////////////////////////////////////////////////////////////////////////////////
 router.post("/orderMercadoPago", async (req, res) => {
     let preference = {
-
         "items": [
             {
                 "id": "item-ID-1234",
@@ -47,25 +46,16 @@ router.post("/orderMercadoPago", async (req, res) => {
             "pending": "https://weedical.netlify.app/"
         },
         "statement_descriptor": "MINEGOCIO",
+        "notification_url": "https://desarrollo-back.herokuapp.com/notification",
     }
     const respuesta = await mercadopago.preferences.create(preference)
     res.json(respuesta)
 });
 
-router.get('/feedback', function (req, res) {
-    console.log(req.query.payment_id)
-    console.log(req.query.status)
-    console.log(req.query.merchant_order_id)
-    res.json({
-        Payment: req.query.payment_id,
-        Status: req.query.status,
-        MerchantOrder: req.query.merchant_order_id
-    });
-});
 
 router.post('/notification', function (req, res) {
-    console.log(req)
-    res.json("done")
+    console.log(req.body)
+    res.status(200).send("OK")
 });
 
 
