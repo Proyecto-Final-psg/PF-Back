@@ -66,8 +66,8 @@ router.get('/feedback', function (req, res) {
 });
 
 router.post('/notification', function (req, res) {
-console.log(req)
-  res.json("done")
+    console.log(req.query)
+    res.json("done")
 });
 
 
