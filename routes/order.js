@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { createOrder, getOrders, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder } = require('../controllers/orders/functionOrders')
+const { createOrder, getOrders, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder} = require('../controllers/orders/functionOrders')
 const router = Router();
 
 router.post('/addOrder', async (req, res) => {

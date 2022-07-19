@@ -1,5 +1,6 @@
 const express = require('express');
 const category = require('./routes/category');
+const mailer = require('./routes/mailer');
 const product = require('./routes/product');
 const user = require('./routes/user')
 const order = require('./routes/order')
@@ -35,10 +36,9 @@ const jwtCheck = jwt.expressjwt({
 // app.use(jwtCheck);
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.use('/', user)
+app.use('/', mailer)
 app.use('/', order)
 app.use('/', category)
 app.use('/', mercadoPago)
 app.use('/products', product)
 //////////////---------MERCADO  PAGO-----------///////////////////
-
-
