@@ -107,5 +107,29 @@ module.exports = {
             product.push(p)
         }
         return product
+    },
+    // address: {
+    //     type: DataTypes.TEXT
+    // },
+    // status: {
+    //     type: DataTypes.TEXT,
+    //     defaultValue: "in Progress"
+    // },
+    // urlPago: {
+    //     type: DataTypes.STRING
+    // },
+    // referencialId:{
+    //     type: DataTypes.INTEGER
+    // }
+    changeOrderStatus: async (order_id, status) => {
+        await Order.update(
+            {
+                status: status
+            },{
+                where: {
+                    id:order_id
+                }
+            })
+        return 'Orden actualizada'
     }
 }
