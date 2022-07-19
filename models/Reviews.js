@@ -4,7 +4,8 @@ module.exports = (sequelize) => {
     // defino el modelo
     sequelize.define('reviews', {
     name: {
-        type: DataTypes.STRING
+        type: DataTypes.STRING,
+        defaultValue: 'Anonymous'
     },
     score: {
         type: DataTypes.INTEGER,

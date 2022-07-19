@@ -25,6 +25,25 @@ module.exports = {
     userById: async (id) => {
         return await User.findByPk(id)
     },
+    blockUser: async (id) => {
+        const user = await User.findByPk(id);
+        if(!user) return  'The user does not exist'
+        if(user.block){
+          await User.update({ block: false }, {
+                where: {
+                    user_id: id
+                }
+            })
+        return "The user has been unblock"
+        }else{
+            await User.update({ block: true }, {
+            where: {
+                user_id: id
+            }
+            })
+            return 'The user has been block'
+        }
+    },
     addToCart: async (user_id, product_id) => {
         const user = await User.findByPk(user_id)
         const product = await Product.findByPk(product_id)
