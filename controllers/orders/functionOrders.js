@@ -65,6 +65,12 @@ module.exports = {
     getAllOrders: async () => {
         return await Order.findAll()
     },
+    deleteOrder: async (id) => {
+    const orderDeleted =  await Product.destroy({
+            where: {id: id}
+        })
+        return orderDeleted
+    },
     getOrderItem: async () => {
         const items = await OrderItem.findAll()
         const products = []

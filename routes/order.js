@@ -1,5 +1,5 @@
 const { Router } = require('express')
-const { createOrder, getOrders, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder } = require('../controllers/orders/functionOrders')
+const { createOrder, getOrders, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder, deleteOrder } = require('../controllers/orders/functionOrders')
 const router = Router();
 
 router.post('/addOrder', async (req, res) => {
@@ -87,5 +87,15 @@ router.post('/respuestaMercado', function (req, res) {
     res.json(req.query);
 });
 
+router.delete('/deleteOrder',async function (req, res) {
+    let { id } = req.query
+    console.log(id)
+    try {
+        res.json(await deleteOrder(id));
+    } catch (error) {
+        res.status(400).send({error: error.message});
+    }
+    
+});
 
 module.exports = router
