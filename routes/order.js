@@ -6,7 +6,6 @@ router.post('/addOrder', async (req, res) => {
     let { user_id, address, status, arrayItems } = req.body
     try {
         res.json(await createOrder(user_id, address, status, arrayItems))
-
         // res.json("Order cargada correctamente")
     } catch (error) {
         console.log(error)
