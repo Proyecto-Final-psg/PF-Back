@@ -73,24 +73,12 @@ module.exports = {
             let productos = []
             let orden = await Order.findOne({ where: { id: order_id }, include: OrderItem })
             let items = orden.order_items
-
-            for (let i = 0; i < items.length; i++) {
-                let productId = items[i].dataValues.productId
-                let productoBuscado = await Product.findOne({ where: { id: productId } })
-                console.log(productoBuscado.dataValues)
-                let product = {
-                    name: productoBuscado.dataValues.name,
-                    img: productoBuscado.dataValues.img,
-                    priceOfSale: items[i].dataValues.price,
-                    description: productoBuscado.dataValues.description,
-                    type: productoBuscado.dataValues.type,
-                    quantity:items[i].dataValues.quantity
-                }
-                productos.push(product)
-            }
+            items.forEach(e => {
+                productos.push(e)
+            });
             let ordenRespuesta = {
                 orden: result,
-                productos: productos
+                productos: [productos]
             }
             return ordenRespuesta
         } else {
@@ -98,7 +86,9 @@ module.exports = {
         }
     },
     getAllOrders: async () => {
-        let ordenes = await Order.findAll({ include: User })
+        let ordenes = await Order.findAll({ 
+            include: User, 
+            order: [['id', 'desc']] })
         return ordenes
     },
     getOrderItem: async () => {
@@ -144,6 +134,19 @@ module.exports = {
         }
         return product
     },
+    // address: {
+    //     type: DataTypes.TEXT
+    // },
+    // status: {
+    //     type: DataTypes.TEXT,
+    //     defaultValue: "in Progress"
+    // },
+    // urlPago: {
+    //     type: DataTypes.STRING
+    // },
+    // referencialId:{
+    //     type: DataTypes.INTEGER
+    // }
     changeOrderStatus: async (order_id, status) => {
         await Order.update(
             {
