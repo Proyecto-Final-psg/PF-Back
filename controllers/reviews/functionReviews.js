@@ -1,11 +1,14 @@
 const {reviews} = require("../../db/db")
 const Product = require("../../models/Product")
+const User = require("../../models/Users")
 
-const postReview = async (product_id, name, score, review) => {
+const postReview = async (product_id, user_id, name, score, review) => {
    const product = await Product.findByPk(product_id) 
+   const user = await User.findByPk(user_id) 
     if(product){
         const reviewCreated = await reviews.create({name, score: parseInt(score), review})
         reviewCreated.setProduct(product)
+        reviewCreated.setUser(user)
         return 'review created successfully'
     }else{
         return "The product doesn't exist"
@@ -34,5 +37,17 @@ const deleteReview = async (id) => {
      }
 }
 
+const getReviewsUser = async (id) => {
+    const user = await User.findByPk(id) 
+    console.log(user)
+     if(user){
+         const userReviews = await user.getReviews()
+         console.log(userReviews)
+         return userReviews
+     }else{
+         return "The product doesn't exist"
+     }
+}
 
-module.exports = { postReview, getReviews, deleteReview };
+
+module.exports = { postReview, getReviews, deleteReview, getReviewsUser };
