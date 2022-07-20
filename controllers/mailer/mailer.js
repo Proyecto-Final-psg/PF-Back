@@ -1,5 +1,5 @@
 const nodemailer = require('nodemailer')
-const password = 'Weed1234'
+const password = 'prtayqejhudxccsl'
 
 const transporter = nodemailer.createTransport({
     host: "smtp.gmail.com",
