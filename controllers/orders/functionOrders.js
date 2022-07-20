@@ -74,19 +74,17 @@ module.exports = {
             let orden = await Order.findOne({ where: { id: order_id }, include: OrderItem })
             let items = orden.order_items
 
-
             for (let i = 0; i < items.length; i++) {
                 let productId = items[i].dataValues.productId
-
                 let productoBuscado = await Product.findOne({ where: { id: productId } })
-
                 console.log(productoBuscado.dataValues)
                 let product = {
                     name: productoBuscado.dataValues.name,
                     img: productoBuscado.dataValues.img,
                     priceOfSale: items[i].dataValues.price,
                     description: productoBuscado.dataValues.description,
-                    type: productoBuscado.dataValues.type
+                    type: productoBuscado.dataValues.type,
+                    quantity:items[i].dataValues.quantity
                 }
                 productos.push(product)
             }
