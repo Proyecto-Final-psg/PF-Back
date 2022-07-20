@@ -19,6 +19,7 @@ router.post('/addOrder', async (req, res) => {
 })
 
 router.get('/getAllOrders', async (req, res) => {
+    
     try {
         res.json(await getAllOrders())
     } catch (error) {

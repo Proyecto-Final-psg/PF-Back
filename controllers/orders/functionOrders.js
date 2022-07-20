@@ -36,9 +36,12 @@ module.exports = {
         let user = await User.findOne({ where: { user_id: user_id } })
         if (user) {
             let ordenes = await user.getOrders({ include: OrderItem })
+            console.log(user.user_name)
             for (let i = 0; i < ordenes.length; i++) {
                 let orden = ordenes[i].dataValues
                 let ordenUser = {
+                    user_name: user.user_name,
+                    user_email: user.user_email,
                     order_id: orden.id,
                     user_id: orden.userUserId,
                     address: orden.address,
@@ -62,7 +65,17 @@ module.exports = {
         }
     },
     getAllOrders: async () => {
-        return await Order.findAll()
+
+        let ordenes = await Order.findAll({ include: User})
+
+
+
+
+        return ordenes
+
+
+
+
     },
     getOrderItem: async () => {
         const items = await OrderItem.findAll()
@@ -81,29 +94,29 @@ module.exports = {
         }
         return products
     },
-    getItemsByOrder : async (order_id) => {
-        const order = await Order.findByPk(order_id, {include : OrderItem})
+    getItemsByOrder: async (order_id) => {
+        const order = await Order.findByPk(order_id, { include: OrderItem })
         return order
     },
     getTotalByUserByOrder: async () => {
-        const order = await Order.findAll({include : OrderItem})
+        const order = await Order.findAll({ include: OrderItem })
         const product = []
-        for(let i =0; i < order.length; i++){
+        for (let i = 0; i < order.length; i++) {
             let p = {
-                order_id : order[i].dataValues.id,
-                username : order[i].dataValues.userUserId,
-                total : 0
+                order_id: order[i].dataValues.id,
+                username: order[i].dataValues.userUserId,
+                total: 0
             }
             let order_items = order[i].dataValues.order_items
             let total = 0
-            for(let j=0; j < order_items.length; j++) {
+            for (let j = 0; j < order_items.length; j++) {
                 let price = order_items[j].dataValues.price
                 let quantity = order_items[j].dataValues.quantity
                 let totalByItem = price * quantity
                 total = totalByItem + total
                 p.total = total
             }
-            product.push(p) 
+            product.push(p)
         }
         return product
     },
@@ -124,11 +137,11 @@ module.exports = {
         await Order.update(
             {
                 status: status
-            },{
-                where: {
-                    id:order_id
-                }
-            })
+            }, {
+            where: {
+                id: order_id
+            }
+        })
         return 'Orden actualizada'
     }
 }
