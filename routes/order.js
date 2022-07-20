@@ -1,6 +1,6 @@
 const { Router } = require('express')
 
-const { createOrder, getOrders, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder, changeOrderStatus } = require('../controllers/orders/functionOrders')
+const { createOrder, getOrders, getOrderById, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder, changeOrderStatus } = require('../controllers/orders/functionOrders')
 
 const router = Router();
 
@@ -19,7 +19,7 @@ router.post('/addOrder', async (req, res) => {
 })
 
 router.get('/getAllOrders', async (req, res) => {
-    
+
     try {
         res.json(await getAllOrders())
     } catch (error) {
@@ -51,8 +51,8 @@ router.get('/getTotalByUserByOrder', async (req, res) => {
     }
 })
 //
-router. get('/getItemsByOrder/:orderid', async (req, res) => {
-    let {orderid} = req.params
+router.get('/getItemsByOrder/:orderid', async (req, res) => {
+    let { orderid } = req.params
     try {
         res.json(await getItemsByOrder(orderid))
     } catch (error) {
@@ -67,6 +67,18 @@ router.get('/getOrders/:user_id', async (req, res) => {
     let { user_id } = req.params
     try {
         res.json(await getOrders(user_id))
+    } catch (error) {
+        console.log(error)
+        return res.status(400).send({
+            name: error.name,
+            msg: error.message
+        })
+    }
+})
+router.get('/getOrdersByid/:order_id', async (req, res) => {
+    let { order_id } = req.params
+    try {
+        res.json(await getOrderById(order_id))
     } catch (error) {
         console.log(error)
         return res.status(400).send({
@@ -90,11 +102,11 @@ router.post('/respuestaMercado', function (req, res) {
     res.json(req.query);
 });
 
-router.put('/update-order', async (req, res) =>{
+router.put('/update-order', async (req, res) => {
     console.log('updating order');
-    const {id,status} = req.query
+    const { id, status } = req.query
     // console.log(id, status);
-    res.json(await changeOrderStatus(id,status))    
+    res.json(await changeOrderStatus(id, status))
 })
 
 

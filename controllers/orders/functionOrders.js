@@ -64,18 +64,30 @@ module.exports = {
             return { res: "USER DONT EXIST" }
         }
     },
+    getOrderById: async (order_id) => {
+        const result = await Order.findOne({
+            where: { id: order_id },
+            include: User,
+        });
+        if (result) {
+            let productos = []
+            let orden = await Order.findOne({ where: { id: order_id }, include: OrderItem })
+            let items = orden.order_items
+            items.forEach(e => {
+                productos.push(e)
+            });
+            let ordenRespuesta = {
+                orden: result,
+                productos: [productos]
+            }
+            return ordenRespuesta
+        } else {
+            return { res: "ORDER DONT EXIST" }
+        }
+    },
     getAllOrders: async () => {
-
-        let ordenes = await Order.findAll({ include: User})
-
-
-
-
+        let ordenes = await Order.findAll({ include: User })
         return ordenes
-
-
-
-
     },
     getOrderItem: async () => {
         const items = await OrderItem.findAll()
