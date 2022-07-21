@@ -157,5 +157,11 @@ module.exports = {
             }
         })
         return 'Orden actualizada'
+    },
+    deleteOrder : async (id) => {
+        await Order.destroy({
+            where: {id: id}
+        })
+        return `the order was successfully deleted`
     }
 }
