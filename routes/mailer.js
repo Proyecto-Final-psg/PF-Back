@@ -11,7 +11,7 @@ router.post('/mail', async (req, res) => {
         } catch (error) {
             console.log(error)
         }
-    } else if (status === 'in progress'){
+    } else if (status === 'inprogress'){
         try {
             await message2(userid, order, status)
             res.json('mail send')
