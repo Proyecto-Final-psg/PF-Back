@@ -14,8 +14,11 @@ const Order = sequelize.define('order', {
     urlPago: {
         type: DataTypes.STRING
     },
-    referencialId:{
+    referencialId: {
         type: DataTypes.INTEGER
+    },
+    user_email: {
+        type: DataTypes.STRING,
     }
 }, {
     // timestamps: true

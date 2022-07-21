@@ -6,29 +6,28 @@ const User = require('../../models/Users')
 const { payOrder } = require('../mercadoPago/mercadoPago')
 
 module.exports = {
-    createOrder: async (user_id, address, status, arrayItems) => {
-        let user = await User.findOne({ where: { user_id: user_id } })
-        if (user) {
-            let urlPago = await payOrder(arrayItems)
-            var nuevaOrder = await Order.create({
-                "address": address,
-                "status": status,
-                "urlPago": urlPago
+    createOrder: async (user_id, address, status, email, arrayItems) => {
+        if (user_id) {
+            var user = await User.findOne({ where: { user_id: user_id } })
+        }
+        let urlPago = await payOrder(arrayItems)
+        var nuevaOrder = await Order.create({
+            "address": address,
+            "status": status,
+            "urlPago": urlPago,
+            "user_email": email
+        })
+        nuevaOrder.setUser(user)
+        // nuevaOrder.save()
+        for (let i = 0; i < arrayItems.length; i++) {
+            let orderItem = await OrderItem.create({
+                quantity: arrayItems[i].quantity,
+                price: arrayItems[i].price
             })
-            nuevaOrder.setUser(user)
-            // nuevaOrder.save()
-            for (let i = 0; i < arrayItems.length; i++) {
-                let orderItem = await OrderItem.create({
-                    quantity: arrayItems[i].quantity,
-                    price: arrayItems[i].price
-                })
-                let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
-                orderItem.setProduct(product)
-                orderItem.setOrder(nuevaOrder)
-            }
+            let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
+            orderItem.setProduct(product)
+            orderItem.setOrder(nuevaOrder)
             return urlPago
-        } else {
-            return { res: "USER DONT EXIST" }
         }
     },
     getOrders: async (user_id) => {
