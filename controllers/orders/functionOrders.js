@@ -84,7 +84,7 @@ module.exports = {
                     priceOfSale: items[i].dataValues.price,
                     description: productoBuscado.dataValues.description,
                     type: productoBuscado.dataValues.type,
-                    quantity:items[i].dataValues.quantity
+                    quantity: items[i].dataValues.quantity
                 }
                 productos.push(product)
             }
