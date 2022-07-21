@@ -19,23 +19,26 @@ module.exports = {
         })
         nuevaOrder.setUser(user)
         // nuevaOrder.save()
+        console.log(arrayItems)
         for (let i = 0; i < arrayItems.length; i++) {
             let orderItem = await OrderItem.create({
                 quantity: arrayItems[i].quantity,
                 price: arrayItems[i].price
             })
             let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
+            console.log(product)
             orderItem.setProduct(product)
             orderItem.setOrder(nuevaOrder)
-            return urlPago
+
         }
+        return urlPago
     },
     getOrders: async (user_id) => {
         let listaDordenes = []
         let user = await User.findOne({ where: { user_id: user_id } })
         if (user) {
             let ordenes = await user.getOrders({ include: OrderItem })
-            console.log(user.user_name)
+            console.log(ordenes)
             for (let i = 0; i < ordenes.length; i++) {
                 let orden = ordenes[i].dataValues
                 let ordenUser = {
@@ -49,15 +52,18 @@ module.exports = {
                     arrayItems: []
                 }
                 let items = ordenes[i].dataValues.order_items
+
                 for (let j = 0; j < items.length; j++) {
                     let product_id = items[j].dataValues.productId
                     let producto = await Product.findOne({ where: { id: product_id } })
                     producto.dataValues.quantity = items[j].dataValues.quantity
+
                     ordenUser.arrayItems.push(producto.dataValues)
                 }
                 listaDordenes.push(ordenUser)
+
             }
-            return listaDordenes
+            return listaDordenes 
         }
         else {
             return { res: "USER DONT EXIST" }
@@ -68,7 +74,7 @@ module.exports = {
             where: { id: order_id },
             include: User,
         });
-        console.log(result)
+
         if (result) {
             let productos = []
             let orden = await Order.findOne({ where: { id: order_id }, include: OrderItem })
