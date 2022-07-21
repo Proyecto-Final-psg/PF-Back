@@ -68,6 +68,7 @@ module.exports = {
             where: { id: order_id },
             include: User,
         });
+        console.log(result)
         if (result) {
             let productos = []
             let orden = await Order.findOne({ where: { id: order_id }, include: OrderItem })
