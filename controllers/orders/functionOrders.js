@@ -98,7 +98,9 @@ module.exports = {
         }
     },
     getAllOrders: async () => {
-        let ordenes = await Order.findAll({ include: User })
+        let ordenes = await Order.findAll({ 
+            include: User,
+            order: [['id', 'desc']] })
         return ordenes
     },
     getOrderItem: async () => {
