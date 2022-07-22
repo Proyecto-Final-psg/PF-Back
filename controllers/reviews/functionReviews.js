@@ -2,10 +2,11 @@ const {reviews} = require("../../db/db")
 const Product = require("../../models/Product")
 const User = require("../../models/Users")
 
-const postReview = async (product_id, user_id, name, score, review) => {
+const postReview = async (product_id, user_id, name, score, review, id) => {
    const product = await Product.findByPk(product_id) 
    const user = await User.findByPk(user_id) 
-    if(product){
+   const ruv = await reviews.findByPk(id)
+    if(product && !ruv){
         const reviewCreated = await reviews.create({name, score: parseInt(score), review})
         reviewCreated.setProduct(product)
         reviewCreated.setUser(user)
