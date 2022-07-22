@@ -132,15 +132,17 @@ module.exports = {
         return order
     },
     getTotalByUserByOrder: async () => {
-        const order = await Order.findAll({ include: OrderItem })
+        const order = await Order.findAll({ include: OrderItem, User })
         const product = []
         for (let i = 0; i < order.length; i++) {
             let p = {
                 order_id: order[i].dataValues.id,
-                username: order[i].dataValues.userUserId,
+                user: await User.findByPk(order[i].dataValues.userUserId) ,
+                username: order[i].dataValues.user_email,
                 total: 0
             }
             let order_items = order[i].dataValues.order_items
+            console.log(order_items);
             let total = 0
             for (let j = 0; j < order_items.length; j++) {
                 let price = order_items[j].dataValues.price
