@@ -1,6 +1,6 @@
 const { Router } = require('express')
 
-const { createOrder, getOrders, getOrderById, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder, changeOrderStatus } = require('../controllers/orders/functionOrders')
+const { createOrder, getOrders, getOrderById, getAllOrders, getOrderItem, getItemsByOrder, getTotalByUserByOrder, changeOrderStatus, deleteOrder } = require('../controllers/orders/functionOrders')
 
 const router = Router();
 
@@ -107,5 +107,15 @@ router.put('/update-order', async (req, res) => {
     res.json(await changeOrderStatus(id, status))
 })
 
+router.delete('/deleteOrder/:id', async (req, res) => {
+
+    const { id } = req.params
+    try {
+        res.json(await deleteOrder(id))
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
+    
+})
 
 module.exports = router
