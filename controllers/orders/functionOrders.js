@@ -52,7 +52,6 @@ module.exports = {
                     arrayItems: []
                 }
                 let items = ordenes[i].dataValues.order_items
-
                 for (let j = 0; j < items.length; j++) {
                     let product_id = items[j].dataValues.productId
                     let producto = await Product.findOne({ where: { id: product_id } })
@@ -61,9 +60,8 @@ module.exports = {
                     ordenUser.arrayItems.push(producto.dataValues)
                 }
                 listaDordenes.push(ordenUser)
-
             }
-            return listaDordenes 
+            return listaDordenes
         }
         else {
             return { res: "USER DONT EXIST" }

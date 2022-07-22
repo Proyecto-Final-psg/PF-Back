@@ -100,8 +100,9 @@ router.post('/respuestaMercado', function (req, res) {
 });
 
 router.put('/update-order', async (req, res) => {
-    console.log('updating order');
+
     const { id, status } = req.query
+    console.log(id, status)
     // console.log(id, status);
     res.json(await changeOrderStatus(id, status))
 })

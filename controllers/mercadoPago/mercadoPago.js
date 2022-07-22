@@ -7,18 +7,35 @@ mercadopago.configure({
 
 module.exports = {
     payOrder: async (arrayItems) => {
-        let items = arrayItems.map((e) => {
-            return {
-                "id": e.product_id,
-                "title": "Mi producto",
-                "currency_id": "ARS",
-                "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
-                "description": "Descripción del Item",
-                "category_id": "art",
-                "quantity": e.quantity,
-                "unit_price": e.price
-            }
+        let total = 0
+        arrayItems.map((e) => {
+            total += e.price
         })
+        // let items = arrayItems.map((e) => {
+        //     return {
+        //         "id": e.product_id,
+        //         "title": "Mi producto",
+        //         "currency_id": "ARS",
+        //         "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
+        //         "description": "Descripción del Item",
+        //         "category_id": "art",
+        //         "quantity": e.quantity,
+        //         "unit_price": 50
+        //     }
+        // })
+        // })
+        let items = {
+            "id": e.product_id,
+            "title": "Mi producto",
+            "currency_id": "ARS",
+            "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
+            "description": "Descripción del Item",
+            "category_id": "art",
+            "quantity": e.quantity,
+            "unit_price": total
+        }
+
+
         let preference = {
             items,
             "back_urls": {
