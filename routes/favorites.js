@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router();
-const {getAllFavorites, addFavorite, removeFavorite} = require('../controllers/favorites/functionFavorites')
+const {getAllFavorites, addFavorite, removeFavorite, getFavoritesUser, myfunct} = require('../controllers/favorites/functionFavorites')
 
 router.get('/favorites', async (req, res) => {
     try {
@@ -10,7 +10,25 @@ router.get('/favorites', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-
+///// ruta prueba
+router.get('/myfunct', async (req, res) => {
+    try {
+        res.json(await myfunct())
+    } catch (error) {
+        console.log(error)
+        res.status(401).json(error.message)
+    }
+})
+//////
+router.get('/favoritebyuser/:user_id', async (req, res) => {
+    let {user_id} = req.params
+    try {
+        res.json(await getFavoritesUser(user_id))
+    } catch (error) {
+        console.log(error)
+        res.status(401).json(error.message)
+    }
+})
 router.post('/addfavorites', async (req, res) => {
     let {product_id, user_id} = req.body
     try {
