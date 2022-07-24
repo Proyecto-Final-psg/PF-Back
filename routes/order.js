@@ -103,8 +103,9 @@ router.put('/update-order', async (req, res) => {
 
     const { id, status } = req.query
     console.log(id, status)
-    // console.log(id, status);
+
     res.json(await changeOrderStatus(id, status))
+
 })
 
 router.delete('/deleteOrder/:id', async (req, res) => {
@@ -115,7 +116,7 @@ router.delete('/deleteOrder/:id', async (req, res) => {
     } catch (error) {
         res.status(400).json(error.message)
     }
-    
+
 })
 
 module.exports = router

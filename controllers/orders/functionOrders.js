@@ -19,7 +19,7 @@ module.exports = {
         })
         nuevaOrder.setUser(user)
         // nuevaOrder.save()
-        console.log(arrayItems)
+
         for (let i = 0; i < arrayItems.length; i++) {
             let orderItem = await OrderItem.create({
                 quantity: arrayItems[i].quantity,
@@ -27,8 +27,8 @@ module.exports = {
             })
             let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
             // console.log(product.dataValues.id)
-            let p = product.dataValues.stock-orderItem.quantity
-            await Product.update({stock : p}, {where : {id : product.dataValues.id}})
+            let p = product.dataValues.stock - orderItem.quantity
+            await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
             // console.log(product.dataValues.stock-orderItem.quantity)
             orderItem.setProduct(product)
             orderItem.setOrder(nuevaOrder)
@@ -138,7 +138,7 @@ module.exports = {
         for (let i = 0; i < order.length; i++) {
             let p = {
                 order_id: order[i].dataValues.id,
-                user: await User.findByPk(order[i].dataValues.userUserId) ,
+                user: await User.findByPk(order[i].dataValues.userUserId),
                 username: order[i].dataValues.user_email,
                 total: 0
             }
@@ -157,30 +157,40 @@ module.exports = {
         return product
     },
     changeOrderStatus: async (order_id, status) => {
-        let items = await OrderItem.findAll({where : {orderId : order_id}})
-        if(status === 'canceled'){
-            for(let i= 0; i<items.length; i++){
-                const orderQty =items[i].dataValues
-                let product = await Product.findOne({ where: { id: items[i].dataValues.id}})
-                let p = product.dataValues.stock+orderQty.quantity
-                await Product.update({stock : p}, {where : {id : product.dataValues.id}})
+        let items = await OrderItem.findAll({ where: { orderId: order_id } })
+
+        if (status === 'canceled') {
+            for (let i = 0; i < items.length; i++) {
+                const orderQty = items[i].dataValues
+                let product = await Product.findOne({ where: { id: items[i].dataValues.productId } })
+                let p = product.dataValues.stock + orderQty.quantity
+                await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
             }
         }
+        // if (status === 'canceled') {
+
+        //     let items = await Order.findOne({ where: { id: order_id }, include: OrderItem })
+        //     let arryItems = items.order_items
+        //     for (let i = 0; i < arryItems.length; i++) {
+        //         console.log(arryItems[i].dataValues.productId)
+
+        //     }
+        //     return items.order_items
+        // }
         await Order.update(
             {
                 status: status
             }, {
-                where: {
-                    id: order_id
-                }
-            })
-            
-            
+            where: {
+                id: order_id
+            }
+        })
         return 'Orden actualizada'
     },
-    deleteOrder : async (id) => {
+
+    deleteOrder: async (id) => {
         await Order.destroy({
-            where: {id: id}
+            where: { id: id }
         })
         return `the order was successfully deleted`
     }
