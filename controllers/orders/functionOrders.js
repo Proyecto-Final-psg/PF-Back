@@ -166,7 +166,6 @@ module.exports = {
                 let p = product.dataValues.stock + orderQty.quantity
                 await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
             }
-
         }
         if (order.dataValues.status === "canceled" && status === 'inprogress') {
             for (let i = 0; i < items.length; i++) {
@@ -175,7 +174,6 @@ module.exports = {
                 let p = product.dataValues.stock - orderQty.quantity
                 await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
             }
-
         }
         if (order.dataValues.status === "canceled" && status === 'completed') {
             for (let i = 0; i < items.length; i++) {
@@ -184,18 +182,7 @@ module.exports = {
                 let p = product.dataValues.stock - orderQty.quantity
                 await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
             }
-
         }
-
-        // if (status === 'canceled') {
-        //     for (let i = 0; i < items.length; i++) {
-        //         const orderQty = items[i].dataValues
-        //         let product = await Product.findOne({ where: { id: items[i].dataValues.productId } })
-        //         let p = product.dataValues.stock + orderQty.quantity
-        //         await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
-        //     }
-        // }
-
         await Order.update(
             {
                 status: status
