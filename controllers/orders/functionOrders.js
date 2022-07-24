@@ -26,7 +26,10 @@ module.exports = {
                 price: arrayItems[i].price
             })
             let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
-            console.log(product)
+            // console.log(product.dataValues.id)
+            let p = product.dataValues.stock-orderItem.quantity
+            await Product.update({stock : p}, {where : {id : product.dataValues.id}})
+            // console.log(product.dataValues.stock-orderItem.quantity)
             orderItem.setProduct(product)
             orderItem.setOrder(nuevaOrder)
 
@@ -154,14 +157,25 @@ module.exports = {
         return product
     },
     changeOrderStatus: async (order_id, status) => {
+        let items = await OrderItem.findAll({where : {orderId : order_id}})
+        if(status === 'canceled'){
+            for(let i= 0; i<items.length; i++){
+                const orderQty =items[i].dataValues
+                let product = await Product.findOne({ where: { id: items[i].dataValues.id}})
+                let p = product.dataValues.stock+orderQty.quantity
+                await Product.update({stock : p}, {where : {id : product.dataValues.id}})
+            }
+        }
         await Order.update(
             {
                 status: status
             }, {
-            where: {
-                id: order_id
-            }
-        })
+                where: {
+                    id: order_id
+                }
+            })
+            
+            
         return 'Orden actualizada'
     },
     deleteOrder : async (id) => {

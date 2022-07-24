@@ -46,9 +46,12 @@ const User = sequelize.define('user', {
     //timestamps: true
 });
 //console.log(sequelize.models)
-const { reviews, user } = sequelize.models;
+const { reviews, user, favorites } = sequelize.models;
 
  user.hasMany(reviews)
  reviews.belongsTo(user)
+
+ user.hasMany(favorites)
+ favorites.belongsTo(user)
 
 module.exports = User
