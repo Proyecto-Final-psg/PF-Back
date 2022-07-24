@@ -41,7 +41,6 @@ module.exports = {
         let user = await User.findOne({ where: { user_id: user_id } })
         if (user) {
             let ordenes = await user.getOrders({ include: OrderItem })
-            console.log(ordenes)
             for (let i = 0; i < ordenes.length; i++) {
                 let orden = ordenes[i].dataValues
                 let ordenUser = {
@@ -84,7 +83,6 @@ module.exports = {
             for (let i = 0; i < items.length; i++) {
                 let productId = items[i].dataValues.productId
                 let productoBuscado = await Product.findOne({ where: { id: productId } })
-                console.log(productoBuscado.dataValues)
                 let product = {
                     name: productoBuscado.dataValues.name,
                     img: productoBuscado.dataValues.img,
@@ -158,25 +156,46 @@ module.exports = {
     },
     changeOrderStatus: async (order_id, status) => {
         let items = await OrderItem.findAll({ where: { orderId: order_id } })
+        let order = await Order.findOne({ where: { id: order_id } })
 
-        if (status === 'canceled') {
+
+        if (order.dataValues.status !== "canceled" && status === 'canceled') {
             for (let i = 0; i < items.length; i++) {
                 const orderQty = items[i].dataValues
                 let product = await Product.findOne({ where: { id: items[i].dataValues.productId } })
                 let p = product.dataValues.stock + orderQty.quantity
                 await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
             }
+
         }
+        if (order.dataValues.status === "canceled" && status === 'inprogress') {
+            for (let i = 0; i < items.length; i++) {
+                const orderQty = items[i].dataValues
+                let product = await Product.findOne({ where: { id: items[i].dataValues.productId } })
+                let p = product.dataValues.stock - orderQty.quantity
+                await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
+            }
+
+        }
+        if (order.dataValues.status === "canceled" && status === 'completed') {
+            for (let i = 0; i < items.length; i++) {
+                const orderQty = items[i].dataValues
+                let product = await Product.findOne({ where: { id: items[i].dataValues.productId } })
+                let p = product.dataValues.stock - orderQty.quantity
+                await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
+            }
+
+        }
+
         // if (status === 'canceled') {
-
-        //     let items = await Order.findOne({ where: { id: order_id }, include: OrderItem })
-        //     let arryItems = items.order_items
-        //     for (let i = 0; i < arryItems.length; i++) {
-        //         console.log(arryItems[i].dataValues.productId)
-
+        //     for (let i = 0; i < items.length; i++) {
+        //         const orderQty = items[i].dataValues
+        //         let product = await Product.findOne({ where: { id: items[i].dataValues.productId } })
+        //         let p = product.dataValues.stock + orderQty.quantity
+        //         await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
         //     }
-        //     return items.order_items
         // }
+
         await Order.update(
             {
                 status: status

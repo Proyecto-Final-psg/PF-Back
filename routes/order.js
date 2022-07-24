@@ -100,11 +100,12 @@ router.post('/respuestaMercado', function (req, res) {
 });
 
 router.put('/update-order', async (req, res) => {
-
-    const { id, status } = req.query
-    console.log(id, status)
-
-    res.json(await changeOrderStatus(id, status))
+    try {
+        const { id, status } = req.query
+        res.json(await changeOrderStatus(id, status))
+    } catch (error) {
+        res.status(400).json(error.message)
+    }
 
 })
 
