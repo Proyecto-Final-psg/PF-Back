@@ -1,3 +1,4 @@
+const axios = require('axios');
 const express = require('express');
 const category = require('./routes/category');
 const mailer = require('./routes/mailer');
@@ -18,7 +19,7 @@ const { sequelize } = require('./db/db')
 let port = process.env.PORT || 8081
 app.listen(port, () => {
     console.log('Server run on Port =>  ' + port)
-    sequelize.sync({alter: true })
+    sequelize.sync({ alter: true })
 })
 //////////////////////-------Jason Token------//////////////////////////////////////////////////////////////////////////////////
 var jwt = require('express-jwt');
@@ -33,8 +34,9 @@ const jwtCheck = jwt.expressjwt({
     audience: 'this is a unique identifier',
     issuer: 'https://dev-sdz9neh5.us.auth0.com/',
     algorithms: ['RS256']
-}).unless({ path: ['/prueba'] })
+}).unless({ path: ['/'] })
 // app.use(jwtCheck);
+
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 app.use('/', user)
 app.use('/', mailer)
@@ -44,3 +46,29 @@ app.use('/', mercadoPago)
 app.use('/products', product)
 app.use('/', reviews)
 //////////////---------MERCADO  PAGO-----------///////////////////
+
+app.get('/pruebaPost', async (req, res) => {
+    try {
+        console.log(req.user)
+        const accesToken = req.body.headers.authorization.split(' ')[1]
+        const response = await axios.get('https://dev-sdz9neh5.us.auth0.com/userinfo', {
+            headers: {
+                authorization: `Bearer ${accesToken}`
+            }
+        })
+        const userInfo = response.data
+        res.status(200).send("done")
+    } catch (error) {
+        console.log(error)
+        res.status(401).json(error.message)
+    }
+})
+app.post('/pruebaGet', async (req, res) => {
+    try {
+
+        res.status(200).json({ "probando": "soy prueba" })
+    } catch (error) {
+        console.log(error)
+        res.status(401).json(error.message)
+    }
+})
