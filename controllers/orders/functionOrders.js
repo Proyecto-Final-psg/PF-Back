@@ -183,15 +183,19 @@ module.exports = {
                 await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
             }
         }
-        await Order.update(
-            {
-                status: status
-            }, {
-            where: {
-                id: order_id
-            }
-        })
+        if (status === 'completed' || status === 'inprogress' || status === 'canceled'){
+            await Order.update(
+                {
+                    status: status
+                }, {
+                where: {
+                    id: order_id
+                }
+            })
         return 'Orden actualizada'
+        }
+        return "no se pudo actualizar la orden parametro erroneo"
+          
     },
 
     deleteOrder: async (id) => {
