@@ -9,8 +9,10 @@ module.exports = {
     payOrder: async (arrayItems) => {
         let total = 0
         arrayItems.map((e) => {
-            total += e.price
+            total += e.price * e.quantity
+
         })
+      
         // let items = arrayItems.map((e) => {
         //     return {
         //         "id": e.product_id,
