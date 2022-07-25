@@ -24,16 +24,16 @@ module.exports = {
         //     }
         // })
         // })
-        let items = {
-            "id": e.product_id,
+        let items = [{
+            "id": 1,
             "title": "Mi producto",
             "currency_id": "ARS",
             "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
             "description": "Descripción del Item",
             "category_id": "art",
-            "quantity": e.quantity,
+            "quantity": 1,
             "unit_price": total
-        }
+        }]
 
 
         let preference = {
