@@ -7,6 +7,8 @@ const mercadopago = require("mercadopago");
 mercadopago.configure({
     access_token: "TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944",
 });
+
+
 ////////////////////////////////////////////////////////////////////////////////////////////
 router.post("/orderMercadoPago", async (req, res) => {
     let preference = {
