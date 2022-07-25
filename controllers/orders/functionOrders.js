@@ -19,17 +19,19 @@ module.exports = {
         })
         nuevaOrder.setUser(user)
         // nuevaOrder.save()
-
+        
         for (let i = 0; i < arrayItems.length; i++) {
+            let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
+            let stock = product.dataValues.stock
             let orderItem = await OrderItem.create({
-                quantity: arrayItems[i].quantity,
+                quantity: (stock > arrayItems[i].quantity) ? arrayItems[i].quantity : stock,
                 price: arrayItems[i].price
             })
-            let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
-            // console.log(product.dataValues.id)
             let p = product.dataValues.stock - orderItem.quantity
-            await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
-            // console.log(product.dataValues.stock-orderItem.quantity)
+            if( p > 0) {
+                await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
+            } 
+            
             orderItem.setProduct(product)
             orderItem.setOrder(nuevaOrder)
 
