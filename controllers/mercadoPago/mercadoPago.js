@@ -12,20 +12,6 @@ module.exports = {
             total += e.price * e.quantity
 
         })
-      
-        // let items = arrayItems.map((e) => {
-        //     return {
-        //         "id": e.product_id,
-        //         "title": "Mi producto",
-        //         "currency_id": "ARS",
-        //         "picture_url": "https://www.mercadopago.com/org-img/MP3/home/logomp3.gif",
-        //         "description": "Descripción del Item",
-        //         "category_id": "art",
-        //         "quantity": e.quantity,
-        //         "unit_price": 50
-        //     }
-        // })
-        // })
         let items = [{
             "id": 1,
             "title": "Mi producto",
@@ -38,6 +24,24 @@ module.exports = {
         }]
         let preference = {
             items,
+            "payer": {
+                "name": "juan",
+                "surname": "papeli",
+                "email": "barreiromart@email.com",
+                "phone": {
+                    "area_code": "11",
+                    "number": 4444 - 4444
+                },
+                "identification": {
+                    "type": "DNI",
+                    "number": "33605763"
+                },
+                "address": {
+                    "street_name": "jose marni ",
+                    "street_number": 666,
+                    "zip_code": "1236"
+                }
+            },
             "back_urls": {
                 "success": "https://weedical.netlify.app",
                 "failure": "https://weedical.netlify.app",

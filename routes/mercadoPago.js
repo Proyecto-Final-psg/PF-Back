@@ -2,6 +2,8 @@ const { Router } = require('express')
 const { payOrder } = require('../controllers/mercadoPago/mercadoPago')
 const router = Router();
 ////////////////////////////////////////////////////////////////////////////////////////////
+
+const axios = require('axios')
 const mercadopago = require("mercadopago");
 // Agrega credenciales  //
 mercadopago.configure({
@@ -21,24 +23,24 @@ router.post("/orderMercadoPago", async (req, res) => {
                 "description": "aca es donde ponemos toda la description del item puede ser larga",
                 "category_id": "art",
                 "quantity": 1,
-                "unit_price": 90.76
+                "unit_price": 200
             }
         ],
         "payer": {
-            "name": "juan",
-            "surname": "papeli",
-            "email": "barreiromart@email.com",
+            "name": "julia",
+            "surname": "novedoza",
+            "email": "juliaNovedosa@email.com",
             "phone": {
                 "area_code": "11",
-                "number": 4444 - 4444
+                "number": 4957 - 0342
             },
             "identification": {
                 "type": "DNI",
                 "number": "33605763"
             },
             "address": {
-                "street_name": "jose marni ",
-                "street_number": 666,
+                "street_name": "jose marmol",
+                "street_number": 692,
                 "zip_code": "1236"
             }
         },
@@ -48,7 +50,7 @@ router.post("/orderMercadoPago", async (req, res) => {
             "pending": "https://weedical.netlify.app/"
         },
         "statement_descriptor": "MINEGOCIO",
-        "notification_url": "https://testing-mjb.herokuapp.com//notification",
+        "notification_url": "https://testing-mjb.herokuapp.com/notification",
     }
     const respuesta = await mercadopago.preferences.create(preference)
     res.json(respuesta)
@@ -56,9 +58,39 @@ router.post("/orderMercadoPago", async (req, res) => {
 
 
 router.post('/notification', function (req, res) {
-    console.log(req.body)
+    console.log(req.body.data.id)
+    if (req.body.data.id) {
+        let { id } = req.query
+        console.log(id)
+        axios.get(`https://api.mercadopago.com/v1/payments/${id}`, {
+            headers: {
+                authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
+            }
+        })
+            .then(data => console.log(data.data.card))
+            .catch(err => console.log(err));
+    }
     res.status(200).send("OK")
 });
+
+router.get('/seacrhPayment', function (req, res) {
+
+
+
+    let { id } = req.query
+    console.log(id)
+    axios.get(`https://api.mercadopago.com/v1/payments/${id}`, {
+        headers: {
+            authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
+        }
+    })
+        .then(data => console.log(data.data.card))
+        .catch(err => console.log(err));
+
+
+    res.status(200).send("OK")
+})
+
 
 
 module.exports = router
