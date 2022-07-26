@@ -20,9 +20,6 @@ const Order = sequelize.define('order', {
     user_email: {
         type: DataTypes.STRING,
     },
-    external_reference:{
-        type: DataTypes.STRING,
-    }
 }, {
     // timestamps: true
 }

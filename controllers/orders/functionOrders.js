@@ -10,16 +10,19 @@ module.exports = {
         if (user_id) {
             var user = await User.findOne({ where: { user_id: user_id } })
         }
-        let urlPago = await payOrder(arrayItems)
+
         var nuevaOrder = await Order.create({
             "address": address,
             "status": status,
-            "urlPago": urlPago,
+            "urlPago": "",
             "user_email": email
         })
         nuevaOrder.setUser(user)
+        let external_reference = toString(nuevaOrder.dataValues.id)
+        let urlPago = await payOrder(arrayItems, external_reference)
+
         // nuevaOrder.save()
-        
+
         for (let i = 0; i < arrayItems.length; i++) {
             let product = await Product.findOne({ where: { id: arrayItems[i].product_id } })
             let stock = product.dataValues.stock
@@ -28,14 +31,13 @@ module.exports = {
                 price: arrayItems[i].price
             })
             let p = product.dataValues.stock - orderItem.quantity
-            if( p > 0) {
+            if (p > 0) {
                 await Product.update({ stock: p }, { where: { id: product.dataValues.id } })
-            } 
-            
+            }
             orderItem.setProduct(product)
             orderItem.setOrder(nuevaOrder)
-
         }
+        console.log(await Order.update({ "urlPago": urlPago }, { where: { id: nuevaOrder.dataValues.id } }))
         return urlPago
     },
     getOrders: async (user_id) => {

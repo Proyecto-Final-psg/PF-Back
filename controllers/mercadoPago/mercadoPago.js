@@ -6,7 +6,7 @@ mercadopago.configure({
 });
 
 module.exports = {
-    payOrder: async (arrayItems) => {
+    payOrder: async (arrayItems, external_reference) => {
         let total = 0
         arrayItems.map((e) => {
             total += e.price * e.quantity
@@ -23,6 +23,7 @@ module.exports = {
             "unit_price": total
         }]
         let preference = {
+            "external_reference": external_reference,
             items,
             "payer": {
                 "name": "juan",
@@ -41,7 +42,7 @@ module.exports = {
                     "street_number": 666,
                     "zip_code": "1236"
                 },
-               
+
             },
             "back_urls": {
                 "success": "https://weedical.netlify.app",
