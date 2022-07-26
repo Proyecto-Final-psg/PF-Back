@@ -36,8 +36,6 @@ module.exports = {
             "quantity": 1,
             "unit_price": total
         }]
-
-
         let preference = {
             items,
             "back_urls": {
