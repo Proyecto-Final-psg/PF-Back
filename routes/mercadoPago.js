@@ -28,7 +28,6 @@ router.post("/orderMercadoPago", async (req, res) => {
             }
         ],
         "payer": {
-            "id": 112,
             "name": "testing",
             "surname": "novedoza",
             "email": "juliaNovedosa@email.com",
@@ -58,10 +57,9 @@ router.post("/orderMercadoPago", async (req, res) => {
     res.json(respuesta)
 });
 
-
 router.post('/notification', function (req, res) {
-    // console.log(req.body.data.id)
     if (req.body.data.id) {
+
         axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
             headers: {
                 authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
@@ -72,7 +70,6 @@ router.post('/notification', function (req, res) {
     }
     res.status(200).send("OK")
 });
-
 
 router.get('/seacrhPayment', function (req, res) {
     let { id } = req.query
