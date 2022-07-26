@@ -3,16 +3,20 @@ const User = require('./../../models/Users')
 const Product= require('./../../models/Product')
 
 module.exports = {
-    message1 : async (userid, order, status, address, arrayItems) =>{
+    message1 : async (userid, order, arrayItems) =>{
         const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
         let pro = await arrayItems.map(async item => {
             let producto = await Product.findByPk(item.product_id, {attributes : ['name']})
-            producto = producto.dataValues.name
-            let p = {
-                product : producto,
-                quantity : item.quantity,
-                price : item.price
+            let p = null;
+            if(producto){
+                producto = producto.dataValues.name
+                let p = {
+                    product : producto,
+                    quantity : item.quantity,
+                    price : item.price
+                }
             }
+            
             return p
         })
         const product = await Promise.all(pro)
@@ -20,20 +24,19 @@ module.exports = {
         await transports.sendMail({
             from : `"Orden # ${order}" <weedical@weedical.com>`,
             to : user.dataValues.user_email,
-            subject : `hola ${user.dataValues.user_name} la orden # ${order} se encuentra en estado ${status}`,
-            html : `<h3> Hola ${user.dataValues.user_name}</h3>
+            subject : `Hi ${user.dataValues.user_name}! Order #${order}`,
+            html :`            
+            <p>We want to inform you that the order n° ${order} is in progress and we will let you know when its completed, </p>
+            <p>to start the shippment.</p>
+
+            <p>You will receive another email with the final order state (completed or canceled), please be patient!</p>
             
-            <p>El pedido numero ${order} se encuentra en proceso, y sera enviando a la siduiente direccion: ${address} </p>
+            <p>This is an automatic email, please do not respond</p>
 
-            <h4> Items comprados</h4>
+            <p>If you need more info, please contact our robot in www.weedical.com</p>
 
-            ${product.map(e => `<span>${e.product}  qty: ${e.quantity}  price : ${e.price}<br></span>`)}
-            
-            <p>Este es un pedido automatica de Weedical</p>
-
-            <p>Por favor no responda este correo</p>
-
-            <p>para comunicarse con un asesor favor escribenos a nuestro chatbot</p>`
+            <p>Best wishes 💫,</p>
+            <p>Weedical team</p>`
         })
     },
     message2 : async (userid, order, status) =>{
@@ -41,33 +44,36 @@ module.exports = {
         await transports.sendMail({
             from : `"Orden # ${order}" <weedical@weedical.com>`,
             to : user.dataValues.user_email,
-            subject : `hola ${user.dataValues.user_name} la orden # ${order} se encuentra en estado ${status}`,
-            html : `<h3> Hola ${user.dataValues.user_name}</h3> 
-            
-            <p>El pedido numero ${order} se encuentra en proceso </p>
-            
-            <p>Este es un pedido automatica de Weedical</p>
+            subject : `Hi ${user.dataValues.user_name}! Order #${order} ${status}`,
+            html : `            
+            <p>Something happened with the order n° ${order} and now it's canceled.</p>
 
-            <p>Por favor no responda este correo</p>
+            <p>Please check in your Profile the order or contact our chatbot to get more info.</p>
+            
+            <p>Best wishes 💫,</p>
 
-            <p>para comunicarse con un asesor favor escribenos a nuestro chatbot</p>`
+            <p>Weedical team</p>`
         })
     },
-    message3 : async (userid, order, status) =>{
+    message3 : async (userid, order, status, address, product) =>{
         const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
         await transports.sendMail({
             from : `"Orden # ${order}" <weedical@weedical.com>`,
             to : user.dataValues.user_email,
-            subject : `hola ${user.dataValues.user_name} la orden # ${order} se encuentra en estado ${status}`,
-            html : `<h3> Hola ${user.dataValues.user_name}</h3>
-            
-            <p>El pedido numero ${order} se encuentra en proceso </p>
-            
-            <p>Este es un pedido automatica de Weedical</p>
+            subject : `Hi ${user.dataValues.user_name}! Order #${order} ${status}`,
+            html : `            
+            <p>The order n° ${order} is completed, and we will send the products to the next address :${address} </p>
 
-            <p>Por favor no responda este correo</p>
+            <h4>Order detail</h4>
+            <ol>
+            ${product.map(e => `<li>${e.name}  qty: ${e.quantity}  price : $${e.priceOfSale}<br></li>`)}
+            </ol>
+            <p>This is an automatic email, please do not respond</p>
 
-            <p>para comunicarse con un asesor favor escribenos a nuestro chatbot</p>`
+            <p>If you need more info, please contact our robot in www.weedical.com</p>
+            <p>Best wishes 💫,</p>
+
+            <p>Weedical team</p>`
         })
     },
     message4 : async (user, email, link) =>{

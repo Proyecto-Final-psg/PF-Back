@@ -4,14 +4,14 @@ const router = Router();
 
 router.post('/mail', async (req, res) => {
     let {userid, order, status, address, arrayItems} = req.body
-    if(status === 'create'){
+    if(status === 'create' || status === 'inprogress'){
         try {
-            await message1(userid, order, status, address, arrayItems)
+            await message1(userid, order, arrayItems)
             res.json('mail send')
         } catch (error) {
             console.log(error)
         }
-    } else if (status === 'inprogress'){
+    } else if (status === 'canceled'){
         try {
             await message2(userid, order, status)
             res.json('mail send')
@@ -20,7 +20,7 @@ router.post('/mail', async (req, res) => {
         }
     } else if(status === 'completed'){
         try {
-            await message3(userid, order, status)
+            await message3(userid, order, status, address, arrayItems)
             res.json('mail send')
         } catch (error) {
             console.log(error)
