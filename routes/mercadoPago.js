@@ -58,8 +58,10 @@ router.post("/orderMercadoPago", async (req, res) => {
 });
 
 router.post('/notification', function (req, res) {
-    console.log(req.body.data)
-    if (req.body.data.id) {
+
+    let id=await req.body.data.id
+    console.log(id)
+    if (id) {
         axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
             headers: {
                 authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
