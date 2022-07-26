@@ -14,6 +14,7 @@ mercadopago.configure({
 ////////////////////////////////////////////////////////////////////////////////////////////
 router.post("/orderMercadoPago", async (req, res) => {
     let preference = {
+        "external_reference": "12345",
         "items": [
             {
                 "id": "item-ID-1234",
@@ -27,7 +28,8 @@ router.post("/orderMercadoPago", async (req, res) => {
             }
         ],
         "payer": {
-            "name": "julia",
+            "id": 112,
+            "name": "testing",
             "surname": "novedoza",
             "email": "juliaNovedosa@email.com",
             "phone": {
@@ -58,25 +60,21 @@ router.post("/orderMercadoPago", async (req, res) => {
 
 
 router.post('/notification', function (req, res) {
-    console.log(req.body.data.id)
+    // console.log(req.body.data.id)
     if (req.body.data.id) {
-        let { id } = req.query
-        console.log(id)
-        axios.get(`https://api.mercadopago.com/v1/payments/${id}`, {
+        axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
             headers: {
                 authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
             }
         })
-            .then(data => console.log(data.data.card))
+            .then(data => res.json(data.data.external_reference))
             .catch(err => console.log(err));
     }
     res.status(200).send("OK")
 });
 
+
 router.get('/seacrhPayment', function (req, res) {
-
-
-
     let { id } = req.query
     console.log(id)
     axios.get(`https://api.mercadopago.com/v1/payments/${id}`, {
@@ -84,13 +82,7 @@ router.get('/seacrhPayment', function (req, res) {
             authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
         }
     })
-        .then(data => console.log(data.data.card))
+        .then(data => res.json(data.data.external_reference))
         .catch(err => console.log(err));
-
-
-    res.status(200).send("OK")
 })
-
-
-
 module.exports = router

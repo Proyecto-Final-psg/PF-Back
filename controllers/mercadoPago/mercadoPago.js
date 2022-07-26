@@ -40,7 +40,8 @@ module.exports = {
                     "street_name": "jose marni ",
                     "street_number": 666,
                     "zip_code": "1236"
-                }
+                },
+               
             },
             "back_urls": {
                 "success": "https://weedical.netlify.app",
