@@ -48,7 +48,7 @@ router.post("/orderMercadoPago", async (req, res) => {
             "pending": "https://weedical.netlify.app/"
         },
         "statement_descriptor": "MINEGOCIO",
-        "notification_url": "https://desarrollo-back.herokuapp.com/notification",
+        "notification_url": "https://testing-mjb.herokuapp.com//notification",
     }
     const respuesta = await mercadopago.preferences.create(preference)
     res.json(respuesta)
