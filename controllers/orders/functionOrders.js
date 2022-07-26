@@ -3,6 +3,7 @@ const Order = require("../../models/Order")
 const OrderItem = require("../../models/OrderItem")
 const Product = require('../../models/Product')
 const User = require('../../models/Users')
+const { message1 } = require('../mailer/msgMailer')
 const { payOrder } = require('../mercadoPago/mercadoPago')
 
 module.exports = {
@@ -17,6 +18,11 @@ module.exports = {
             "urlPago": "",
             "user_email": email
         })
+
+        if(nuevaOrder){
+             message1(user_id, nuevaOrder.id, arrayItems)
+        }
+
         nuevaOrder.setUser(user)
         let external_reference = toString(nuevaOrder.dataValues.id)
         let urlPago = await payOrder(arrayItems, external_reference)
