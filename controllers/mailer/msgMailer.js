@@ -85,5 +85,18 @@ module.exports = {
 
             <p>para comunicarse con un asesor favor escribenos a nuestro chatbot</p>`
         })
+    },
+    message5 : async(user, email, name) => {
+        await transports.sendMail({
+            from : `<weedical@weedical.com>`,
+            to : email,
+            subject : `Restock Notificacion`,
+            html : `<h3> Dear ${user} </h3>
+            <p>We notice that you have the product ${name} in your wishlist
+            and we want to inform you there is stock again, we invite to you to purchase it</p>
+            
+            <h3>Weedical Team</h3>
+            `
+        })
     }
 }
