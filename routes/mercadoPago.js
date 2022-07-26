@@ -59,7 +59,7 @@ router.post("/orderMercadoPago", async (req, res) => {
 
 router.post('/notification', function (req, res) {
 
-    let id = await req.body.data.id
+    let id = req.body.data.id
     console.log(id)
     if (id) {
         axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
