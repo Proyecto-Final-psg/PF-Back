@@ -29,8 +29,9 @@ router.get('/favoritebyuser/:user_id', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
-router.post('/addfavorites', async (req, res) => {
-    let {product_id, user_id} = req.body
+router.post('/addfavorites/:product_id', async (req, res) => {
+    let {product_id} = req.params
+    let {user_id} = req.body
     try {
         res.json(await addFavorite(product_id, user_id))
     } catch (error) {

@@ -1,7 +1,10 @@
 const Product = require("../../models/Product")
 const Category = require("../../models/Category");
+const User = require('../../models/Users')
+const {favorites} = require('../../db/db')
 const {oils} = require('../../db.json')
 const { createCategory } = require('../categories/functionCategory');
+const {message5} = require('../../controllers/mailer/msgMailer')
 
 
 
@@ -45,6 +48,17 @@ const getProductByName = async(name) => {
 const updateProduct = async (id, name, stock, price, img, type, description, thc, cbd, categories) => {
     const productos = await Product.findAll()
     const idFound = productos.find(e => parseInt(e.id) === parseInt(id))
+    //
+    const stockProduct = (idFound.dataValues.stock === 0) ? true : false
+    const favorite = await favorites.findAll({where : {product : id}})
+    if(favorite){
+        for(let i= 0; i < favorite.length; i++){
+            const user = await User.findByPk(favorite[i].dataValues.userUserId)
+            if(stockProduct && stock > 0){
+                await message5(user.dataValues.user_name, user.dataValues.user_email, name)
+                }
+            }
+    }
     if(idFound){
             await Product.update({name, stock, price, img, type, description, thc, cbd},
         {
