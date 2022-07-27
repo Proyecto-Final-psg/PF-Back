@@ -19,9 +19,9 @@ module.exports = {
             "user_email": email
         })
 
-        if(nuevaOrder){
-             message1(user_id, nuevaOrder.id, arrayItems)
-        }
+        // if(nuevaOrder){
+        //      message1(user_id, nuevaOrder.id, arrayItems)
+        // }
 
         nuevaOrder.setUser(user)
         let external_reference = toString(nuevaOrder.dataValues.id)

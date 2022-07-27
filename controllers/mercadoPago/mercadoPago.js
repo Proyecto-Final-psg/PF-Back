@@ -23,7 +23,7 @@ module.exports = {
             "unit_price": total
         }]
         let preference = {
-            "external_reference": external_reference,
+            "external_reference": "49570342",
             items,
             "payer": {
                 "name": "juan",
