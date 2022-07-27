@@ -5,9 +5,9 @@ const { createOrder, getOrders, getOrderById, getAllOrders, getOrderItem, getIte
 const router = Router();
 
 router.post('/addOrder', async (req, res) => {
-    let { user_id, address, status, email, arrayItems } = req.body
+    let { user_id, name, address, status, email, arrayItems } = req.body
     try {
-        res.json(await createOrder(user_id, address, status, email, arrayItems))
+        res.json(await createOrder(user_id, name, address, status, email, arrayItems))
     } catch (error) {
         console.log(error)
         return res.status(400).send({
