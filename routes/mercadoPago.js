@@ -65,7 +65,7 @@ router.post('/notification', function (req, res) {
                 authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
             }
         })
-            .then(data => console.log(data.data), )
+            .then(data => console.log(data.data),)
             .catch(err => console.log(err));
     }
     res.status(200).send("OK")

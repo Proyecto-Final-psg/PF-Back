@@ -7,6 +7,11 @@ mercadopago.configure({
 
 module.exports = {
     payOrder: async (arrayItems, external_reference) => {
+
+
+
+
+
         let total = 0
         arrayItems.map((e) => {
             total += e.price * e.quantity
@@ -22,8 +27,9 @@ module.exports = {
             "quantity": 1,
             "unit_price": total
         }]
+        let reference = external_reference.toString()
         let preference = {
-            "external_reference": "49570342",
+            "external_reference": reference,
             items,
             "payer": {
                 "name": "juan",

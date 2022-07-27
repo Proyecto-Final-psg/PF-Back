@@ -19,12 +19,13 @@ module.exports = {
             "user_email": email
         })
 
-        // if(nuevaOrder){
-        //      message1(user_id, nuevaOrder.id, arrayItems)
-        // }
+        if(nuevaOrder&&user_id){
+             message1(user_id, nuevaOrder.id, arrayItems)
+        }
 
         nuevaOrder.setUser(user)
-        let external_reference = toString(nuevaOrder.dataValues.id)
+        let external_reference = nuevaOrder.dataValues.id
+
         let urlPago = await payOrder(arrayItems, external_reference)
 
         // nuevaOrder.save()
@@ -43,7 +44,7 @@ module.exports = {
             orderItem.setProduct(product)
             orderItem.setOrder(nuevaOrder)
         }
-        console.log(await Order.update({ "urlPago": urlPago }, { where: { id: nuevaOrder.dataValues.id } }))
+        await Order.update({ "urlPago": urlPago }, { where: { id: nuevaOrder.dataValues.id } })
         return urlPago
     },
     getOrders: async (user_id) => {
