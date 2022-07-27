@@ -19,8 +19,8 @@ module.exports = {
             "user_email": email
         })
 
-        if(nuevaOrder&&user_id){
-             message1(user_id, nuevaOrder.id, arrayItems)
+        if (nuevaOrder && user_id) {
+            message1(user_id, nuevaOrder.id, arrayItems)
         }
 
         nuevaOrder.setUser(user)
