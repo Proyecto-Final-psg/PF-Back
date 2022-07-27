@@ -59,15 +59,13 @@ router.post("/orderMercadoPago", async (req, res) => {
 
 router.post('/notification', function (req, res) {
 
-
-    
-    if (req.body.data.id!==undefined) {
+    if (req.body.data.id !== undefined) {
         axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
             headers: {
                 authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
             }
         })
-            .then(data => console.log(data.data))
+            .then(data => console.log(data.data.external_reference))
             .catch(err => console.log(err));
     }
     res.status(200).send("OK")
