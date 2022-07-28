@@ -7,6 +7,7 @@ module.exports = {
         // const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
         let pro = await arrayItems.map(async item => {
             let producto = await Product.findByPk(item.product_id, {attributes : ['name']})
+            let p = null;
             if(producto){
                 producto = producto.dataValues.name
                 let p = {
