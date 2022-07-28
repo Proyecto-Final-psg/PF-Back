@@ -3,8 +3,8 @@ const User = require('./../../models/Users')
 const Product= require('./../../models/Product')
 
 module.exports = {
-    message1 : async (userid, order, arrayItems) =>{
-        const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
+    message1 : async (name, email, order, arrayItems) =>{
+        // const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
         let pro = await arrayItems.map(async item => {
             let producto = await Product.findByPk(item.product_id, {attributes : ['name']})
             let p = null;
@@ -20,11 +20,12 @@ module.exports = {
             return p
         })
         const product = await Promise.all(pro)
+      
         
         await transports.sendMail({
             from : `"Orden # ${order}" <weedical@weedical.com>`,
-            to : user.dataValues.user_email,
-            subject : `Hi ${user.dataValues.user_name}! Order #${order}`,
+            to : email,
+            subject : `Hi ${name}! Order #${order}`,
             html :`            
             <p>We want to inform you that the order n° ${order} is in progress and we will let you know when its completed, </p>
             <p>to start the shippment.</p>
