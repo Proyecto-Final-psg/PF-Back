@@ -7,20 +7,20 @@ const { set } = require('lodash')
 const router = Router();
 
 ////  --   RUTA PARA CARGAR CATEGORIAS Y PRODUCTOS A LA BD ----
-// const chargeDb = async () => {
-//     let busqueda = await getCategories()
-//     if (busqueda.length == 0) {
-//         let categoriesUpload = await uploadCategories()
-//         if (categoriesUpload > 0) {
-//             uploadProducts()
-//             console.log('se cargaron todos los productos')
-//         } else {
-//             console.log('No se cargaron los productos')
-//         }
-//     }
-//     console.log("base de datos cargada")
-// }
-// chargeDb()
+const chargeDb = async () => {
+    let busqueda = await getCategories()
+    if (busqueda.length == 0) {
+        let categoriesUpload = await uploadCategories()
+        if (categoriesUpload > 0) {
+            uploadProducts()
+            console.log('se cargaron todos los productos')
+        } else {
+            console.log('No se cargaron los productos')
+        }
+    }
+    console.log("base de datos cargada")
+}
+chargeDb()
 router.get('/uploadDb', async (req, res) => {
     try {
         let categoriesUpload = await uploadCategories()
