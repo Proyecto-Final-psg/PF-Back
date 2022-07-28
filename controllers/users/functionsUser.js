@@ -76,6 +76,28 @@ module.exports = {
         return 'The user does not exist'
        }
     },
+    changeNotification: async (user_id, product_id) => {
+        const user = await User.findByPk(user_id)
+        const product = await Product.findByPk(product_id)
+    
+        await user.addProduct(product)
+
+        // const productsSub = await Product.findAll({
+        //     where: { userUserId: user_id }
+        // })
+        // const productsSub = await user.getProduct(product.id)
+        
+        // console.log(productsSub)
+
+        // if(!user.dataValues.notification){
+        //     return await User.update({ notification: (user.dataValues.notification)? false : true }, {
+        //     where: {
+        //         user_id: user_id
+        //     }
+        //     })
+        // }
+        
+    }
 
 }
 

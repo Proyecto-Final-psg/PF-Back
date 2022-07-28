@@ -51,14 +51,26 @@ const updateProduct = async (id, name, stock, price, img, type, description, thc
     //
     const stockProduct = (idFound.dataValues.stock === 0) ? true : false
     const favorite = await favorites.findAll({where : {product : id}})
-    if(favorite){
-        for(let i= 0; i < favorite.length; i++){
-            const user = await User.findByPk(favorite[i].dataValues.userUserId)
-            if(stockProduct && stock > 0){
-                await message5(user.dataValues.user_name, user.dataValues.user_email, name)
+   
+  
+    const productsSub = await idFound.getUsers(); // encuentro todos los usuarios subscriptos a ese producto
+    
+    if(productsSub && stockProduct && stock > 0){   /// recibo mail si estoy suscripta a un producto
+        console.log('newsLetter')
+        for(let i= 0; i < productsSub.length; i++){
+                await message5(productsSub[i].dataValues.user_name, productsSub[i].dataValues.user_email, name)
                 }
-            }
     }
+
+    if(favorite && stockProduct && stock > 0 && productsSub.length === 0){  // si no estoy suscripta pero lo tengo en fav lo mando
+        console.log('favorites')
+        for(let i= 0; i < favorite.length; i++){
+                 
+                const user = await User.findByPk(favorite[i].dataValues.userUserId)
+                await message5(user.dataValues.user_name, user.dataValues.user_email, name)
+        }    
+    }
+
     if(idFound){
             await Product.update({name, stock, price, img, type, description, thc, cbd},
         {
@@ -115,8 +127,10 @@ const getProductById = async (id) => {
          id = parseInt(id)
          let allProducts = await getProducts()
         const productId = allProducts.find(p => p.id === id)
+        
         return productId
     }
+    
  const deleteProduct = async (id) => {
         await Product.destroy({
             where: {id: id}
