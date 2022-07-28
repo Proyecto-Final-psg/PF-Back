@@ -60,7 +60,7 @@ router.post("/orderMercadoPago", async (req, res) => {
 
 router.post('/notification', async function (req, res) {
 
-    if (req.body.data.id !== undefined) {
+    if (req.body.data) {
         axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
             headers: {
                 authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
@@ -83,4 +83,21 @@ router.get('/seacrhPayment', async (req, res) => {
         .then(data => res.json(orderPayment(16)))
         .catch(err => console.log(err));
 })
+
+router.post('/probandoLocal', async function (req, res) {
+
+    console.log(req.body.data)
+
+    if (req.body.data) {
+        axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
+            headers: {
+                authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
+            }
+        })
+            .then(data => orderPayment(req.body.data.id))
+            .catch(err => console.log(err));
+    }
+    res.status(200).send("OK")
+});
+
 module.exports = router
