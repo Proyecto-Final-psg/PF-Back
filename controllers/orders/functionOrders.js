@@ -19,7 +19,7 @@ module.exports = {
             "user_email": email
         })
 
-        if (nuevaOrder) {
+        if (nuevaOrder && user_id) {
             message1(name, email, nuevaOrder.id, arrayItems)
         }
 
@@ -208,11 +208,11 @@ module.exports = {
         return "no se pudo actualizar la orden parametro erroneo"
 
     },
-
     deleteOrder: async (id) => {
         await Order.destroy({
             where: { id: id }
         })
         return `the order was successfully deleted`
     }
+
 }

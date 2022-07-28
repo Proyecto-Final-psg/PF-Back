@@ -1,6 +1,7 @@
 const { Router } = require('express')
-const { payOrder } = require('../controllers/mercadoPago/mercadoPago')
+const { payOrder, orderPayment } = require('../controllers/mercadoPago/mercadoPago')
 const router = Router();
+
 ////////////////////////////////////////////////////////////////////////////////////////////
 
 const axios = require('axios')
@@ -57,7 +58,7 @@ router.post("/orderMercadoPago", async (req, res) => {
     res.json(respuesta)
 });
 
-router.post('/notification', function (req, res) {
+router.post('/notification', async function (req, res) {
 
     if (req.body.data.id !== undefined) {
         axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
@@ -65,21 +66,21 @@ router.post('/notification', function (req, res) {
                 authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
             }
         })
-            .then(data => console.log(data.data),)
+            .then(data => orderPayment(data.data.external_reference))
             .catch(err => console.log(err));
     }
     res.status(200).send("OK")
 });
 
-router.get('/seacrhPayment', function (req, res) {
+router.get('/seacrhPayment', async (req, res) => {
     let { id } = req.query
-    console.log(id)
+
     axios.get(`https://api.mercadopago.com/v1/payments/${id}`, {
         headers: {
             authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
         }
     })
-        .then(data => res.json(data.data))
+        .then(data => res.json(orderPayment(16)))
         .catch(err => console.log(err));
 })
 module.exports = router

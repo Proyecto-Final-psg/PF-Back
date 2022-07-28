@@ -1,4 +1,5 @@
 ///////////////////////////-----Mercado Pago------//////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const Order = require("../../models/Order")
 const mercadopago = require("mercadopago");
 // Agrega credenciales  //
 mercadopago.configure({
@@ -56,6 +57,10 @@ module.exports = {
         const respuesta = await mercadopago.preferences.create(preference)
         let retornaUrl = respuesta.body.init_point
         return retornaUrl
+    },
+    orderPayment: async (id) => {
+        return await Order.update({ status: "completed" }, { where: { id: id } })
+
     }
 }
 
