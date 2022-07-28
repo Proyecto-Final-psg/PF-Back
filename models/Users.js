@@ -41,6 +41,10 @@ const User = sequelize.define('user', {
     block: {
         type: DataTypes.BOOLEAN,
         defaultValue: false
+    },
+    notification: {
+        type: DataTypes.BOOLEAN,
+        defaultValue: false
     }
 }, {
     //timestamps: true

@@ -20,6 +20,8 @@ const sequelize = new Sequelize({
     },
   },);
 
+
+
 /////////desarrollo////////
 reviews(sequelize)
 favorites(sequelize)
