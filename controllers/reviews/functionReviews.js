@@ -2,11 +2,13 @@ const {reviews} = require("../../db/db")
 const Product = require("../../models/Product")
 const User = require("../../models/Users")
 
-const postReview = async (product_id, user_id, name, score, review, aaa) => {
+const postReview = async (product_id, user_id, name, score, review) => {
    const product = await Product.findByPk(product_id) 
    const user = await User.findByPk(user_id) 
+   const reviewTest = await reviews.findAll()
+   const a = reviewTest.find((r) =>r.dataValues.userUserId === user_id && r.dataValues.productId === product_id)
 
-    if(product){
+    if(product && !a){
         const reviewCreated = await reviews.create({name, score: parseInt(score), review})
         reviewCreated.setProduct(product)
         reviewCreated.setUser(user)
@@ -16,11 +18,7 @@ const postReview = async (product_id, user_id, name, score, review, aaa) => {
     }
 }
 
-const validateExistingReview = async (product_id, user_id) =>{
-   const review = await reviews.findAll()
-   const a = review.find((r) =>r.dataValues.userUserId === user_id && r.dataValues.productId === product_id)
-   return (a ? true : false)
-}
+
 
 const getReviews = async (product_id) => {
     const product = await Product.findByPk(product_id) 
@@ -57,4 +55,4 @@ const getReviewsUser = async (id) => {
 }
 
 
-module.exports = { postReview, getReviews, deleteReview, getReviewsUser, validateExistingReview };
+module.exports = { postReview, getReviews, deleteReview, getReviewsUser };

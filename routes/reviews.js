@@ -5,6 +5,7 @@ const router = Router();
 
 router.post('/reviews', async (req, res) => {
     const { product_id, user_id, name, score, review, review_id } = req.body
+   
     try {
         res.status(200).json(await postReview(product_id, user_id, name,score, review, review_id))
     } catch (error) {
