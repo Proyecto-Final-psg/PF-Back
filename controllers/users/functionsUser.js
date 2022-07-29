@@ -82,21 +82,17 @@ module.exports = {
     
         await user.addProduct(product)
 
-        // const productsSub = await Product.findAll({
-        //     where: { userUserId: user_id }
-        // })
-        // const productsSub = await user.getProduct(product.id)
-        
-        // console.log(productsSub)
-
-        // if(!user.dataValues.notification){
-        //     return await User.update({ notification: (user.dataValues.notification)? false : true }, {
-        //     where: {
-        //         user_id: user_id
-        //     }
-        //     })
-        // }
-        
+        if(!user.dataValues.notification){
+           await User.update({ notification: true }, {
+            where: {
+                user_id
+            }
+            }) 
+            
+            return user.dataValues.notification
+        }
+    
+        return await user.dataValues.notification
     }
 
 }
