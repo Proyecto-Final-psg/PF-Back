@@ -11,8 +11,22 @@ module.exports = {
         const favorite = await favorites.findAll({where : {
             userUserId : user_id
         }})
-        
-        return favorite
+        const favoriteProductsByUser = []
+        for(let i=0; i < favorite.length; i++){
+            // console.log(await Product.findByPk(favorite[i].dataValues.product))
+            const proFav = await Product.findByPk(favorite[i].dataValues.product)
+            const proFinal = {
+                id : proFav.dataValues.id,
+                name : proFav.dataValues.name,
+                description : proFav.dataValues.description,
+                img : proFav.dataValues.img,
+                price : proFav.dataValues.price,
+                stock : proFav.dataValues.stock
+            }
+            favoriteProductsByUser.push(proFinal)
+
+        }
+        return favoriteProductsByUser
     },
     addFavorite : async(product_id, user_id) =>{
         let product = await Product.findByPk(product_id)
