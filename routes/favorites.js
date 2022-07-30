@@ -41,8 +41,9 @@ router.post('/addfavorites/:product_id', async (req, res) => {
 })
 router.delete('/removefavorites/:id', async (req, res) => {
     let {id} = req.params
+    let {user_id} = req.body
     try {
-        res.json(await removeFavorite(id))
+        res.json(await removeFavorite(id, user_id))
     } catch (error) {
         console.log(error)
         res.status(401).json(error.message)

@@ -13,7 +13,6 @@ module.exports = {
         }})
         const favoriteProductsByUser = []
         for(let i=0; i < favorite.length; i++){
-            // console.log(await Product.findByPk(favorite[i].dataValues.product))
             const proFav = await Product.findByPk(favorite[i].dataValues.product)
             const proFinal = {
                 id : proFav.dataValues.id,
@@ -29,17 +28,18 @@ module.exports = {
         return favoriteProductsByUser
     },
     addFavorite : async(product_id, user_id) =>{
-        let product = await Product.findByPk(product_id)
         const user = await User.findByPk(user_id)
-        product = parseInt(product.dataValues.id)
-        const favoriteAdded = await favorites.create({product: product})
-        favoriteAdded.setUser(user)
-        return favoriteAdded
+        const prodFav = await favorites.findAll({where: {product: product_id, userUserId : user_id}})
+     
+        if(prodFav.length === 0){
+          const favoriteAdded = await favorites.create({product: product_id})
+          favoriteAdded.setUser(user)  
+        }
+        return 'Added to favorites'
     },
-    removeFavorite : async(id) =>{
-        const item = await favorites.findByPk(id, {includes : ['product']})
-        await favorites.destroy({where : {id : id}})
-        return `The product ${item.dataValues.product} has been removed from your wishlist`
+    removeFavorite : async(product_id, user_id) =>{
+        await favorites.destroy({where : {product : product_id,  userUserId : user_id}})
+        return `The product  has been removed from your wishlist`
     },
     ///  funcion prueba
     myfunct : async() =>{
