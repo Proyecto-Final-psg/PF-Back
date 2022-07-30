@@ -38,8 +38,8 @@ module.exports = {
     },
     removeFavorite : async(id) =>{
         const item = await favorites.findByPk(id, {includes : ['product']})
-        await favorites.destroy({where : {id : id}})
-        return `The product ${item.dataValues.product} has been removed from your wishlist`
+        await favorites.destroy({where : {product : id}})
+        return `The product  has been removed from your wishlist`
     },
     ///  funcion prueba
     myfunct : async() =>{
