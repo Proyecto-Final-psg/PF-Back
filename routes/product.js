@@ -54,7 +54,7 @@ router.get('/search', async (req, res) => {
 router.post('/', async (req, res) => {
     try {
         let { name, stock, price, img, type, description, thc, cbd, categories } = req.body
-        
+
         res.json(await createProduct(name, stock, price, img, type, description, thc, cbd, categories))
     } catch (error) {
         res.status(401).json(error.message)
@@ -70,7 +70,7 @@ router.put('/:id', async (req, res) => {
     }
 })
 router.post('/orderCbd/', async (req, res) => {
-    let {category, setOrder} = req.body
+    let { category, setOrder } = req.body
     try {
         res.json(await orderCbd(category, setOrder))
 
@@ -79,7 +79,7 @@ router.post('/orderCbd/', async (req, res) => {
     }
 })
 router.post('/orderThc/', async (req, res) => {
-    let {category, setOrder} = req.body
+    let { category, setOrder } = req.body
     try {
         res.json(await orderThc(category, setOrder))
 
@@ -88,7 +88,7 @@ router.post('/orderThc/', async (req, res) => {
     }
 })
 router.post('/orderPrice/', async (req, res) => {
-    let {category, setOrder} = req.body
+    let { category, setOrder } = req.body
     try {
         res.json(await orderPrice(category, setOrder))
 
