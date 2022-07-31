@@ -1,6 +1,6 @@
 const {Router} = require('express')
 const router = Router();
-const {getAllFavorites, addFavorite, removeFavorite, getFavoritesUser, myfunct} = require('../controllers/favorites/functionFavorites')
+const {getAllFavorites, addFavorite, removeFavorite, getFavoritesUser,deleteFavId,  myfunct} = require('../controllers/favorites/functionFavorites')
 
 router.get('/favorites', async (req, res) => {
     try {
@@ -49,4 +49,14 @@ router.delete('/removefavorites/:id', async (req, res) => {
         res.status(401).json(error.message)
     }
 })
+router.delete('/removeFavId/:id', async (req, res) => {
+    let {id} = req.params
+    try {
+        res.json(await deleteFavId(id))
+    } catch (error) {
+        console.log(error)
+        res.status(401).json(error.message)
+    }
+})
+
 module.exports = router
