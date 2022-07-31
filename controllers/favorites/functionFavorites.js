@@ -41,6 +41,10 @@ module.exports = {
         await favorites.destroy({where : {product : product_id,  userUserId : user_id}})
         return `The product  has been removed from your wishlist`
     },
+    deleteFavId : async(id) =>{
+        await favorites.destroy({where : {id : id}})
+        return `The product  has been removed from your wishlist`
+    },
     ///  funcion prueba
     myfunct : async() =>{
         let products = await Product.findAll()
