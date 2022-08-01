@@ -52,7 +52,7 @@ module.exports = {
                 "failure": "https://weedical.netlify.app",
                 "pending": "https://weedical.netlify.app"
             },
-            "notification_url": "https://testing-mjb.herokuapp.com/notification",
+            "notification_url": "https://desarrollo-back.herokuapp.com/notification",
         }
         const respuesta = await mercadopago.preferences.create(preference)
         let retornaUrl = respuesta.body.init_point

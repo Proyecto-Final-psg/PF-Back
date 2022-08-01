@@ -57,9 +57,8 @@ router.post("/orderMercadoPago", async (req, res) => {
     const respuesta = await mercadopago.preferences.create(preference)
     res.json(respuesta)
 });
-
+//  Cuando llega un pago en /notification entra en el api de mercadoPago a preguntar el estado de el pago y lo manda a la orden y cambia su estado de inprogress al estado de mercado libre//
 router.post('/notification', async function (req, res) {
-
     if (req.body.data) {
         axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
             headers: {
@@ -67,34 +66,6 @@ router.post('/notification', async function (req, res) {
             }
         })
             .then(data => orderPayment(data.data.external_reference))
-            .catch(err => console.log(err));
-    }
-    res.status(200).send("OK")
-});
-
-router.get('/seacrhPayment', async (req, res) => {
-    let { id } = req.query
-
-    axios.get(`https://api.mercadopago.com/v1/payments/${id}`, {
-        headers: {
-            authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
-        }
-    })
-        .then(data => res.json(orderPayment(16)))
-        .catch(err => console.log(err));
-})
-
-router.post('/probandoLocal', async function (req, res) {
-
-    console.log(req.body.data)
-
-    if (req.body.data) {
-        axios.get(`https://api.mercadopago.com/v1/payments/${req.body.data.id}`, {
-            headers: {
-                authorization: `Bearer ${"TEST-1335334086093673-071419-a275ed33eb74f65ce28d3a8055396def-129803944"}`
-            }
-        })
-            .then(data => orderPayment(req.body.data.id))
             .catch(err => console.log(err));
     }
     res.status(200).send("OK")
