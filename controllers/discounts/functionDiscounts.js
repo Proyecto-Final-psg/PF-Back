@@ -29,7 +29,7 @@ const getDiscountByCodeAndUseIt = async(code) => {
     let discounts = await getAllDiscounts()
 
     const discountFound = discounts.filter(p => p.code.includes(code))
-    // console.log('Encontré el descuento?', discountFound[0].dataValues.id)
+
     if(discountFound){
         Discounts.update({
             used: true,
@@ -38,7 +38,7 @@ const getDiscountByCodeAndUseIt = async(code) => {
                 id : discountFound[0].dataValues.id
             }
         })
-        // console.log('updated',discountFound)
+     
         return discountFound
     }
     

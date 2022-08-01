@@ -7,7 +7,7 @@ const { message1 } = require('../mailer/msgMailer')
 const { payOrder } = require('../mercadoPago/mercadoPago')
 
 module.exports = {
-    createOrder: async (user_id, name, address, status, email, arrayItems) => {
+    createOrder: async (user_id, name, address, status, email, arrayItems,) => {
         if (user_id) {
             var user = await User.findOne({ where: { user_id: user_id } })
         }

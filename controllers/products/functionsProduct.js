@@ -56,14 +56,14 @@ const updateProduct = async (id, name, stock, price, img, type, description, thc
     const productsSub = await idFound.getUsers(); // encuentro todos los usuarios subscriptos a ese producto
     
     if(productsSub && stockProduct && stock > 0){   /// recibo mail si estoy suscripta a un producto
-        console.log('newsLetter')
+        
         for(let i= 0; i < productsSub.length; i++){
                 await message5(productsSub[i].dataValues.user_name, productsSub[i].dataValues.user_email, name)
                 }
     }
 
     if(favorite && stockProduct && stock > 0 && productsSub.length === 0){  // si no estoy suscripta pero lo tengo en fav lo mando
-        console.log('favorites')
+    
         for(let i= 0; i < favorite.length; i++){
                  
                 const user = await User.findByPk(favorite[i].dataValues.userUserId)
