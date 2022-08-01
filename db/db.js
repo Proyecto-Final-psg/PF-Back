@@ -3,10 +3,10 @@ const reviews = require('../models/Reviews')
 const favorites = require('../models/Favorites')
 
 const sequelize = new Sequelize({
-  database: "dc3rclgl588p1e",
-  username: "hrilpzzgagtuni",
-  password: "45bc37c29b25af6e970d1b8a490f8c93cec2cfa383f795a796ccb95add4947a6",
-  host: "ec2-107-22-122-106.compute-1.amazonaws.com",
+  database: "dqt7vpos54at1",
+  username: "sucscxzlvxvwvx",
+  password: "de19c61726f60767487759917a82a68d07041e1ee3e6c35f4f5a48c94969c430",
+  host: "ec2-3-225-110-188.compute-1.amazonaws.com",
   port: 5432,
   dialect: "postgres",
   logging: false,
