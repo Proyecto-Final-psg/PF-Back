@@ -8,6 +8,7 @@ const order = require('./routes/order')
 const mercadoPago = require('./routes/mercadoPago')
 const reviews = require('./routes/reviews')
 const favorites = require('./routes/favorites')
+const discounts = require('./routes/discounts')
 const app = express()
 const cors = require("cors")
 app.use(express.json());
@@ -47,6 +48,7 @@ app.use('/', mercadoPago)
 app.use('/products', product)
 app.use('/', reviews)
 app.use('/', favorites)
+app.use('/', discounts)
 //////////////---------MERCADO  PAGO-----------///////////////////
 
 app.get('/pruebaPost', async (req, res) => {
