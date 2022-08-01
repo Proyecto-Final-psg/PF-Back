@@ -7,7 +7,7 @@ const { message1 } = require('../mailer/msgMailer')
 const { payOrder } = require('../mercadoPago/mercadoPago')
 
 module.exports = {
-    createOrder: async (user_id, name, address, status, email, arrayItems,) => {
+    createOrder: async (user_id, name, address, status, email, arrayItems, total) => {
         if (user_id) {
             var user = await User.findOne({ where: { user_id: user_id } })
         }
@@ -16,7 +16,8 @@ module.exports = {
             "address": address,
             "status": status,
             "urlPago": "",
-            "user_email": email
+            "user_email": email,
+            "total": total
         })
 
         if (nuevaOrder && user_id) {
@@ -26,7 +27,7 @@ module.exports = {
         nuevaOrder.setUser(user)
         let external_reference = nuevaOrder.dataValues.id
 
-        let urlPago = await payOrder(arrayItems, external_reference)
+        let urlPago = await payOrder(arrayItems, external_reference,total)
 
         // nuevaOrder.save()
 
@@ -152,7 +153,7 @@ module.exports = {
                 total: 0
             }
             let order_items = order[i].dataValues.order_items
-        
+
             let total = 0
             for (let j = 0; j < order_items.length; j++) {
                 let price = order_items[j].dataValues.price
