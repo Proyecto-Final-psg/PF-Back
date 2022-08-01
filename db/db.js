@@ -2,28 +2,23 @@ const { Sequelize, DataTypes, Op } = require('sequelize');
 const reviews = require('../models/Reviews')
 const favorites = require('../models/Favorites')
 
-// const sequelize = new Sequelize({
-//     database: "d1olon79irc05k",
-//     username: "xhnhxkqzilphew",
-//     password: "cfa5bb8911032d2c4f4061fe5f806edb9d315112f34cb40fc472b859bdc102ad",
-//     host: "ec2-52-86-115-245.compute-1.amazonaws.com",
-//     port: 5432,
-//     dialect: "postgres",
-//     logging: false ,
-//     dialectOptions: {
-//       ssl: {
-//         require: true, // This will help you. But you will see nwe error
-//         rejectUnauthorized: false // This line will fix new error
-//       },
-//       logging: false,
-//       native: false,
-//     },
-//   },);
-
-const sequelize = new Sequelize(`postgres://postgres:Pola1095@localhost:5432/weedical`, {
-  logging: false, // set to console.log to see the raw SQL queries
-  native: false, // lets Sequelize know we can use pg-native for ~30% more speed
-});
+const sequelize = new Sequelize({
+    database: "dqt7vpos54at1",
+    username: "sucscxzlvxvwvx",
+    password: "de19c61726f60767487759917a82a68d07041e1ee3e6c35f4f5a48c94969c430",
+    host: "ec2-3-225-110-188.compute-1.amazonaws.com",
+    port: 5432,
+    dialect: "postgres",
+    logging: false ,
+    dialectOptions: {
+      ssl: {
+        require: true, // This will help you. But you will see nwe error
+        rejectUnauthorized: false // This line will fix new error
+      },
+      logging: false,
+      native: false,
+    },
+  },);
 
 
 /////////desarrollo////////
