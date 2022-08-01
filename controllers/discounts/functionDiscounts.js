@@ -2,24 +2,13 @@ const {reviews} = require("../../db/db")
 const Discounts = require("../../models/Discounts")
 const User = require("../../models/Users")
 
-const createDiscount = (percentage) => {
 
-    function makeid(length) {
-        var result           = '';
-        var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-        var charactersLength = characters.length;
-        for ( var i = 0; i < length; i++ ) {
-          result += characters.charAt(Math.floor(Math.random() * 
-     charactersLength));
-       }
-       return result;
-    }
-
-    Discounts.create({
-        code:makeid(7),
-        amount:percentage,
-        used:false
+const createDiscount = (code,percentage) => {
+    const disc = Discounts.create({
+        code: code,
+        amount:percentage
     })
+    return disc;
 }
 
 const getAllDiscounts = async () =>{

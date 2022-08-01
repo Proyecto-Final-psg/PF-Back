@@ -11,15 +11,14 @@ router.get('/discounts', async(req, res)=>{
         res.json({msg:discount})
     } catch (error) {
         res.json({error:'error'})
-        
     }
 })
 
 router.post('/add-discount', async(req, res)=>{
     try {
-        const {percentage} = req.body
-        const addDiscount = await createDiscount(percentage)
-        res.json({msg:'Discount created'})
+        const {code, percentage} = req.body
+        const addDiscount = await createDiscount(code,percentage)
+        res.json({addDiscount})
     } catch (error) {
         res.json({error:error})
     }
@@ -27,11 +26,10 @@ router.post('/add-discount', async(req, res)=>{
 
 router.get('/get-discount', async(req, res) => {
     try {
-        const {code} = req.body
+        const {code} = req.query
+        // console.log(code);
         const discount = await getDiscount(code)
-        res.json({
-            code: discount
-        })
+        res.json({discount})
     } catch (error) {
         res.json({error:error})
     }
@@ -39,9 +37,11 @@ router.get('/get-discount', async(req, res) => {
 
 router.put('/discount-used', async(req, res) => {
     try {
+        console.log('usando descuento');
         const {code} = req.body
-        // console.log('el codigo a usar',code)
+        console.log('el codigo a usar',code)
         const discount = await getDiscountByCodeAndUseIt(code)
+        console.log(discount);
         res.json({code: discount})
     } catch (error) {
         res.json({error: error})
