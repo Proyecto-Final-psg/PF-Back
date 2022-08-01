@@ -20,7 +20,9 @@ const Order = sequelize.define('order', {
     user_email: {
         type: DataTypes.STRING,
     },
-}, {
+    total: {
+        type: DataTypes.FLOAT,
+    },
     // timestamps: true
 }
 );

@@ -8,9 +8,9 @@ router.post('/addOrder', async (req, res) => {
     let { user_id, name, address, status, email, arrayItems } = req.body
     try {
 
-        console.log(req.body)
+        console.log(req.body.total)
 
-        res.json(await createOrder(user_id, name, address, status, email, arrayItems))
+        res.json(await createOrder(user_id, name, address, status, email, arrayItems,total))
     } catch (error) {
         console.log(error)
         return res.status(400).send({
