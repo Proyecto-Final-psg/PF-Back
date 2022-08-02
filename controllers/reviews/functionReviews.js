@@ -52,5 +52,9 @@ const getReviewsUser = async (id) => {
     }
 }
 
+const getAllReviews = async () => {
+    const allReviews = await reviews.findAll()
+    return allReviews
+}
 
-module.exports = { postReview, getReviews, deleteReview, getReviewsUser };
+module.exports = { postReview, getReviews, deleteReview, getReviewsUser, getAllReviews };
