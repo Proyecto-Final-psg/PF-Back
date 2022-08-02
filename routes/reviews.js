@@ -1,5 +1,5 @@
 const {Router} = require('express')
-const {postReview, getReviews, deleteReview, getReviewsUser, validateExistingReview} = require ('../controllers/reviews/functionReviews')
+const {postReview, getReviews, deleteReview, getReviewsUser, validateExistingReview, getAllReviews} = require ('../controllers/reviews/functionReviews')
 
 const router = Router();
 
@@ -8,6 +8,15 @@ router.post('/reviews', async (req, res) => {
    
     try {
         res.status(200).json(await postReview(product_id, user_id, name,score, review, review_id))
+    } catch (error) {
+        console.log(error)
+        res.status(401).json(error.message)
+    }
+})
+
+router.get('/reviews', async(req, res) => {
+    try {
+        res.status(200).json(await getAllReviews())
     } catch (error) {
         console.log(error)
         res.status(401).json(error.message)
