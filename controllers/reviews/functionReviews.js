@@ -9,10 +9,18 @@ const postReview = async (product_id, user_id, name, score, review) => {
     const a = reviewTest.find((r) => r.dataValues.userUserId === user_id && r.dataValues.productId === product_id)
 
     if (product && !a) {
-        const reviewCreated = await reviews.create({ name, score: parseInt(score), review })
-        reviewCreated.setProduct(product)
-        reviewCreated.setUser(user)
-        return 'review created successfully'
+        if(name !== '') {
+             const reviewCreated = await reviews.create({ name, score: parseInt(score), review })
+            reviewCreated.setProduct(product)
+            reviewCreated.setUser(user)
+            return 'review created successfully'
+        }else{
+            const reviewCreated = await reviews.create({ score: parseInt(score), review: review })
+            reviewCreated.setProduct(product)
+            reviewCreated.setUser(user)
+            return 'review created successfully'
+        }
+       
     } else {
         return "The product doesn't exist"
     }
