@@ -7,7 +7,7 @@ mercadopago.configure({
 });
 
 module.exports = {
-    payOrder: async (arrayItems, external_reference, total,email) => {
+    payOrder: async (arrayItems, external_reference, total, email) => {
         let items = [{
             "id": 1,
             "title": "Mi producto",
