@@ -8,7 +8,7 @@
         "price": 23,
         "thc": 5,
         "cbd": 10,
-        "description": "El aceite de cáñamo de espectro completo con extracto de cannabidiol (CBD) de The CBD Side tiene una concentración del 5%, ayuda a mejorar la calidad vida, sin ningún efecto psicoactivo.Contiene 500 mg de CBD juntamente con la presencia de otros cannabinoides. Este aceite de CBD está elaborado con extracto de Cannabidiol procedente de plantas, cultivadas sin pesticidas ni plaguicidas. Contiene CBD extraído con CO₂ en frío, con un posterior procesado de triple destilación de cannabinoides y mezclado con aceite de semilla de cáñamo."
+        "description": "Fortify your body’s defenses against harmful invaders with Medterra’s Immune Boost Drops with CBD. Immune Boost combines the most powerful natural ingredients to support immune system health. With crucial support for your body’s first line of defense against infection and illness— plus the added holistic benefits —our Immune Boost helps you feel your best, whatever your day throws at you."
     },
     {
         "name": "Santa Calma",
@@ -18,7 +18,7 @@
         "price": 34,
         "thc": 9,
         "cbd": 20,
-        "description": "El aceite de Santa Calma del 10% es la mejor opción para los que se inician en el uso del CBD. Está elaborado orgánicamente por los mejores científicos con ingredientes naturales a partir del mejor cáñamo cultivado con métodos naturales en invernaderos e instalaciones al aire libre en Suecia. Este aceite de CBD no contiene aditivos o productos químicos."
+        "description": "Fold CBD into your daily regimen and experience the full range of hemps benefits. Our True Full Spectrum CBD  provide a deeper CBD experience in an easy to take, vegan capsule without additives or fillers. Each serving contains 2mg of THC along with 50mg of CBD and 8mg of other beneficial hemp plant compounds. This powerful 1 ratio of CBD to other cannabinoids and the added power of THC means that the many helpful compounds of the hemp plant all work together toward your wellness via whats known as the entourage effect"
     },
     {
         "name": "CBG Drops",
@@ -28,7 +28,7 @@
         "price": 45,
         "thc": 7,
         "cbd": 25,
-        "description": "Este aceite de The CBD Side está especialmente destinado a deportistas para antes y después de su rutina deportiva, ya que no contiene THC (0%) ni otros cannabinoides."
+        "description": "Este aceite de The CBD Side está especialmente destinado a deportistas para antes y después de su rutina deportiva, ya que no contiene THC (0%) ni otros cannabinoides.Made for groggy mornings, hangovers, busy schedules and afternoon slumps. CBD Isolate provies daily balance while our Good Morning capsules provide a boost of energy from Maca, Caffeine and B-Vitamins. Turmeric, Ashwagandha and Ginger work together to reduce inflammation and tackle whatever comes your way, (even hang-xiety)."
     },
     {
         "name": "Tantrum",
@@ -38,7 +38,7 @@
         "price": 27.5,
         "thc": 3,
         "cbd": 15,
-        "description": "El aceite cannabidiol Full Spectrum CBD al 30% de Tantrum se refiere a un extracto creado a partir de toda la planta (hojas, flores, tallo y semillas) sin ningún filtrado de THC.La gama completa de cannabinoides, terpenos y otros compuestos permanece intacta, así como hasta un 0,2% de THC, que se regula en el laboratorio de Tantrum para conseguir un nivel de 0,0%. Estas sustancias naturales producen un efecto séquito que potencian las propiedades atribuidas al CBD."
+        "description": "Tantrum are made with our hemp-derived, 99%+ CBD and Medium-Chain Triglyceride MCT Oil (Coconut derived)*. Each tincture comes equipped with a measured dropper for flexible and accurate serving sizes. Enjoy this product sublingually by using the included dropper and placing the desired amount under the tongue until it dissipates and is easily digested. *Organic Ingredient"
     },
     {
         "name": "Cannabiterapia",
@@ -48,7 +48,7 @@
         "price": 62.5,
         "thc": 15,
         "cbd": 5,
-        "description": "El aceite de espectro completo para perros al 5% de CBD de Cannabiterapia, también contiene CBDV, CBDA, CBG, CBC y terpenos, ha sido desarrollado por el laboratorio de Cannabiterapia conjuntamente con la ayuda de veterinarios, quienes distinguen entre los aceites para perros y caballos y los de los gatos, ya que el sistema de endocannabinoide de los gatos no puede procesar ciertos fitocannabinoides o terpenos."
+        "description": "Cannabiterapia contains a proprietary blend that combines an energizing boost of caffeine, B6, B12, Maca, Turmeric, Ginger and Ashwagandha. We couple that with our hemp-derived CBD (25mg), to give you mental clarity throughout your day. Offer an energizing boost to elevate your day, while our 1000mg or 3000mg drops provide long-term comfort to keep you going."
     },
     {
         "name": "Oil Broad Spectrum",
@@ -58,7 +58,7 @@
         "price": 49,
         "thc": 8,
         "cbd": 5,
-        "description": "El aceite de CBD de The Tree CBD está elaborado a base de aceite MCT de coco con extracto de flores de cáñamo de amplio espectro. Los CBD Oil de The Tree CBD están cultivados de manera ecológica, con ingredientes 100% de origen vegetal, libre de productos químicos nocivos, plaguicidas, y siguiendo los controles de calidad más rigurosos. Sin THC. "
+        "description": "We know that feeling when you can't fall asleep or when you wake up in the middle of the night - this bundle was made for you. Use our Isolate CBD Drops throughout the day to find balance or in those late-night moments when you are having trouble going back to bed. Top it off with a Good Night  30 mins before bed and you'll be counting sheep in no time."
     },
     {
         "name": "CBD Drops Nordic",
@@ -68,7 +68,7 @@
         "price": 51.5,
         "thc": 5,
         "cbd": 5,
-        "description": "El aceite de cannabidiol de Nordic Oil al 15% contiene toda la gama de cannabinoides naturales. Mediante un suave proceso de extracción de CO₂, los valiosos cannabinoides y terpenos de la planta de cáñamo (Cannabis Sativa) se mantienen intactos, obteniendo así un espectro completo de cannabinoides naturales.Las plantas de cáñamo certificadas se cultivan de forma orgánica, por lo que nuestro aceite de CBD está libre de OMG. Todos los aceites de Nordic Oil no contienen gluten ni conservantes o colorantes artificiales y son 100% veganos. "
+        "description": "Bundle up for a relaxing evening with our Evening Wellness Bundle. Our Liposomal CBD+ Good Night combine 25mg CBD + 3mg Melatonin - the perfect restful combination. Enjoy that with our 1000mg or 3000mg tincture which is designed to provide you continued relief from dusk till dawn. "
     },
     {
         "name": "My Cbd",
@@ -78,7 +78,7 @@
         "price": 63,
         "thc": 5,
         "cbd": 3,
-        "description": "El  Aceite CBD de espectro completo de myCBD está elaborado con aceite de cáñamo, permitiendo mejorar su aroma y con extracto de cáñamo procedente de la planta completa. Cada botella contiene una concentración de 6% de CBD (cannabidiol) en 10 ml.Uno de los elementos claves en los productos myCBD es que respetan el efecto séquito propio de los cannabinoides.En myCBD mantienen las propiedades de los terpenos, flavonoides y cannabinoides en sus productos.   100% Natural y está libre de pesticidas y metales pesados. No es psicoactivo."
+        "description": "Meet your next mood boost. Made with a powerful 1:1 ratio of beneficial CBD to CBG, the CBD+CBG Full Spectrum Tincture also features 2 mg of THC, which creates a therapeutic effect known as the entourage effect. Time to feel relaxed, refreshed, and recharged"
     },
     {
         "name": "Full Spectrum Raw",
@@ -88,7 +88,7 @@
         "price": 38,
         "thc": 15,
         "cbd": 3,
-        "description": "Es una dulce mezcla de bayas mixtas y un cruce híbrido entre Ghost OG y fenotipo Strawberry Bubblegum. Es un aceite de cannabidiol de la mss alta calidad con 3.000 mg de CBD. Además de ser un aceite de espectro completo contiene otros cannabinoides como el CBDA, CBG, CBC y CBN entre otros y también varios terpenos. Esta característica hace que se produzca lo que conocemos como efecto séquito, es decir que la mezcla de todas estas sustancias naturales hace que los efectos del CBD en el organismo sean más potentes y efectivos."
+        "description": "Referred to as the mother of cannabinoids, CBG binds to the CB1 receptors in our nervous system and brain as well as the CB2 receptors in our immune system and other parts of our body to promote overall wellness. During the growth of the plant, most of the cannabigerol is converted into other cannabinoids, primarily THC."
     },
     {
         "name": "Medi Leaf",
@@ -98,7 +98,7 @@
         "price": 23.5,
         "thc": 7,
         "cbd": 8,
-        "description": "MediLeaf CBD Oil Soft 5% es un aceite de CBD de potencia baja elaborado con materia prima prémium: aceite CBD de espectro completo, orgánico, con base de aceite de oliva, orgánico, sin aditivos, ni conservantes, libre de pesticidas y herbicidas. Ideal para iniciarse con las rutinas del CBD y/o para molestias o síntomas leves. IngredientesAceite de oliva, extracto de cáñamo, terpenos."
+        "description": "Soothe your mind, relax your body. By leveraging CBG to enhance the synergistic effects of CBD and THC on your body and mind, this relief essential supports what it means to rediscover what makes you the best version of you. Calm clarity awaits."
     },
     {
         "name": "MamaSelvac Raw Hemp Pink",
@@ -108,7 +108,7 @@
         "price": 55,
         "thc": 10,
         "cbd": 3,
-        "description": "El aceite con CBD cannabis raw 9% CBD de Mamasalvae está fabricado con cáñamo crudo que ayuda a sostener el sistema inmunológico a través de la activación de tu sistema cannabinoide: el CBD y el CBDa ayudan a que tu cuerpo físico, mental y espiritual encuentren su equilibrio natural gracias a sus propiedades antiinflamatorias, antioxidantes y neuroprotectoras que se le atribuyen"
+        "description": "With a versatile dropper delivery, you can choose your daily routine mood boost however you’d like whether it’s held under your tongue and waiting 30 seconds before swallowing or adding to your favorite beverage of choice. If you’re feeling inspired, add a drop to some no-bake cookies."
     },
     {
         "name": "MamaSelvac Raw Hemp Green",
@@ -118,7 +118,7 @@
         "price": 30.5,
         "thc": 3,
         "cbd": 9,
-        "description": "El aceite con CBD cannabis raw 3% CBD está fabricado con cáñamo crudo. Al sumar el CBD con el CBDa se logra la combinación ideal para mejorar cualquier propiedad antiinflamatoria y ansiolítica que experimente el organismo.“Raw” fórmula indica una extracción completamente natural que nunca ha sido expuesta a fuentes de calor (filtrado en frío). Por ello mantiene intactos todos los oligo-elementos, omegas, vitaminas, minerales y cannabinoides de la planta"
+        "description": "Meet your next mood boost. Made with a powerful 1:1 ratio of beneficial CBD to CBG, the CBD+CBG Full Spectrum Tincture also features 2 mg of THC, which creates a therapeutic effect known as the entourage effect. Time to feel relaxed, refreshed, and recharged. CBG is known as “The Mother of all cannabinoids” since it is the parent molecule to almost all cannabinoids found in the body. CBG binds to both cannabinoid receptors in our body to help play a role in relaxation which can help support motivation."
     },
     {
         "name": "MamaSelvac Raw Hemp Blue",
@@ -128,7 +128,7 @@
         "price": 33.5,
         "thc": 6,
         "cbd": 6,
-        "description": "El aceite con CBD cannabis raw 6% CBD está fabricado con cáñamo crudo. Esta fórmula a base de cannabis activa tu sistema cannabinoide, un sistema receptor al servicio de tu sistema inmunológico: la acción del Cannabidiol (CBD) junto con los oligoelementos naturales del cáñamo ayuda a tu cuerpo físico, mental y espiritual a encontrar su equilibrio natural"
+        "description": "By leveraging CBG to enhance the synergistic effects of CBD and THC on your body and mind, this relief essential supports what it means to rediscover what makes you, you. With a versatile dropper delivery, you can choose your daily routine mood boost however you’d like whether it’s held under your tongue and waiting 30 seconds before swallowing or adding to your favorite beverage of choice."
     },
     {
         "name": "My CBD Hemp",
@@ -138,7 +138,7 @@
         "price": 23.5,
         "thc": 6,
         "cbd": 6,
-        "description": "El frasco del aceite de CBD de HEMP to BEE es con vidrio oscuro, porque la temperatura y la luz son algunos de los factores que pueden degradar los cannabinoides, como el CBD, haciendo que se reduzca su efecto. Por ello, en HEMP to BEE utilizamos frascos de vidrio violeta (violetglass) que preservan el aceite de los efectos nocivos de la luz para aumentar la vida útil de los productos."
+        "description": "Find fast relief with the extra strength My CBD Hemp . By combining the healing power of 1000mg CBD with impactful organic botanicals like arnica and menthol, you will find the relief you are looking for. Ease tension and discomfort by rolling the applicator message  over the targeted area to soothe arthritis, joint pain, sore back and necks, or simply to help alleviate everyday stiffness."
     },
     {
         "name": "Mediterra",
@@ -148,7 +148,7 @@
         "price": 60.5,
         "thc": 10,
         "cbd": 10,
-        "description": "El Aceite de cannabidiol de Medterra está elaborado a base de extracto de cáñamo (cannabidiol) y aceite de coco MCT. Sin THC, lo que significa que no tiene ningún efecto psicoactivo ni provoca adicción.Es seguro, accesible, totalmente legal y fácil de usar. Tiene ingredientes 100% naturales, de origen vegano y no contiene lactosa, gluten ni conservantes. Se le atribuyen propiedades antioxidantes, analgésicas y antiinflamatorias."
+        "description": "Unlike basic pain relief formulations, the extra strength 1000mg CBD Pain Mediterra combines the healing power of CBD with menthol and arnica to reduce swelling, as well as other therapeutic, organic botanicals like jojoba oil and aloe that fortify a powerful and soothing blend to quickly relieve discomfort."
     },
     {
         "name": "Mediterra Berry",
@@ -158,7 +158,7 @@
         "price": 62.5,
         "thc": 10,
         "cbd": 3,
-        "description": "El Aceite de cannabidiol de Medterra está elaborado a base de extracto de cáñamo (cannabidiol) y aceite de coco MCT. Sin THC, lo que significa que no tiene ningún efecto psicoactivo ni provoca adicción. Es seguro, accesible, totalmente legal y fácil de usar.Tiene ingredientes 100% naturales, de origen vegano y no contiene lactosa, gluten ni conservantes."
+        "description": "Formulated as an extension of our 1000mg Pain Relief  that won 2021 Product of the Year in the CBD personal care category, our new all-natural 1000mg Mediterra Berry is a more convenient and mess-free way to support all of your relief and recovery needs."
     },
     {
         "name": "Mediterra Ultra Broad",
@@ -168,7 +168,7 @@
         "price": 55,
         "thc": 3,
         "cbd": 9,
-        "description": "A diferencia de los aceites aislados, que solo contienen CBD, las tinturas de amplio espectro contienen CBD con compuestos beneficiosos adicionales como CBG, CBN, CBC, CBDV y terpenos naturales. Esta proporción de 10:1 de CBD a cannabinoides proporciona la forma más eficaz de experimentar los beneficios del CBD. Formulada por médicos, el Aceite Ultra Broad Spectrum™ representa una novedad única en la industria. Una expresión poderosa, segura, legal y fácil de usar. "
+        "description": "Our Mediterra Ultra Broad is a powerful 10:1 ratio of CBD to other cannabinoids (CBG, CBN, CBC, CBDV, and natural terpenes) without THC. This harmonious blend packs a powerful punch to help you find a sense of balance and calm. "
     },
     {
         "name": "Mana Premium",
@@ -178,7 +178,7 @@
         "price": 70,
         "thc": 5,
         "cbd": 5,
-        "description": "El aceite de cáñamo con gotas de CBD de Manná es un extracto de los cogollos de cáñamo sativa con un alto porcentaje de cannabidiol (CBD), obtenido mediante modernos métodos de extracción, que libera una amplia gama de cannabinoides, terpenos y otros componentes beneficiosos del cáñamo sativa.El cáñamo ecológico que se ha utilizado para este aceite es cultivado de forma orgánica, recogido a mano y secado de forma natural. Este producto contiene exclusivamente el extracto complejo de flores de cáñamo (que no contiene THC), y aceite de semilla de cáñamo, incluyendo CBD. No contiene colorantes, aromas ni conservantes y es completamente vegano y sin gluten."
+        "description": "Mana Premium extraction keeps all the elements of the hemp plant in the final product—minor cannabinoids, terpenes, and bioflavonoids. These wellness-boosting compounds work in concert to amplify each of their effects—a phenomenon known as the entourage effect.Using a proprietary extraction method, we are able to selectively remove THC without disturbing the ratio of other cannabinoids, terpenes, and flavonoids. Rest assured, our Broad Spectrum products do not contain THC and will not produce psychoactive effects. Available in three delicious flavors- Strawberry Mint, Citrus and Unflavored."
     },
     {
         "name": "LyF White",
@@ -188,7 +188,7 @@
         "price": 23,
         "thc": 2,
         "cbd": 5,
-        "description": "Los aceites de CBD LYF Isolate no contienen THC. Los aceites de The LYF Labs CBD están elaborados en sus laboratorios bajo estrictos procesos de extracciones y filtrado, lo que garantiza que se mantengan todas las propiedades medicinales atribuidas de la planta. El objetivo de la empresa es conseguir la máxima pureza en sus productos; respetando el medio ambiente y proporcionando la mayor calidad a los clientes.The LYF Labs cultiva sus propias plantas de cáñamo ecológico de manera sostenible y sin ningún tipo de aditivos químicos ni OMG. Los aceites son 100% veganos."
+        "description": "With an industry leading 2mg of THC and 5:1 ratio of CBD to other beneficial cannabinoids, these vegan LyF White are the most enjoyable way to experience deeper, richer, CBD wellness. Our LyF White come in an all-natural citrus flavor and can be used any time you're looking for enhanced wellbeing."
     },
     {
         "name": "LyF Black",
@@ -198,7 +198,7 @@
         "price": 30,
         "thc": 9,
         "cbd": 5,
-        "description": "Los aceites de CBD de The LYF Labs CBD están elaborados en sus laboratorios bajo estrictos procesos de extracciones y filtrado, lo que garantiza que se mantengan todas las propiedades medicinales atribuidas de la planta. El objetivo de la empresa es conseguir la máxima pureza en sus productos; respetando el medio ambiente y proporcionando la mayor calidad a los clientes.The LYF Labs cultiva sus propias plantas de cáñamo ecológico de manera sostenible y sin ningún tipo de aditivos químicos ni OMG. Los aceites son 100% veganos."
+        "description": "LyF Black CBD Drops harness the full range of the hemp plant, including THC,to bring you enhanced relaxation, rest, recovery, and well-being. Available in two delicious flavors, Citrus & Mint Chocolate."
     },
     {
         "name": "Iguana Premium",
@@ -208,7 +208,7 @@
         "price": 38.5,
         "thc": 10,
         "cbd": 9,
-        "description": "Los aceites de Iguana Smoke están elaborados en sus laboratorios bajo estrictos procesos de extracciones y filtrado, lo que garantiza que se mantienen todas las propiedades medicinales que se le atribuyen a la planta. El objetivo de la marca es conseguir la máxima pureza en sus productos, respetando el medio ambiente y proporcionando la mayor calidad"
+        "description": "With 2mg of THC and a 5:1 ratio of CBD to other beneficial cannabinoids, our Iguana Premium CBD Drops are the most advanced tincture on the market. Whether you're a longtime CBD lover or looking to try something new, our Iguana Premium is perfect for diving into a deeper CBD experience. Sublingual ingestion optimizes absorption and easy digestion. Made from organically grown hemp in the USA. Whole plant power in a classic CBD format. Available in Citrus and Chocolate Mint. 3 sizes for your needs"
     },
     {
         "name": "Peace Bee",
@@ -218,7 +218,7 @@
         "price": 32.5,
         "thc": 5,
         "cbd": 5,
-        "description": "El frasco de aceite PEACE BEE de HEMP to BEE contiene 10 ml con 500 mg isolate CBD (5%) y sin THC.Este aceite contiene terpenos naturales extraídos de cultivos de menta y diferentes especies de la familia de los cítricos.Todos los compuestos de PEACE BEE proceden de cultivos ecológicos, sin aditivos, y con carácter vegano, libre de sufrimiento animal."
+        "description": "An all natural sleep aid, in one convenient dosis. 50 mg of premium CBD and 1.5 mg of CBN gently guide you to a deep, restorative sleep. Magnesium and melatonin prolong the sleep cycle for an uninterrupted night of rest. Peace Bee ashwagandha, kava kava and zinc ease anxiety and tension to help you turn off and turn in. Take one capsule every night for best results."
     },
     {
         "name": "Elysium",
@@ -228,7 +228,7 @@
         "price": 30,
         "thc": 2,
         "cbd": 5,
-        "description": "El aceite de CBD Daily Balance de Elysium es ideal para ayudarte a mejorar tu estado de ánimo.Un producto natural que te ayudará a relajarte y a mejorar tus niveles de estrés, despejar la mente y concentrarte gracias a las propiedades que algunos estudios atribuyen al CBD. Está diseñado para aportarte equilibrio durante todo el día."
+        "description": "Convenient and consistent, our Elysium are the perfect way to consume your daily CBD on the go. Made from two simple ingredients, organic MCT Coconut Oil and CBD Isolate, our gel capsules can be taken in the morning or night. With our proprietary extraction method, we guarantee there will be zero THC in this product. If you have concerns around THC consumption or drug testing, Elysium is your best bet. You should not test positive on a THC drug test, even if using this Elysium regularly."
     },
     {
         "name": "Canapa-Co",
@@ -238,7 +238,7 @@
         "price": 23,
         "thc": 2,
         "cbd": 5,
-        "description": "El aceite de CBD de espectro completo de Canapa-co se elabora sin el uso de ningún disolvente en un laboratorio con certificación ISO 9001 y normas GMP. Esto hace que el aceite sea puro, de alta calidad y más eficaz."
+        "description": "Unwind & relax while enjoying a better value: our full-spectrum CBD oil is made with the highest quality CBD and kosher-grade vegetable glycerin. Whether it’s for the benefits or just to relax,  relief is just a few dropper squeezes away. Administer a few drops under the tongue, or use in your favorite foods and beverages without worrying about any kind of weird smell or aftertaste. A 30ml bottle of 1500 mg Full-Spectrum CBD tincture equals 50 mg in each 1 ml eye dropper."
     },
 
     {
@@ -249,7 +249,7 @@
         "price": 34,
         "thc": 9,
         "cbd": 3,
-        "description": "El Balance OIl (1650 mg CBD+ /30 ml) de Bove está formulado con un extracto natural de Cáñamo Orgánico de amplio espectro certificado por la UE. Este aceite CBD está producido bajo control farmacéutico (calidad GMP e ISO), con una formulación específica de distintos Cannabinoides guiados por los últimos estudios científicos, sin OGM y sin gluten ni azúcar, su único objetivo es mejorar tu bienestar, tu belleza y tu sueño.El aceite de Bove tiene todos los beneficios que se le atribuyen al CBD. Podría ayudar a aliviar las molestias musculares, articulares, los dolores menstruales y enfermedades dermales como la psoriasis o la rosácea. También, podría ayudar a lograr un estado de equilibrio y bienestar para ayudarte a mejorar la calidad del descanso."
+        "description": "When it comes time to completely relax your body and mind, a Bove is one of the fastest acting products on the market. Not only are CBD tinctures a versatile method of getting CBD, they are extremely powerful. An individual can simply drop a little CBD Coconut Oil under his or her tongue. People often mix it into coffee, tea and other beverages. It can even be baked into a variety of foods to complement the flavor, while creating potent CBD edibles. Before you know it, the strong CBD will be absorbed into your blood and carried throughout your system."
     },
     {
         "name": "Sereniti",
@@ -259,7 +259,7 @@
         "price": 34,
         "thc": 9,
         "cbd": 3,
-        "description": "El aceite de CBD 15% con extracto de melisa de AlpReleaf es un producto 100% hecho en Suiza. El CBD y el extracto de melisa en el Serenity Oil se han extraído de la biomasa de cáñamo certificada por BioSuisse utilizando un método de extracción de CO₂ seguido de cromatografía ultrarrápida para eliminar el THC y alcanzar un extracto de amplio espectro."
+        "description": "Made from cannabidiol, water and MCT Oil, Sereniti are produced in the United States. They are also third party tested and 100% organic. That means all of our CBD merchandise is made with no chemicals whatsoever. You will have no trouble chilling out. Complete relation comes easy and sleep can improve dramatically, having a marvelous effect on your precious energy levels throughout the day. Best of all, a user never has to worry about getting high, as there is not enough THC in CBD Coconut Oil to give off a euphoric effect. In fact, CBD tinctures are often used to bring individuals down from bad trips."
     },
 
     {
@@ -270,7 +270,7 @@
         "price": 44,
         "thc": 4,
         "cbd": 5,
-        "description": "Happease Sleep al 5% es un aceite de CBD creado bajo la formulación Mountain River. Su perfil de terpenos es amaderado con una mezcla de OG que genera una sensación de calma y ayuda a mejorar el sueño potencialmente. Perfecto para usar durante la noche.Es un aceite de cannabidiol de la más alta calidad con 500 mg de CBD. Además de ser un aceite de espectro completo contiene otros cannabinoides como el CBDA, CBG, CBC y CBN entre otros y también varios terpenos. Esta característica hace que se produzca lo que conocemos como efecto séquito, es decir que la mezcla de todas estas sustancias naturales hace que los efectos del CBD en el organismo sean más potentes y efectivos."
+        "description": "Maybe you feel stressed out after a long day at work, or perhaps you are simply having trouble falling asleep. Sleep is perfect for putting your mind and body at ease. JustCBD has earned a top notch reputation for their effective CBD products. Our CBD tinctures couldn’t be easier to use. Simply rely on a dropper to get the precise amount of CBD you are looking for. Then drop it into your mouth, if not mix the CBD into your food or drink. The best CBD oil tinctures on the market are known to supply plenty of flavor to a wide variety of smoothies, shakes, cookies and brownies."
     },
     {
         "name": "Focus",
@@ -280,7 +280,7 @@
         "price": 44,
         "thc": 9,
         "cbd": 5,
-        "description": "Happease Focus al 5% es un aceite de CBD creado bajo la formulación Jungle Spirit que contiene un perfil de terpenos de aroma dulce con potenciales efectos energéticos que pueden ayudar a mejorar la concentración."
+        "description": "One of the greatest benefits of a Focus is how quickly the product takes effect on a user’s mind and body. When figuring out the right dose for yourself, all you need is a little trial and error. What works wonders on one person may not have the same effect on another. Merely increase or decrease how many powerful CBD drops you use until you find the ideal dosage. Have no fear of ingesting too much, as it isn’t possible to overdose on CBD."
     },
     {
         "name": "Balance",
@@ -290,7 +290,7 @@
         "price": 44,
         "thc": 7,
         "cbd": 2,
-        "description": "Es una dulce mezcla de bayas mixtas y un cruce híbrido entre Ghost OG y fenotipo Strawberry Bubblegum. Es un aceite de cannabidiol de la más alta calidad con 500 mg de CBD. Además de ser un aceite de espectro completo contiene otros cannabinoides como el CBDA, CBG, CBC y CBN entre otros y también varios terpenos. Esta característica hace que se produzca lo que conocemos como efecto séquito, es decir que la mezcla de todas estas sustancias naturales hace que los efectos del CBD en el organismo sean más potentes y efectivos"
+        "description": "Sometimes we just need a way to smooth out the proverbial bumps in the road. Consider this your means of finding balance, daily. With a perfect blend of full-spectrum hemp oil, MCT coconut oil and BCP, our Daily Balance CBD Tinctures are a great way to feel better and keep your life running smoothly. Our CBD-rich tinctures expertly blend full-spectrum hemp with MCT coconut oil to create the foundation for a clean, reliable and easy-to-use tincture. We then add in beta-caryophyllene, an important terpene naturally found in hemp, to enhance the overall formulation. Simple ingredients, come together to make something that is, well, kind of amazing"
     },
     {
         "name": "Luna Nueva",
@@ -300,7 +300,7 @@
         "price": 55,
         "thc": 9,
         "cbd": 2,
-        "description": "blabla"
+        "description": "Our High Potency CBD tinctures are a great option for anyone who wants a full spectrum CBD oil and higher concentrations of CBD. To ensure a high-quality product, we carefully extract and formulate all of our CBD tinctures in house. In order to maintain purity and quality, our Classic tinctures are unflavored and additive free. They are made using all-natural ingredients, just the way nature intended. We also offer a selection of infused tinctures that are flavored naturally with extracts and terpenes. Using hemp grown on our own Lazarus Farms, we render CBD-rich extract from the plant using an ethanol-based process. We then dilute the extract with organic hemp seed oil to ensure accurate CBD concentration according to product potency."
     }
     ]
 }
