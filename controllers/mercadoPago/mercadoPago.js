@@ -7,7 +7,7 @@ mercadopago.configure({
 });
 
 module.exports = {
-    payOrder: async (arrayItems, external_reference, total) => {
+    payOrder: async (arrayItems, external_reference, total,email) => {
         let items = [{
             "id": 1,
             "title": "Mi producto",
@@ -25,7 +25,7 @@ module.exports = {
             "payer": {
                 "name": "juan",
                 "surname": "papeli",
-                "email": "barreiromart@email.com",
+                "email": email,
                 "phone": {
                     "area_code": "11",
                     "number": 4444 - 4444

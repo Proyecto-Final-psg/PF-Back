@@ -27,7 +27,7 @@ module.exports = {
         nuevaOrder.setUser(user)
         let external_reference = nuevaOrder.dataValues.id
 
-        let urlPago = await payOrder(arrayItems, external_reference,total)
+        let urlPago = await payOrder(arrayItems, external_reference,total,email)
 
         // nuevaOrder.save()
 
