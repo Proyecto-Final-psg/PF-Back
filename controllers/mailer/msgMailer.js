@@ -3,29 +3,28 @@ const User = require('./../../models/Users')
 const Product= require('./../../models/Product')
 
 module.exports = {
-    message1 : async (name, email, order, arrayItems) =>{
+    message1 : async (email, order, arrayItems) =>{
+        // console.log(name, email, order, arrayItems);
         // const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
-        let pro = await arrayItems.map(async item => {
-            let producto = await Product.findByPk(item.product_id, {attributes : ['name']})
-            let p = null;
-            if(producto){
-                producto = producto.dataValues.name
-                let p = {
-                    product : producto,
-                    quantity : item.quantity,
-                    price : item.price
-                }
-            }
+        // let pro = await arrayItems.map(async item => {
+        //     let producto = await Product.findByPk(item.product_id, {attributes : ['name']})
+        //     console.log(producto);
+        //         producto = producto.dataValues.name
+        //         let p = {
+        //             product : producto,
+        //             quantity : item.quantity,
+        //             price : item.price
+        //         }
             
-            return p
-        })
-        const product = await Promise.all(pro)
+        //     return p
+        // })
+        // const product = await Promise.all(pro)
       
         
         await transports.sendMail({
             from : `"Orden # ${order}" <weedical@weedical.com>`,
             to : email,
-            subject : `Hi ${name}! Order #${order}`,
+            subject : `Hi! Order #${order}`,
             html :`            
             <p>We want to inform you that the order n° ${order} is in progress and we will let you know when its completed, </p>
             <p>to start the shippment.</p>
@@ -40,12 +39,13 @@ module.exports = {
             <p>Weedical team</p>`
         })
     },
-    message2 : async (userid, order, status) =>{
-        const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
+    message2 : async (userid, order, status, email) =>{
+        console.log('CANCELED',userid, order, status);
+        // const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
         await transports.sendMail({
             from : `"Orden # ${order}" <weedical@weedical.com>`,
-            to : user.dataValues.user_email,
-            subject : `Hi ${user.dataValues.user_name}! Order #${order} ${status}`,
+            to : email,
+            subject : `Hi ${email}! Order #${order} ${status}`,
             html : `            
             <p>Something happened with the order n° ${order} and now it's canceled.</p>
 
@@ -56,12 +56,12 @@ module.exports = {
             <p>Weedical team</p>`
         })
     },
-    message3 : async (userid, order, status, address, product) =>{
-        const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
+    message3 : async (userid, order, status, address, product, email) =>{
+        // const user = await User.findByPk(userid, {attributes : ['user_name', 'user_email']})
         await transports.sendMail({
             from : `"Orden # ${order}" <weedical@weedical.com>`,
-            to : user.dataValues.user_email,
-            subject : `Hi ${user.dataValues.user_name}! Order #${order} ${status}`,
+            to : email,
+            subject : `Hi ${email}! Order #${order} ${status}`,
             html : `            
             <p>The order n° ${order} is completed, and we will send the products to the next address :${address} </p>
 
