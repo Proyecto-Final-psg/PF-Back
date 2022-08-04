@@ -58,7 +58,7 @@ const updateProduct = async (id, name, stock, price, img, type, description, thc
     if(productsSub && stockProduct && stock > 0){   /// recibo mail si estoy suscripta a un producto
         
         for(let i= 0; i < productsSub.length; i++){
-                await message5(productsSub[i].dataValues.user_name, productsSub[i].dataValues.user_email, name)
+                await message5(productsSub[i].dataValues.user_name, productsSub[i].dataValues.user_email, name, id)
                 }
     }
 
@@ -67,7 +67,7 @@ const updateProduct = async (id, name, stock, price, img, type, description, thc
         for(let i= 0; i < favorite.length; i++){
                  
                 const user = await User.findByPk(favorite[i].dataValues.userUserId)
-                await message5(user.dataValues.user_name, user.dataValues.user_email, name)
+                await message5(user.dataValues.user_name, user.dataValues.user_email, name, id)
         }    
     }
 
