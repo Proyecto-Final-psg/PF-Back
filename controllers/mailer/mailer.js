@@ -11,8 +11,8 @@ const transporter = nodemailer.createTransport({
     },
 });
 
-transporter.verify().then(() => {
-    console.log('listo para enviar correos')
-})
+// transporter.verify().then(() => {
+//     console.log('listo para enviar correos')
+// })
 
 module.exports = transporter;
